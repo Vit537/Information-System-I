@@ -1,0 +1,90 @@
+<?php
+
+
+//use App\Http\Controllers\Paquete_Usuarios\Auth\AuthController;
+use App\Http\Controllers\Paquete_Usuarios\Auth\PersonasController;
+use App\Http\Controllers\Paquete_Usuarios\clienteController;
+use App\Http\Controllers\Paquete_Usuarios\proveedorController;
+use App\Http\Controllers\Paquete_Usuarios\usuarioController;
+use App\Http\Controllers\Paquetes_producto\productoController;
+use App\Models\Paquete_Usuarios\Auth\Persona;
+use App\Models\Paquete_Usuarios\cliente;
+use App\Models\Paquete_Usuarios\proveedor;
+use Faker\Provider\ar_EG\Person;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+//auth
+
+Route::prefix('auth')->group(function () {
+    // Route::get('login', function(){
+    //     return 'Usuario registrado exitosamente ';
+    // })->name('login');
+    Route::get('login', [PersonasController::class, 'login'])->name('login');
+    Route::post('login', [PersonasController::class, 'loginVerify'])->name('login.verify');
+    Route::get('register', [PersonasController::class, 'register'])->name('register');
+    Route::post('register', [PersonasController::class, 'registerVerify']);
+    Route::post('signOut', [PersonasController::class, 'signOut'])->name('signOut');
+});
+
+Route::get('register/producto', [productoController::class, 'register1'])->name('register.producto');
+Route::post('register/producto', [productoController::class, 'registerVerify1'])->name('verificar.prod');
+
+
+//protegidas
+Route::middleware('auth')->group(function () {
+    Route::get('dashboard', function () {
+
+        //return 'hola mundo '.auth()->user()->nombre;
+        // return view('dashboard.index');
+        return view('layouts.dashboard');
+    })->name('dashboard');
+
+    Route::get('perfil', [PersonasController::class, 'mostrarPerfil'])->name('perfil');
+    Route::get('listaUsuarios', [PersonasController::class, 'listarUsuarios'])->name('listar.usuarios');
+    // Route::get('perfil', [PersonasController::class, '']);
+    //usuarios
+    Route::get('/vista', function () {
+        return view('Paquete_Usuarios.usuario.perfil');
+    })->name('lista');
+
+    Route::resource('persona', PersonasController::class);
+    Route::resource('cliente', clienteController::class);
+
+    Route::get('register/cliente', [clienteController::class, 'register'])->name('register.cliente');
+    Route::post('register/cliente', [clienteController::class, 'registerVerify']);
+
+    Route::get('register/proveedor', [proveedorController::class, 'register'])->name('register.proveedor');
+    Route::post('register/proveedor', [proveedorController::class, 'registerVerify']);
+
+    Route::get('register/usuario', [usuarioController::class, 'register'])->name('register.usuario');
+    Route::post('register/usuario', [usuarioController::class, 'registerVerify']);
+
+
+    // crear usuarios
+    Route::get('crear', [PersonasController::class, 'crearUsuarios'])->name('crear.usuarios');
+
+
+});
+
+
+
+// return 'Hola dashboard aqui termino la clase';
+// return view('dashboard.index');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// // producto y categorias
+// Route::get('register/proveedor', [proveedorController::class, 'register'])->name('register.proveedor');
+// Route::post('register/proveedor', [proveedorController::class, 'registerVerify']);
+
+// Route::get('register/proveedor', [proveedorController::class, 'register'])->name('register.proveedor');
+// Route::post('register/proveedor', [proveedorController::class, 'registerVerify']);
+
+// bitacora
+
+//producto
+
