@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <h1 class="flex text-2xl justify-center font-bold mb-4 text-slate-50">Perfil del Usuario</h1>
+    <h1 class="flex text-2xl justify-center font-bold mb-4">Perfil del Usuario</h1>
 
     <section class="border rounded-md shadow-md p-4 bg-white" x-data="{ open: true }">
         <button @click="open = !open"

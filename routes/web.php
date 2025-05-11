@@ -6,15 +6,16 @@ use App\Http\Controllers\Paquete_Usuarios\Auth\PersonasController;
 use App\Http\Controllers\Paquete_Usuarios\clienteController;
 use App\Http\Controllers\Paquete_Usuarios\proveedorController;
 use App\Http\Controllers\Paquete_Usuarios\usuarioController;
-use App\Http\Controllers\Paquetes_producto\productoController;
+use App\Http\Controllers\Paquete_Productos\productoController;
 use App\Models\Paquete_Usuarios\Auth\Persona;
 use App\Models\Paquete_Usuarios\cliente;
 use App\Models\Paquete_Usuarios\proveedor;
 use Faker\Provider\ar_EG\Person;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Paquete_Productos\categoriaController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Paquete_Usuarios.usuario.login');
 });
 
 //auth
@@ -30,8 +31,8 @@ Route::prefix('auth')->group(function () {
     Route::post('signOut', [PersonasController::class, 'signOut'])->name('signOut');
 });
 
-Route::get('register/producto', [productoController::class, 'register1'])->name('register.producto');
-Route::post('register/producto', [productoController::class, 'registerVerify1'])->name('verificar.prod');
+// Route::get('register/categoria', [categoriaController::class, 'register1'])->name('register.categoria');
+// Route::post('register/categoria', [categoriaController::class, 'registerVerify1']);
 
 
 //protegidas
@@ -66,8 +67,6 @@ Route::middleware('auth')->group(function () {
 
     // crear usuarios
     Route::get('crear', [PersonasController::class, 'crearUsuarios'])->name('crear.usuarios');
-
-
 });
 
 
@@ -86,5 +85,23 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // bitacora
 
+//categoria
+
+Route::resource('categoria', categoriaController::class);
+Route::get('register/categoria', [categoriaController::class, 'register'])->name('register.categoria');
+Route::post('register/categoria', [categoriaController::class, 'registerVerify']);
+Route::get('listarCategorias', [categoriaController::class, 'listarCategorias'])->name('listar.categorias');
+
 //producto
 
+Route::resource('producto', productoController::class);
+Route::get('register/producto', [productoController::class, 'register'])->name('register.producto');
+Route::post('register/producto', [productoController::class, 'registerVerify']);
+Route::get('listarProductos', [productoController::class, 'listarProductos'])->name('listar.productos');
+
+
+//     Route::middleware('auth')->prefix('cuentas')->group(function () {
+//     Route::get('/', [CuentaController::class, 'index'])->name('cuentas.index');
+//     Route::get('/crear', [CuentaController::class, 'create'])->name('cuentas.create');
+//     // otras rutas...
+// });

@@ -19,18 +19,20 @@ class PersonasController extends Controller
         // if (auth()->user()->rol !== 'admin') {
         //     abort(403, 'No tienes permiso para ver esto.');
         // }
-     //   @can('ver-clientes')
-//     <a href="{{ route('clientes.index') }}">Ver Clientes</a>
-// @endcan
-// para usar en la vista
+        //   @can('ver-clientes')
+        //     <a href="{{ route('clientes.index') }}">Ver Clientes</a>
+        // @endcan
+        // para usar en la vista
     }
 
-    public function register(){
+    public function register()
+    {
 
         return view('Paquete_Usuarios.usuario.register');
     }
 
-    public function registerVerify(Request $request){
+    public function registerVerify(Request $request)
+    {
 
         $request->validate([
             'correo' => 'required|unique:persona,correo|email',
@@ -38,7 +40,7 @@ class PersonasController extends Controller
             'confirmacion_contrasena' => 'required|same:contrasena',
             'telefono' => ['required', 'regex:/^\+?[0-9\s\-\(\)]+$/', 'max:20'],
             'direccion' => 'required|string|max:255'
-        ],[
+        ], [
             'correo.required' => 'El correo es requerido',
             'correo.unique' => 'El correo ya existe',
             'correo.email' => 'El formato del correo no es válido',
@@ -70,7 +72,8 @@ class PersonasController extends Controller
         return redirect()->route('login')->with('success', 'usuario creado correctamente');
     }
 
-    public function login(){
+    public function login()
+    {
         return view('Paquete_Usuarios.usuario.login');
     }
 
@@ -93,7 +96,8 @@ class PersonasController extends Controller
     //     return back()->withErrors(['invalid_Credentials'=> 'user o password invalid'])->withInput();
     // }
 
-    public function loginVerify(Request $request){
+    public function loginVerify(Request $request)
+    {
 
         $credentials = $request->validate([
             'correo' => 'required|email',
@@ -104,68 +108,77 @@ class PersonasController extends Controller
             'correo' => $credentials['correo'],
             'password' => $credentials['contrasena'] // ¡Clave 'password' aquí!
         ])) {
-          //  $request->session()->regenerate(); // Regenera la sesión
-           // return redirect()->intended('dashboard');
+            //  $request->session()->regenerate(); // Regenera la sesión
+            // return redirect()->intended('dashboard');
             return redirect()->Route('dashboard');
         }
 
 
-       return back()->withErrors(['invalid_Credentials'=> 'usuario invalido'])->withInput();
-
+        return back()->withErrors(['invalid_Credentials' => 'usuario invalido'])->withInput();
     }
 
-    public function signOut(){
+    public function signOut()
+    {
         Auth::logout();
         return redirect()->Route('login')->with('success', 'session cerrada correctamente');
     }
 
-    public function mostrarPerfil(){
+    public function mostrarPerfil()
+    {
 
         $usuario = Auth::user(); // o auth()->user();
 
-       return view('Paquete_Usuarios.usuario.perfil',compact('usuario'));
+        return view('Paquete_Usuarios.usuario.perfil', compact('usuario'));
     }
 
-    public function listarUsuarios(){
+    public function listarUsuarios()
+    {
 
         // $usuario = Auth::user(); // o auth()->user();
-        $usuarios = Persona::all();// o auth()->user();
-       return view('Paquete_Usuarios.usuario.listar_U',compact('usuarios'));
+        $usuarios = Persona::all(); // o auth()->user();
+        return view('Paquete_Usuarios.usuario.listar_U', compact('usuarios'));
     }
 
-    public function crearUsuarios(){
-        return view('Paquete_Usuarios.crearUsuarios');
+    public function crearUsuarios()
+    {
+
+
+        if (auth()->user()->tipo === 'administrador') {
+            return view('Paquete_Usuarios.crearUsuarios');
+        }
+
+        abort(403, 'No tienes permiso para crear usuarios.');
     }
 
 
 
 
 
-        // $request->validate([
-        //     'correo' => 'required|email',
-        //     'contrasena' => 'required|min:4',
+    // $request->validate([
+    //     'correo' => 'required|email',
+    //     'contrasena' => 'required|min:4',
 
-        // ],[
-        //     'correo.required' => 'El correo es requerido',
+    // ],[
+    //     'correo.required' => 'El correo es requerido',
 
-        //     'contrasena.required' => 'La contraseña es obligatoria',
+    //     'contrasena.required' => 'La contraseña es obligatoria',
 
-        // ]);
-
-
-
-            // if (Auth::attempt(['email' => $request->email, 'password' => $request->password])){
-            //     return dd('Hola mundo');
-            // }
-        //dd($request->correo);
-        //dd($request->contrasena);
+    // ]);
 
 
-//    public function index()
-//     {
-//         $articles = Article::all();
-//         return view('articles.index', compact('articles'));
-//     }
+
+    // if (Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+    //     return dd('Hola mundo');
+    // }
+    //dd($request->correo);
+    //dd($request->contrasena);
+
+
+    //    public function index()
+    //     {
+    //         $articles = Article::all();
+    //         return view('articles.index', compact('articles'));
+    //     }
 
     public function create()
     {
@@ -186,7 +199,13 @@ class PersonasController extends Controller
     public function edit(Persona $persona)
     {
 
-        return view('Paquete_Usuarios.usuario.edit', compact('persona'));
+
+
+        if (auth()->user()->tipo === 'administrador') {
+            return view('Paquete_Usuarios.usuario.edit', compact('persona'));
+        }
+
+        abort(403, 'No tienes permiso para editar usuarios.');
     }
 
     public function update(Request $request, Persona $persona)
@@ -197,8 +216,13 @@ class PersonasController extends Controller
 
     public function destroy(Persona $persona)
     {
-        $persona->delete();
-        return redirect()->route('listar.usuarios');
+
+        if (auth()->user()->tipo === 'administrador') {
+            $persona->delete();
+            return redirect()->route('listar.usuarios');
+        }
+
+        abort(403, 'No tienes permiso para eliminar usuarios.');
     }
 
 

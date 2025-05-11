@@ -7,9 +7,9 @@
     <div class="px-10">
         <div class="flex justify-between py-2">
             <div>
-                <a href="{{ route('crear.usuarios') }}"
+                <a href="{{ route( 'register.producto')}}"
                     class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-                    Crear usuarios
+                    Crear producto
                 </a>
 
             </div>
@@ -24,16 +24,16 @@
                             Nombre
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Correo
+                            Descripcion
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Direccion
+                            Imagen
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Telefono
+                            Precio
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Tipo
+                            Categoria
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Accion
@@ -42,19 +42,27 @@
                 </thead>
                 <tbody>
                     {{-- contenido --}}
-                    @foreach ($usuarios as $usuario)
+                    @foreach ($productos as $producto)
                         <tr>
 
-                            <td class="border border-gray-300 dark:border-gray-600">{{ $usuario->nombre }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600">{{ $usuario->correo }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600">{{ $usuario->direccion }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600">{{ $usuario->telefono }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600">{{ $usuario->tipo }}</td>
-                            {{-- <td>{{ $usuario->updated_at->format('y-m-d') }}</td> --}}
+                            <td class="border border-gray-300 dark:border-gray-600">{{ $producto->nombre }}</td>
+                            <td class="border border-gray-300 dark:border-gray-600">{{ $producto->descripcion }}</td>
+                            <td >
+                                @if ($producto->imagen)
+                                    <img src="{{ asset('storage/productos/' . $producto->imagen) }}" alt="Imagen"
+                                        width="80">
+                                @else
+                                    <span>Sin imagen</span>
+                                @endif
+                            </td>
+                            <td class="border border-gray-300 dark:border-gray-600">{{ $producto->precio }}</td>
+                            <td class="border border-gray-300 dark:border-gray-600">{{ $producto->categoria->nombre ?? 'sin categoria' }}</td>
+
+
                             <td>
                                 <div class="flex space-x-2">
                                     {{-- <a href="{{ route('articles.edit', [$article->id]) }}" --}}
-                                    <a href="{{ route('persona.edit', [$usuario->id]) }}"
+                                    <a href="{{ route('producto.edit', [$producto->id]) }}"
                                         class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                                         <i class="fa fa-edit"></i>
                                     </a>
@@ -68,7 +76,7 @@
                                         </a>
                                     @endif --}}
                                     {{-- <form action="{{route('articles.destroy', $article)}}" method="POST"> --}}
-                                    <form action="{{ route('persona.destroy', $usuario) }}" method="POST">
+                                    <form action="{{ route('producto.destroy', $producto) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button

@@ -167,7 +167,9 @@
     {{-- ///////////////////////////////////// --}}
 </head>
 
-<body class="bg-gray-50 ">
+<body class="bg-cover bg-center bg-no-repeat" style="background-image: url('/assets/seguridad-domotica.jpg');">
+
+{{-- <body class="bg-gray-50 "> --}}
     <!-- Botón flotante (siempre visible) -->
     {{-- <button @click="$store.sidebar.toggle()"
         class="fixed z-50 top-4 left-4 px-2 bg-gray-20 text-gray-900 rounded-lg  hover:bg-gray-200 transition-all">
@@ -179,6 +181,7 @@
     </button> --}}
     {{-- aqui va el boton del side bar --}}
     <!-- Sidebar estilo ChatGPT -->
+
 
     <aside class="fixed top-0 left-0 z-40 w-64 h-screen bg-white shadow-xl transition-all duration-300 ease-in-out"
         :class="{ '-translate-x-full': !$store.sidebar.open, 'translate-x-0': $store.sidebar.open }">
@@ -199,31 +202,32 @@
             </div>
             <!-- Menú -->
             <nav class="flex-1 space-y-2">
-                <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
+                {{-- <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
                     <i class="fas fa-chart-simple mr-3 text-gray-600"></i>
                     <span>Dashboard</span>
-                </a>
-                <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
+                </a> --}}
+                {{-- <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
                     <i class="fas fa-list mr-3 text-gray-600"></i>
                     <span>Articles</span>
-                </a>
+                </a> --}}
                 <a href="{{ route('listar.usuarios') }}" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
                     <i class="fas fa-list mr-3 text-gray-600"></i>
                     <span>Listar Usuarios</span>
                 </a>
-                <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
+                <a href="{{ route( 'listar.categorias')}}" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
                     <i class="fas fa-list mr-3 text-gray-600"></i>
-                    <span>Articles</span>
-                </a>
-                <a href="{{ route('register.producto') }}" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
-                    <i class="fas fa-list mr-3 text-gray-600"></i>
-                    <span>crear productos</span>
+                    <span>listar categorias</span>
                 </a>
 
-                <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
+                <a href="{{ route( 'listar.productos')}}" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
+                    <i class="fas fa-list mr-3 text-gray-600"></i>
+                    <span>listar productos</span>
+                </a>
+
+                {{-- <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
                     <i class="fas fa-trash mr-3 text-gray-600"></i>
                     <span>Deleted Articles</span>
-                </a>
+                </a> --}}
             </nav>
 
             <!-- Usuario y redes -->
@@ -296,7 +300,9 @@
                         <div x-show="userMenu" @click.outside="userMenu = false" x-transition {{-- class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-md py-2 z-50"> --}}
                             class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-md py-2 z-50">
                             <a href="/perfil" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Perfil</a>
-                            <form method="POST" action="/logout">
+                            <form method="POST" action="{{route('signOut')}}">
+                                @csrf
+                            {{-- <form method="POST" action="/logout"> --}}
                                 <button type="submit"
                                     class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
                                     Cerrar sesión
@@ -340,7 +346,7 @@
 
 
     {{-- ////////////////////////// --}}
-
+    {{-- <x-alert-success /> --}}
 
     <!-- Contenido principal -->
     {{-- <main class="min-h-screen transition-all duration-300 ease-in-out" --}}
@@ -350,6 +356,7 @@
             @yield('content')
         </div>
     </main>
+
 
     <!-- Alpine.js Store -->
     <script>
