@@ -31,10 +31,6 @@ Route::prefix('auth')->group(function () {
     Route::post('signOut', [PersonasController::class, 'signOut'])->name('signOut');
 });
 
-// Route::get('register/categoria', [categoriaController::class, 'register1'])->name('register.categoria');
-// Route::post('register/categoria', [categoriaController::class, 'registerVerify1']);
-
-
 //protegidas
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', function () {
@@ -56,6 +52,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('cliente', clienteController::class);
 
     Route::get('register/cliente', [clienteController::class, 'register'])->name('register.cliente');
+    Route::get('listaClientes', [clienteController::class, 'listarClientes'])->name('listar.clientes');
     Route::post('register/cliente', [clienteController::class, 'registerVerify']);
 
     Route::get('register/proveedor', [proveedorController::class, 'register'])->name('register.proveedor');

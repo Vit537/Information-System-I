@@ -294,7 +294,7 @@
                         <i class="fas fa-chevron-down ml-auto transition-transform group-open:rotate-180"></i>
                     </summary>
                     <div class="ml-6 mt-2 space-y-2">
-                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                        <a href="{{ route('listar.clientes') }}" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
                             <i class="fas fa-user mr-3 text-gray-600"></i>
                             <span>Gestionar Clientes</span>
                         </a>
