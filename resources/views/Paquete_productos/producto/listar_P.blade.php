@@ -55,8 +55,8 @@
                                     <span>Sin imagen</span>
                                 @endif
                             </td>
-                            <td class="border border-gray-300 dark:border-gray-600">{{ $producto->precio }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600">{{ $producto->categoria->nombre ?? 'sin categoria' }}</td>
+                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $producto->precio }}</td>
+                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $producto->categoria->nombre ?? 'sin categoria' }}</td>
 
 
                             <td>

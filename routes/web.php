@@ -84,22 +84,30 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::post('register/proveedor', [proveedorController::class, 'registerVerify']);
 
 // bitacora
-Route::resource('bitacora', bitacoraController::class);
-Route::get('listarBitacora', [bitacoraController::class, 'listarBitacora'])->name('listar.bitacora');
+Route::middleware('auth')->prefix('bitacora')->group(function () {
+    // Route::get('/', [CuentaController::class, 'index'])->name('cuentas.index');
+    // Route::get('/crear', [CuentaController::class, 'create'])->name('cuentas.create');
+    // otras rutas...
+    Route::resource('bitacora', bitacoraController::class);
+    Route::get('listarBitacora', [bitacoraController::class, 'listarBitacora'])->name('listar.bitacora');
+});
 
 //categoria
 
-Route::resource('categoria', categoriaController::class);
-Route::get('register/categoria', [categoriaController::class, 'register'])->name('register.categoria');
-Route::post('register/categoria', [categoriaController::class, 'registerVerify']);
-Route::get('listarCategorias', [categoriaController::class, 'listarCategorias'])->name('listar.categorias');
+Route::middleware('auth')->prefix('categoria')->group(function () {
+    Route::resource('categoria', categoriaController::class);
+    Route::get('register/categoria', [categoriaController::class, 'register'])->name('register.categoria');
+    Route::post('register/categoria', [categoriaController::class, 'registerVerify']);
+    Route::get('listarCategorias', [categoriaController::class, 'listarCategorias'])->name('listar.categorias');
+});
 
 //producto
-
-Route::resource('producto', productoController::class);
-Route::get('register/producto', [productoController::class, 'register'])->name('register.producto');
-Route::post('register/producto', [productoController::class, 'registerVerify']);
-Route::get('listarProductos', [productoController::class, 'listarProductos'])->name('listar.productos');
+Route::middleware('auth')->prefix('producto')->group(function () {
+    Route::resource('producto', productoController::class);
+    Route::get('register/producto', [productoController::class, 'register'])->name('register.producto');
+    Route::post('register/producto', [productoController::class, 'registerVerify']);
+    Route::get('listarProductos', [productoController::class, 'listarProductos'])->name('listar.productos');
+});
 
 
 //     Route::middleware('auth')->prefix('cuentas')->group(function () {
