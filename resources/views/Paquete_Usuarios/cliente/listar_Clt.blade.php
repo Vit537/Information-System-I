@@ -33,7 +33,7 @@
                             Telefono
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Tipo
+                            Accion
                         </th>
                     </tr>
                 </thead>
@@ -42,10 +42,10 @@
                     @foreach ($clientes as $cliente)
                         <tr>
 
-                            <td class="border border-gray-300 dark:border-gray-600">{{ $cliente->nombre }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600">{{ $cliente->correo }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600">{{ $cliente->direccion }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600">{{ $cliente->telefono }}</td>
+                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $cliente->nombre }}</td>
+                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $cliente->correo }}</td>
+                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $cliente->direccion }}</td>
+                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $cliente->telefono }}</td>
                             <td>
                                 <div class="flex space-x-2">
                                     <a href="{{ route('persona.edit', [$cliente->id]) }}"

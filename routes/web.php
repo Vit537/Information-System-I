@@ -7,12 +7,15 @@ use App\Http\Controllers\Paquete_Usuarios\clienteController;
 use App\Http\Controllers\Paquete_Usuarios\proveedorController;
 use App\Http\Controllers\Paquete_Usuarios\usuarioController;
 use App\Http\Controllers\Paquete_Productos\productoController;
+use App\Http\Controllers\Paquete_Usuarios\bitacoraController;
 use App\Models\Paquete_Usuarios\Auth\Persona;
 use App\Models\Paquete_Usuarios\cliente;
 use App\Models\Paquete_Usuarios\proveedor;
 use Faker\Provider\ar_EG\Person;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Paquete_Productos\categoriaController;
+use App\Models\AuditLog\bitacora;
+use App\Observers\bitacoraObserver;
 
 Route::get('/', function () {
     return view('Paquete_Usuarios.usuario.login');
@@ -81,6 +84,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::post('register/proveedor', [proveedorController::class, 'registerVerify']);
 
 // bitacora
+Route::resource('bitacora', bitacoraController::class);
+Route::get('listarBitacora', [bitacoraController::class, 'listarBitacora'])->name('listar.bitacora');
 
 //categoria
 

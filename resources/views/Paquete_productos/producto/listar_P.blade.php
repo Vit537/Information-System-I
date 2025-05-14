@@ -45,8 +45,8 @@
                     @foreach ($productos as $producto)
                         <tr>
 
-                            <td class="border border-gray-300 dark:border-gray-600">{{ $producto->nombre }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600">{{ $producto->descripcion }}</td>
+                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $producto->nombre }}</td>
+                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $producto->descripcion }}</td>
                             <td >
                                 @if ($producto->imagen)
                                     <img src="{{ asset('storage/productos/' . $producto->imagen) }}" alt="Imagen"

@@ -255,6 +255,12 @@
                             <span>Configurar alertas del sistema</span>
                         </a>
                     </div>
+                    <div class="ml-6 mt-2 space-y-2">
+                        <a href="{{route ('listar.bitacora') }}" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-history mr-3 text-gray-600"></i>
+                            <span>Bitacora</span>
+                        </a>
+                    </div>
                 </details>
                 <!-- Gestion de productos -->
                 <details class="group">
