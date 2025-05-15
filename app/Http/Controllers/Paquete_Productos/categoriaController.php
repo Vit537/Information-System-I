@@ -29,7 +29,7 @@ class categoriaController extends Controller
 
          if (auth()->user()->tipo === 'administrador') {
             $categorias=categoria::all();
-           return view('Paquete_productos.categoria.register', compact('categoria'));
+           return view('Paquete_productos.categoria.register', compact('categorias'));
         }
         abort(403, 'No tienes permiso para crear esta categoria.');
     }
