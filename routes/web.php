@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
 
         //return 'hola mundo '.auth()->user()->nombre;
         // return view('dashboard.index');
-        return view('layouts.dashboard');
+        return view('dashboard');
     })->name('dashboard');
 
     Route::get('perfil', [PersonasController::class, 'mostrarPerfil'])->name('perfil');
