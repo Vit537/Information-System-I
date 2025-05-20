@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models\Paquete_Usuarios;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
+use App\Models\Paquete_Usuarios\Auth\Persona;
+
+class proveedor extends Model
+{
+    //
+    use HasFactory, Notifiable;
+
+    protected $table="proveedor";
+
+    protected $fillable=[
+        'persona_id',
+        'fecha_registro'
+
+    ];
+
+    public function Persona(){
+        return $this->belongsTo(Persona::class, 'persona_id');
+    }
+}
