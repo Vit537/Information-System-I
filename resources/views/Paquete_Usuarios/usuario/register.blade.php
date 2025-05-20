@@ -147,9 +147,9 @@
             <div class="col-md-9">
                 <select name="tipo" class="form-select" id="tipo">
                     <option value="" disabled selected>Selecciona un tipo</option>
-                    <option value="cliente" {{ old('tipo') == 'cliente' ? 'selected' : '' }}>Cliente</option>
-                    <option value="usuario" {{ old('tipo') == 'usuario' ? 'selected' : '' }}>Usuario Interno</option>
-                    <option value="proveedor" {{ old('tipo') == 'proveedor' ? 'selected' : '' }}>Proveedor</option>
+                    <option value="empleado" {{ old('tipo') == 'empleado' ? 'selected' : '' }}>Empleado</option>
+                    <option value="administrador" {{ old('tipo') == 'administrador' ? 'selected' : '' }}>Administrador</option>
+                    {{-- <option value="proveedor" {{ old('tipo') == 'proveedor' ? 'selected' : '' }}>Proveedor</option> --}}
                 </select>
                 @error('tipo')
                     <div class="text-danger mt-1"><small><strong>{{ $message }}</strong></small></div>

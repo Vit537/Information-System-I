@@ -167,7 +167,13 @@
     {{-- ///////////////////////////////////// --}}
 </head>
 
-<body class="bg-gray-50 ">
+
+{{-- <body class="bg-cover bg-center bg-no-repeat"> --}}
+
+<body class="bg-cover bg-center bg-no-repeat" style="background-image: url('/assets/seguridad-domotica.jpg');">
+
+
+{{-- <body class="bg-gray-50 "> --}}
     <!-- Botón flotante (siempre visible) -->
     {{-- <button @click="$store.sidebar.toggle()"
         class="fixed z-50 top-4 left-4 px-2 bg-gray-20 text-gray-900 rounded-lg  hover:bg-gray-200 transition-all">
@@ -180,7 +186,12 @@
     {{-- aqui va el boton del side bar --}}
     <!-- Sidebar estilo ChatGPT -->
 
+
+
+    <aside class="fixed top-0 left-0 z-40 w-70 h-screen bg-white shadow-xl transition-all duration-300 ease-in-out"
+
     <aside class="fixed top-0 left-0 z-40 w-64 h-screen bg-white shadow-xl transition-all duration-300 ease-in-out"
+
         :class="{ '-translate-x-full': !$store.sidebar.open, 'translate-x-0': $store.sidebar.open }">
         <button @click="$store.sidebar.toggle()"
             class="fixed z-50 top-4 left-4 px-2 bg-gray-20 text-gray-900 rounded-lg  hover:bg-gray-200 transition-all">
@@ -199,31 +210,198 @@
             </div>
             <!-- Menú -->
             <nav class="flex-1 space-y-2">
-                <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
+
+                <a href="{{ route('dashboard') }}" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
                     <i class="fas fa-chart-simple mr-3 text-gray-600"></i>
                     <span>Dashboard</span>
                 </a>
-                <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
-                    <i class="fas fa-list mr-3 text-gray-600"></i>
-                    <span>Articles</span>
-                </a>
-                <a href="{{ route('listar.usuarios') }}" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
-                    <i class="fas fa-list mr-3 text-gray-600"></i>
-                    <span>Listar Usuarios</span>
-                </a>
-                <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
-                    <i class="fas fa-list mr-3 text-gray-600"></i>
-                    <span>Articles</span>
-                </a>
-                <a href="{{ route('register.producto') }}" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
-                    <i class="fas fa-list mr-3 text-gray-600"></i>
-                    <span>crear productos</span>
-                </a>
+                <!-- Gestion de usuarios -->
+                <details class="group">
+                    <summary class="flex items-center p-3 rounded-lg hover:bg-gray-100 cursor-pointer">
+                        <i class="fas fa-list mr-3 text-gray-600"></i>
+                        <span>Gestion de usuarios</span>
+                        <i class="fas fa-chevron-down ml-auto transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <div class="ml-6 mt-2 space-y-2">
+                        <a href="{{ route('listar.usuarios') }}" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-user mr-3 text-gray-600"></i>
+                            <span>Gestionar Usuarios del Sistema</span>
+                        </a>
+                    </div>
+                    <div class="ml-6 mt-2 space-y-2">
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-dollar mr-3 text-gray-600"></i>
+                            <span>Visualizar historial de pagos</span>
+                        </a>
+                    </div>
+                    <div class="ml-6 mt-2 space-y-2">
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-tags mr-3 text-gray-600"></i>
+                            <span>Generar reportes financieros</span>
+                        </a>
+                    </div>
+                    <div class="ml-6 mt-2 space-y-2">
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-tags mr-3 text-gray-600"></i>
+                            <span>Generar parametros del sistemas</span>
+                        </a>
+                    </div>
+                    <div class="ml-6 mt-2 space-y-2">
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-chart-pie mr-3 text-gray-600"></i>
+                            <span>Visualizar dashboard de indicadores</span>
+                        </a>
+                    </div>
+                    <div class="ml-6 mt-2 space-y-2">
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-tags mr-3 text-gray-600"></i>
+                            <span>Gestionar auditoria de acciones</span>
+                        </a>
+                    </div>
+                    <div class="ml-6 mt-2 space-y-2">
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-tags mr-3 text-gray-600"></i>
+                            <span>Configurar alertas del sistema</span>
+                        </a>
+                    </div>
+                    <div class="ml-6 mt-2 space-y-2">
+                        <a href="{{route ('listar.bitacora') }}" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-history mr-3 text-gray-600"></i>
+                            <span>Bitacora</span>
+                        </a>
+                    </div>
+                </details>
+                <!-- Gestion de productos -->
+                <details class="group">
+                    <summary class="flex items-center p-3 rounded-lg hover:bg-gray-100 cursor-pointer">
+                        <i class="fas fa-list mr-3 text-gray-600"></i>
+                        <span>Gestion de productos</span>
+                        <i class="fas fa-chevron-down ml-auto transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <div class="ml-6 mt-2 space-y-2">
+                        <a href="{{ route('listar.categorias') }}" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-tags mr-3 text-gray-600"></i>
+                            <span>Gestionar Categorías de productos</span>
+                        </a>
+                        <a href="{{ route('listar.productos') }}" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-box mr-3 text-gray-600"></i>
+                            <span>Gestionar Productos</span>
+                        </a>
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-chart-pie mr-3 text-gray-600"></i>
+                            <span>Gestionar Stock de productos</span>
+                        </a>
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-box mr-3 text-gray-600"></i>
+                            <span>Visualizar historial de inventario</span>
+                        </a>
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-box mr-3 text-gray-600"></i>
+                            <span>Visualizar reporte de stock bajo</span>
+                        </a>
+                    </div>
+                </details>
+                <!-- Gestion de ventas -->
+                <details class="group">
+                    <summary class="flex items-center p-3 rounded-lg hover:bg-gray-100 cursor-pointer">
+                        <i class="fas fa-list mr-3 text-gray-600"></i>
+                        <span>Gestion de ventas</span>
+                        <i class="fas fa-chevron-down ml-auto transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <div class="ml-6 mt-2 space-y-2">
+                        <a href="{{ route('listar.clientes') }}" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-user mr-3 text-gray-600"></i>
+                            <span>Gestionar Clientes</span>
+                        </a>
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-shopping-bag mr-3 text-gray-600"></i>
+                            <span>Gestionar Ventas</span>
+                        </a>
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-shopping-bag mr-3 text-gray-600"></i>
+                            <span>Generar factura de Venta</span>
+                        </a>
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-shopping-bag mr-3 text-gray-600"></i>
+                            <span>Gestionar devoluciones y cancelaciones</span>
+                        </a>
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-file mr-3 text-gray-600"></i>
+                            <span>Generar reporte de ventas</span>
+                        </a>
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-shopping-bag mr-3 text-gray-600"></i>
+                            <span>Generar cotizacion</span>
+                        </a>
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-dollar mr-3 text-gray-600"></i>
+                            <span>Gestionar Pagos</span>
+                        </a>
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-dollar mr-3 text-gray-600"></i>
+                            <span>Gestionar Descuentos y Promociones</span>
+                        </a>
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-file mr-3 text-gray-600"></i>
+                            <span>Generar reporte de clientes</span>
+                        </a>
+                    </div>
+                </details>
+                <!-- Gestion de compras -->
+                <details class="group">
+                    <summary class="flex items-center p-3 rounded-lg hover:bg-gray-100 cursor-pointer">
+                        <i class="fas fa-list mr-3 text-gray-600"></i>
+                        <span>Gestion de compras</span>
+                        <i class="fas fa-chevron-down ml-auto transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <div class="ml-6 mt-2 space-y-2">
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-user mr-3 text-gray-600"></i>
+                            <span>Gestionar proveedores</span>
+                        </a>
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-shopping-cart mr-3 text-gray-600"></i>
+                            <span>Gestionar compras</span>
+                        </a>
+                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-shopping-cart mr-3 text-gray-600"></i>
+                            <span>Generar reporte de compras</span>
+                        </a>
+                    </div>
+                </details>
 
                 <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
                     <i class="fas fa-trash mr-3 text-gray-600"></i>
                     <span>Deleted Articles</span>
                 </a>
+
+                {{-- <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
+                    <i class="fas fa-chart-simple mr-3 text-gray-600"></i>
+                    <span>Dashboard</span>
+                </a> --}}
+                {{-- <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
+                    <i class="fas fa-list mr-3 text-gray-600"></i>
+                    <span>Articles</span>
+                </a> --}}
+                {{-- <a href="{{ route('listar.usuarios') }}" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
+                    <i class="fas fa-list mr-3 text-gray-600"></i>
+                    <span>Listar Usuarios</span>
+                </a>
+                <a href="{{ route( 'listar.categorias')}}" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
+                    <i class="fas fa-list mr-3 text-gray-600"></i>
+                    <span>listar categorias</span>
+                </a>
+
+                <a href="{{ route( 'listar.productos')}}" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
+                    <i class="fas fa-list mr-3 text-gray-600"></i>
+                    <span>listar productos</span>
+                </a> --}}
+
+                {{-- <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
+                    <i class="fas fa-trash mr-3 text-gray-600"></i>
+                    <span>Deleted Articles</span>
+                </a> --}}
+
             </nav>
 
             <!-- Usuario y redes -->
@@ -296,7 +474,9 @@
                         <div x-show="userMenu" @click.outside="userMenu = false" x-transition {{-- class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-md py-2 z-50"> --}}
                             class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-md py-2 z-50">
                             <a href="/perfil" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Perfil</a>
-                            <form method="POST" action="/logout">
+                            <form method="POST" action="{{route('signOut')}}">
+                                @csrf
+                            {{-- <form method="POST" action="/logout"> --}}
                                 <button type="submit"
                                     class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
                                     Cerrar sesión
@@ -340,7 +520,7 @@
 
 
     {{-- ////////////////////////// --}}
-
+    {{-- <x-alert-success /> --}}
 
     <!-- Contenido principal -->
     {{-- <main class="min-h-screen transition-all duration-300 ease-in-out" --}}
@@ -350,6 +530,7 @@
             @yield('content')
         </div>
     </main>
+
 
     <!-- Alpine.js Store -->
     <script>

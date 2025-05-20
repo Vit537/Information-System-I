@@ -59,8 +59,22 @@ class clienteController extends Controller
             'tipo_cliente' => $request->TCliente
         ]);
 
-        return redirect()->route('listar.usuarios')->with('success', 'usuario creado correctamente');
+
+        return redirect()->route('listar.clientes')->with('success', 'usuario creado correctamente');
     }
+
+    // public function login(){
+    //     return view('Paquete_Usuarios.usuario.login');
+    // }
+
+    public function listarClientes(){
+
+        // $usuario = Auth::user(); // o auth()->user();
+        $clientes = Persona::where('tipo', 'cliente')->get();// o auth()->user();
+       return view('Paquete_Usuarios.cliente.listar_Clt',compact('clientes'));
+    }
+
+
 
     public function login(){
         return view('Paquete_Usuarios.usuario.login');
@@ -78,7 +92,6 @@ class clienteController extends Controller
     //     $usuarios = Persona::all();// o auth()->user();
     //    return view('Paquete_Usuarios.usuario.listar_U',compact('usuarios'));
     // }
-
 
 
 
