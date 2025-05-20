@@ -6,24 +6,15 @@ use App\Http\Controllers\Paquete_Usuarios\Auth\PersonasController;
 use App\Http\Controllers\Paquete_Usuarios\clienteController;
 use App\Http\Controllers\Paquete_Usuarios\proveedorController;
 use App\Http\Controllers\Paquete_Usuarios\usuarioController;
-<<<<<<< HEAD
-use App\Http\Controllers\Paquetes_producto\productoController;
-=======
 use App\Http\Controllers\Paquete_Productos\productoController;
 
 use App\Http\Controllers\Paquete_Usuarios\bitacoraController;
 
->>>>>>> henry
 use App\Models\Paquete_Usuarios\Auth\Persona;
 use App\Models\Paquete_Usuarios\cliente;
 use App\Models\Paquete_Usuarios\proveedor;
 use Faker\Provider\ar_EG\Person;
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
-
-Route::get('/', function () {
-    return view('welcome');
-=======
 use App\Http\Controllers\Paquete_Productos\categoriaController;
 
 use App\Models\AuditLog\bitacora;
@@ -35,7 +26,6 @@ Route::get('/', function () {
 
 
 
->>>>>>> henry
 });
 
 //auth
@@ -51,14 +41,9 @@ Route::prefix('auth')->group(function () {
     Route::post('signOut', [PersonasController::class, 'signOut'])->name('signOut');
 });
 
-<<<<<<< HEAD
-Route::get('register/producto', [productoController::class, 'register1'])->name('register.producto');
-Route::post('register/producto', [productoController::class, 'registerVerify1'])->name('verificar.prod');
-=======
 
 // Route::get('register/categoria', [categoriaController::class, 'register1'])->name('register.categoria');
 // Route::post('register/categoria', [categoriaController::class, 'registerVerify1']);
->>>>>>> henry
 
 
 //protegidas
@@ -82,12 +67,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('cliente', clienteController::class);
 
     Route::get('register/cliente', [clienteController::class, 'register'])->name('register.cliente');
-<<<<<<< HEAD
-=======
 
     Route::get('listaClientes', [clienteController::class, 'listarClientes'])->name('listar.clientes');
 
->>>>>>> henry
     Route::post('register/cliente', [clienteController::class, 'registerVerify']);
 
     Route::get('register/proveedor', [proveedorController::class, 'register'])->name('register.proveedor');
@@ -99,11 +81,6 @@ Route::middleware('auth')->group(function () {
 
     // crear usuarios
     Route::get('crear', [PersonasController::class, 'crearUsuarios'])->name('crear.usuarios');
-<<<<<<< HEAD
-
-
-=======
->>>>>>> henry
 });
 
 
@@ -122,10 +99,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // bitacora
 
-<<<<<<< HEAD
-//producto
-
-=======
 Route::middleware('auth')->prefix('bitacora')->group(function () {
     // Route::get('/', [CuentaController::class, 'index'])->name('cuentas.index');
     // Route::get('/crear', [CuentaController::class, 'create'])->name('cuentas.create');
@@ -171,4 +144,3 @@ Route::get('listarProductos', [productoController::class, 'listarProductos'])->n
 //     Route::get('/crear', [CuentaController::class, 'create'])->name('cuentas.create');
 //     // otras rutas...
 // });
->>>>>>> henry
