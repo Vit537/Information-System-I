@@ -167,11 +167,11 @@
     {{-- ///////////////////////////////////// --}}
 </head>
 
-<<<<<<< HEAD
-<body class="bg-cover bg-center bg-no-repeat">
-=======
+
+{{-- <body class="bg-cover bg-center bg-no-repeat"> --}}
+
 <body class="bg-cover bg-center bg-no-repeat" style="background-image: url('/assets/seguridad-domotica.jpg');">
->>>>>>> 6b87846ba7ce7c6367f323c556e7990cc8e8b733
+
 
 {{-- <body class="bg-gray-50 "> --}}
     <!-- Botón flotante (siempre visible) -->
@@ -187,11 +187,11 @@
     <!-- Sidebar estilo ChatGPT -->
 
 
-<<<<<<< HEAD
+
     <aside class="fixed top-0 left-0 z-40 w-70 h-screen bg-white shadow-xl transition-all duration-300 ease-in-out"
-=======
+
     <aside class="fixed top-0 left-0 z-40 w-64 h-screen bg-white shadow-xl transition-all duration-300 ease-in-out"
->>>>>>> 6b87846ba7ce7c6367f323c556e7990cc8e8b733
+
         :class="{ '-translate-x-full': !$store.sidebar.open, 'translate-x-0': $store.sidebar.open }">
         <button @click="$store.sidebar.toggle()"
             class="fixed z-50 top-4 left-4 px-2 bg-gray-20 text-gray-900 rounded-lg  hover:bg-gray-200 transition-all">
@@ -210,7 +210,7 @@
             </div>
             <!-- Menú -->
             <nav class="flex-1 space-y-2">
-<<<<<<< HEAD
+
                 <a href="{{ route('dashboard') }}" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
                     <i class="fas fa-chart-simple mr-3 text-gray-600"></i>
                     <span>Dashboard</span>
@@ -300,7 +300,7 @@
                             <span>Visualizar reporte de stock bajo</span>
                         </a>
                     </div>
-                </details> 
+                </details>
                 <!-- Gestion de ventas -->
                 <details class="group">
                     <summary class="flex items-center p-3 rounded-lg hover:bg-gray-100 cursor-pointer">
@@ -346,7 +346,7 @@
                             <span>Generar reporte de clientes</span>
                         </a>
                     </div>
-                </details> 
+                </details>
                 <!-- Gestion de compras -->
                 <details class="group">
                     <summary class="flex items-center p-3 rounded-lg hover:bg-gray-100 cursor-pointer">
@@ -368,13 +368,13 @@
                             <span>Generar reporte de compras</span>
                         </a>
                     </div>
-                </details> 
+                </details>
 
                 <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
                     <i class="fas fa-trash mr-3 text-gray-600"></i>
                     <span>Deleted Articles</span>
                 </a>
-=======
+
                 {{-- <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
                     <i class="fas fa-chart-simple mr-3 text-gray-600"></i>
                     <span>Dashboard</span>
@@ -383,7 +383,7 @@
                     <i class="fas fa-list mr-3 text-gray-600"></i>
                     <span>Articles</span>
                 </a> --}}
-                <a href="{{ route('listar.usuarios') }}" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
+                {{-- <a href="{{ route('listar.usuarios') }}" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
                     <i class="fas fa-list mr-3 text-gray-600"></i>
                     <span>Listar Usuarios</span>
                 </a>
@@ -395,13 +395,13 @@
                 <a href="{{ route( 'listar.productos')}}" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
                     <i class="fas fa-list mr-3 text-gray-600"></i>
                     <span>listar productos</span>
-                </a>
+                </a> --}}
 
                 {{-- <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-100">
                     <i class="fas fa-trash mr-3 text-gray-600"></i>
                     <span>Deleted Articles</span>
                 </a> --}}
->>>>>>> 6b87846ba7ce7c6367f323c556e7990cc8e8b733
+
             </nav>
 
             <!-- Usuario y redes -->

@@ -2,25 +2,22 @@
 
 namespace App\Models\Paquete_Usuarios\Auth;
 
-<<<<<<< HEAD
+
 use App\Models\AuditLog\personaActi;
-=======
->>>>>>> 6b87846ba7ce7c6367f323c556e7990cc8e8b733
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Paquete_Usuarios\cliente;
 use App\Models\Paquete_Usuarios\proveedor;
 use App\Models\Paquete_Usuarios\usuario;
-<<<<<<< HEAD
+
 use App\Models\personaSession;
-=======
->>>>>>> 6b87846ba7ce7c6367f323c556e7990cc8e8b733
 
 class Persona extends Authenticatable
 {
     //
-<<<<<<< HEAD
+
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -95,45 +92,45 @@ class Persona extends Authenticatable
 
     //     ];
     // }
-=======
+
         /** @use HasFactory<\Database\Factories\UserFactory> */
-        use HasFactory, Notifiable;
+        // use HasFactory, Notifiable;
 
         /**
          * The attributes that are mass assignable.
          *
-         * @var list<string>
-         */
-        protected $table="persona";
+          * @var list<string>
+          */
+        // protected $table="persona";
 
-        protected $fillable = [
-            'nombre',
-            'correo',
-            'contrasena',
-            'direccion',
-            'telefono',
-            'tipo'
-        ];
+        // protected $fillable = [
+        //     'nombre',
+        //     'correo',
+        //     'contrasena',
+        //     'direccion',
+        //     'telefono',
+        //     'tipo'
+        // ];
 
-        public function getAuthPassword()
-        {
-            return $this->contrasena;
-        }
+        // public function getAuthPassword()
+        // {
+        //     return $this->contrasena;
+        // }
 
-        public function getEmailForPasswordReset() {
-            return $this->correo;
-        }
+        // public function getEmailForPasswordReset() {
+        //     return $this->correo;
+        // }
 
-        public function cliente(){
-            return $this->hasOne(cliente::class, 'persona_id');
-        }
+        // public function cliente(){
+        //     return $this->hasOne(cliente::class, 'persona_id');
+        // }
 
-        public function proveedor(){
-            return $this->hasOne(proveedor::class, 'persona_id');
-        }
-        public function usuario(){
-            return $this->hasOne(usuario::class, 'persona_id');
-        }
+        // public function proveedor(){
+        //     return $this->hasOne(proveedor::class, 'persona_id');
+        // }
+        // public function usuario(){
+        //     return $this->hasOne(usuario::class, 'persona_id');
+        // }
 
 
         /**
@@ -141,10 +138,10 @@ class Persona extends Authenticatable
          *
          * @var list<string>
          */
-        protected $hidden = [
-            'contrasena',
-            'remember_token',
-        ];
+        // protected $hidden = [
+        //     'contrasena',
+        //     'remember_token',
+        // ];
 
         /**
          * Get the attributes that should be cast.
@@ -159,7 +156,5 @@ class Persona extends Authenticatable
 
         //     ];
         // }
->>>>>>> 6b87846ba7ce7c6367f323c556e7990cc8e8b733
-
 
 }

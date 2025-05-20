@@ -40,13 +40,12 @@
                     @foreach ($categorias as $categoria)
                         <tr>
 
-<<<<<<< HEAD
+
                             <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $categoria->nombre }}</td>
                             <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $categoria->descripcion }}</td>
-=======
-                            <td class="border border-gray-300 dark:border-gray-600">{{ $categoria->nombre }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600">{{ $categoria->descripcion }}</td>
->>>>>>> 6b87846ba7ce7c6367f323c556e7990cc8e8b733
+
+
+
 
 
                             <td class="border border-gray-300 dark:border-gray-600">{{ $categoria->categoriaPadre->nombre ?? 'sin categoria' }}</td>

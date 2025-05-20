@@ -45,13 +45,8 @@
                     @foreach ($productos as $producto)
                         <tr>
 
-<<<<<<< HEAD
-                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $producto->nombre }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $producto->descripcion }}</td>
-=======
                             <td class="border border-gray-300 dark:border-gray-600">{{ $producto->nombre }}</td>
                             <td class="border border-gray-300 dark:border-gray-600">{{ $producto->descripcion }}</td>
->>>>>>> 6b87846ba7ce7c6367f323c556e7990cc8e8b733
                             <td >
                                 @if ($producto->imagen)
                                     <img src="{{ asset('storage/productos/' . $producto->imagen) }}" alt="Imagen"
@@ -60,13 +55,8 @@
                                     <span>Sin imagen</span>
                                 @endif
                             </td>
-<<<<<<< HEAD
-                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $producto->precio }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $producto->categoria->nombre ?? 'sin categoria' }}</td>
-=======
                             <td class="border border-gray-300 dark:border-gray-600">{{ $producto->precio }}</td>
                             <td class="border border-gray-300 dark:border-gray-600">{{ $producto->categoria->nombre ?? 'sin categoria' }}</td>
->>>>>>> 6b87846ba7ce7c6367f323c556e7990cc8e8b733
 
 
                             <td>

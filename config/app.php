@@ -123,8 +123,5 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 6b87846ba7ce7c6367f323c556e7990cc8e8b733
 ];

@@ -7,28 +7,25 @@ use App\Http\Controllers\Paquete_Usuarios\clienteController;
 use App\Http\Controllers\Paquete_Usuarios\proveedorController;
 use App\Http\Controllers\Paquete_Usuarios\usuarioController;
 use App\Http\Controllers\Paquete_Productos\productoController;
-<<<<<<< HEAD
+
 use App\Http\Controllers\Paquete_Usuarios\bitacoraController;
-=======
->>>>>>> 6b87846ba7ce7c6367f323c556e7990cc8e8b733
+
 use App\Models\Paquete_Usuarios\Auth\Persona;
 use App\Models\Paquete_Usuarios\cliente;
 use App\Models\Paquete_Usuarios\proveedor;
 use Faker\Provider\ar_EG\Person;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Paquete_Productos\categoriaController;
-<<<<<<< HEAD
+
 use App\Models\AuditLog\bitacora;
 use App\Observers\bitacoraObserver;
 
 Route::get('/', function () {
     return view('Paquete_Usuarios.usuario.login');
     // return view('welcome');
-=======
 
-Route::get('/', function () {
-    return view('Paquete_Usuarios.usuario.login');
->>>>>>> 6b87846ba7ce7c6367f323c556e7990cc8e8b733
+
+
 });
 
 //auth
@@ -44,13 +41,11 @@ Route::prefix('auth')->group(function () {
     Route::post('signOut', [PersonasController::class, 'signOut'])->name('signOut');
 });
 
-<<<<<<< HEAD
-=======
+
 // Route::get('register/categoria', [categoriaController::class, 'register1'])->name('register.categoria');
 // Route::post('register/categoria', [categoriaController::class, 'registerVerify1']);
 
 
->>>>>>> 6b87846ba7ce7c6367f323c556e7990cc8e8b733
 //protegidas
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', function () {
@@ -72,10 +67,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('cliente', clienteController::class);
 
     Route::get('register/cliente', [clienteController::class, 'register'])->name('register.cliente');
-<<<<<<< HEAD
+
     Route::get('listaClientes', [clienteController::class, 'listarClientes'])->name('listar.clientes');
-=======
->>>>>>> 6b87846ba7ce7c6367f323c556e7990cc8e8b733
+
     Route::post('register/cliente', [clienteController::class, 'registerVerify']);
 
     Route::get('register/proveedor', [proveedorController::class, 'register'])->name('register.proveedor');
@@ -104,7 +98,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::post('register/proveedor', [proveedorController::class, 'registerVerify']);
 
 // bitacora
-<<<<<<< HEAD
+
 Route::middleware('auth')->prefix('bitacora')->group(function () {
     // Route::get('/', [CuentaController::class, 'index'])->name('cuentas.index');
     // Route::get('/crear', [CuentaController::class, 'create'])->name('cuentas.create');
@@ -129,7 +123,6 @@ Route::middleware('auth')->prefix('producto')->group(function () {
     Route::post('register/producto', [productoController::class, 'registerVerify']);
     Route::get('listarProductos', [productoController::class, 'listarProductos'])->name('listar.productos');
 });
-=======
 
 //categoria
 
@@ -144,7 +137,6 @@ Route::resource('producto', productoController::class);
 Route::get('register/producto', [productoController::class, 'register'])->name('register.producto');
 Route::post('register/producto', [productoController::class, 'registerVerify']);
 Route::get('listarProductos', [productoController::class, 'listarProductos'])->name('listar.productos');
->>>>>>> 6b87846ba7ce7c6367f323c556e7990cc8e8b733
 
 
 //     Route::middleware('auth')->prefix('cuentas')->group(function () {
