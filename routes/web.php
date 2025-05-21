@@ -124,19 +124,6 @@ Route::middleware('auth')->prefix('producto')->group(function () {
     Route::get('listarProductos', [productoController::class, 'listarProductos'])->name('listar.productos');
 });
 
-//categoria
-
-Route::resource('categoria', categoriaController::class);
-Route::get('register/categoria', [categoriaController::class, 'register'])->name('register.categoria');
-Route::post('register/categoria', [categoriaController::class, 'registerVerify']);
-Route::get('listarCategorias', [categoriaController::class, 'listarCategorias'])->name('listar.categorias');
-
-//producto
-
-Route::resource('producto', productoController::class);
-Route::get('register/producto', [productoController::class, 'register'])->name('register.producto');
-Route::post('register/producto', [productoController::class, 'registerVerify']);
-Route::get('listarProductos', [productoController::class, 'listarProductos'])->name('listar.productos');
 
 
 //     Route::middleware('auth')->prefix('cuentas')->group(function () {
