@@ -11,6 +11,10 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    server: {
+    host: '0.0.0.0',
+    port: process.env.PORT || 3000,  // Usa el puerto de Railway o uno por defecto
+    },
     build: {
         manifest: true,  // Genera manifest.json en public/build
         outDir: 'public/build',  // Carpeta de salida
