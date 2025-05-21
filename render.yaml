@@ -30,10 +30,7 @@ services:
         value: fNaTiazdPEfBRqr4DcCtGR2CzItx6NEd
       - key: PGSSLMODE
         value: require
-    buildCommand: |
-      composer install --no-dev --optimize-autoloader
-      php artisan optimize
-      php artisan storage:link
+    buildCommand: "./build.sh"  # Cambia esto (elimina el comando largo actual)
     startCommand: php artisan serve --host=0.0.0.0 --port=${PORT}
     autoDeployTrigger: commit
 version: "1"
