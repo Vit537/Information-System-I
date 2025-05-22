@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/js/app.js',
             ],
             refresh: true,
+            buildDirectory: '.vite',
         }),
     ],
   server: {
@@ -19,6 +20,6 @@ export default defineConfig({
     },
     build: {
         manifest: true,  // Genera manifest.json en public/build
-        outDir: 'public/build/.vite',  // Carpeta de salida
+        outDir: 'public/build',  // Carpeta de salida
     },
 });
