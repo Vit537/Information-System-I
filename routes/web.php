@@ -37,7 +37,7 @@ Route::prefix('auth')->group(function () {
     Route::get('login', [PersonasController::class, 'login'])->name('login');
     Route::post('login', [PersonasController::class, 'loginVerify'])->name('login.verify');
     Route::get('register', [PersonasController::class, 'register'])->name('register');
-    Route::post('register', [PersonasController::class, 'registerVerify']);
+    Route::post('register', [PersonasController::class, 'registerVerify'])->name('register.verify');
     Route::post('signOut', [PersonasController::class, 'signOut'])->name('signOut');
 });
 
