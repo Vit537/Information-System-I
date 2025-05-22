@@ -2,22 +2,25 @@ import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 
 export default defineConfig({
+    base: '/build/', // ¡Clave para que Railway sirva los assets!
     build: {
-        outDir: "public/build",
-        manifest: true, // Genera manifest.json en public/build
+        outDir: 'public/build', // Ruta relativa correcta
         emptyOutDir: true,
-        assetsDir: "",
+        manifest: true,
+        assetsDir: 'assets',
         rollupOptions: {
-            input: ["resources/sass/app.scss", "resources/js/app.js"],
-            output: {
-                assetFileNames: "assets/[name].[hash][extname]",
-                entryFileNames: "assets/[name].[hash].js",
-            },
+            input: [
+                'resources/js/app.js',
+                'resources/sass/app.scss'
+            ],
         },
     },
     plugins: [
         laravel({
-            input: ["resources/sass/app.scss", "resources/js/app.js"],
+            input: [
+                'resources/js/app.js',
+                'resources/sass/app.scss'
+            ],
             refresh: true,
         }),
     ],
