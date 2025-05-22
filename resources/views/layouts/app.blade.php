@@ -15,8 +15,8 @@
 
     <!-- Scripts -->
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
-    <link href="{{ asset('build/assets/app-xxxxxx.css') }}" rel="stylesheet">
-<script src="{{ asset('build/assets/app-xxxxxx.js') }}"></script>
+    <link href="{{ asset('build/assets/app-Bw8W4AVY.css') }}" rel="stylesheet">
+<script src="{{ asset('build/assets/app-CVME7tB3.js') }}"></script>
 </head>
 <body class="bg-cover bg-center bg-no-repeat" style="background-image: url('/assets/seguridad-domotica.jpg');">
     <div id="app">
