@@ -8,6 +8,15 @@ export default defineConfig({
         manifest: true,
         emptyOutDir: true,
     },
+    rollupOptions: {
+      output: {
+        // Elimina la subcarpeta .vite
+        assetFileNames: 'assets/[name].[hash][extname]',
+        entryFileNames: 'assets/[name].[hash].js',
+        chunkFileNames: 'assets/[name].[hash].js',
+        manifest: 'manifest.json'  // Lo genera directamente en build/
+      }
+    },
     plugins: [
         laravel({
             input: [
