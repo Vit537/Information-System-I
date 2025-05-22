@@ -19,6 +19,6 @@ export default defineConfig({
     },
     build: {
         manifest: true,  // Genera manifest.json en public/build
-        outDir: 'public/build',  // Carpeta de salida
+        outDir: 'public/build/.vite',  // Carpeta de salida
     },
 });
