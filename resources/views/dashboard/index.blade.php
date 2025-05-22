@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    {{-- <h1>hello henry como estas </h1> --}}
+    <h1>hello henry como estas </h1>
     <div class="container d-flex">
         <div class="m-auto bg-white p-5 rounded-sm shadow-lg w-form">
             <h3 class="text-uppercase text-center">Welcome dashboard</h3>
