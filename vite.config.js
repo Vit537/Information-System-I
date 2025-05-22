@@ -11,9 +11,11 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    server: {
+  server: {
     host: '0.0.0.0',
-    port: process.env.PORT || 3000,  // Usa el puerto de Railway o uno por defecto
+    hmr: {
+      host: process.env.VITE_APP_URL || 'localhost',
+    },
     },
     build: {
         manifest: true,  // Genera manifest.json en public/build
