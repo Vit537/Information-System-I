@@ -3,8 +3,8 @@ import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
      build: {
-        manifest: true,  // Genera manifest.json en public/build
-        outDir: 'public/build',  // Carpeta de salida
+        outDir:	'public/build',
+	manifest: true,  // Genera manifest.json en public/build
         emptyOutDir: true,
     },
     plugins: [

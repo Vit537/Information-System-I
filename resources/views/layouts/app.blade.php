@@ -14,7 +14,9 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+    <link href="{{ asset('build/assets/app-xxxxxx.css') }}" rel="stylesheet">
+<script src="{{ asset('build/assets/app-xxxxxx.js') }}"></script>
 </head>
 <body class="bg-cover bg-center bg-no-repeat" style="background-image: url('/assets/seguridad-domotica.jpg');">
     <div id="app">
