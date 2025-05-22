@@ -70,13 +70,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('listaClientes', [clienteController::class, 'listarClientes'])->name('listar.clientes');
 
-    Route::post('register/cliente', [clienteController::class, 'registerVerify']);
+    Route::post('register/cliente', [clienteController::class, 'registerVerify'])->name('cliente.verify');
 
     Route::get('register/proveedor', [proveedorController::class, 'register'])->name('register.proveedor');
-    Route::post('register/proveedor', [proveedorController::class, 'registerVerify']);
+    Route::post('register/proveedor', [proveedorController::class, 'registerVerify'])->name('proveedor.verify');
 
     Route::get('register/usuario', [usuarioController::class, 'register'])->name('register.usuario');
-    Route::post('register/usuario', [usuarioController::class, 'registerVerify']);
+    Route::post('register/usuario', [usuarioController::class, 'registerVerify'])->name('usuario.verify');
 
 
     // crear usuarios
@@ -112,7 +112,7 @@ Route::middleware('auth')->prefix('bitacora')->group(function () {
 Route::middleware('auth')->prefix('categoria')->group(function () {
     Route::resource('categoria', categoriaController::class);
     Route::get('register/categoria', [categoriaController::class, 'register'])->name('register.categoria');
-    Route::post('register/categoria', [categoriaController::class, 'registerVerify']);
+    Route::post('register/categoria', [categoriaController::class, 'registerVerify'])->name('categoria.verify');
     Route::get('listarCategorias', [categoriaController::class, 'listarCategorias'])->name('listar.categorias');
 });
 
@@ -120,7 +120,7 @@ Route::middleware('auth')->prefix('categoria')->group(function () {
 Route::middleware('auth')->prefix('producto')->group(function () {
     Route::resource('producto', productoController::class);
     Route::get('register/producto', [productoController::class, 'register'])->name('register.producto');
-    Route::post('register/producto', [productoController::class, 'registerVerify']);
+    Route::post('register/producto', [productoController::class, 'registerVerify'])->name('producto.verify');
     Route::get('listarProductos', [productoController::class, 'listarProductos'])->name('listar.productos');
 });
 

@@ -51,7 +51,6 @@ class clienteController extends Controller
             'tipo' => $request->tipo
         ]);
 
-
         cliente::create([
             'persona_id' => $persona->id,
             'razon_social' => $request->razon,

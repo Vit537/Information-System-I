@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('cliente', function (Blueprint $table) {
-            //$table->id();
+
             $table->foreignId('persona_id')->primary()->constrained('persona')->onDelete('cascade');
             $table->date('fecha_registro');
             $table->string('razon_social');
@@ -29,3 +29,4 @@ return new class extends Migration
         Schema::dropIfExists('cliente');
     }
 };
+

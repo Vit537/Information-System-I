@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container d-flex min-vh-100 align-items-center">
-        <form action="{{ route('register.producto') }}" method="POST" class="m-auto bg-white p-5 rounded shadow-lg"
+        <form action="{{ route('producto.verify') }}" method="POST" class="m-auto bg-white p-5 rounded shadow-lg"
             style="max-width: 800px;" enctype="multipart/form-data">
             @csrf
             <h2 class="text-center mb-4">Registro de producto</h2>

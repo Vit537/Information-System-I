@@ -15,6 +15,9 @@ class cliente extends Model
 
     protected $table="cliente";
 
+    protected $primaryKey = 'persona_id'; // Indica que la PK es persona_id
+    public $incrementing = false; // ¡Crucial! Indica que no es autoincremental
+
     protected $fillable=[
         'persona_id',
         'fecha_registro',
