@@ -16,7 +16,7 @@ use App\Models\Paquete_Usuarios\proveedor;
 use Faker\Provider\ar_EG\Person;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Paquete_Productos\categoriaController;
-
+use App\Livewire\ReporteStock;
 use App\Models\AuditLog\bitacora;
 use App\Observers\bitacoraObserver;
 
@@ -122,6 +122,12 @@ Route::middleware('auth')->prefix('producto')->group(function () {
     Route::get('register/producto', [productoController::class, 'register'])->name('register.producto');
     Route::post('register/producto', [productoController::class, 'registerVerify'])->name('producto.verify');
     Route::get('listarProductos', [productoController::class, 'listarProductos'])->name('listar.productos');
+
+    Route::get('/reportes/stock-bajo', function(){
+        return view('Paquete_productos.producto.listar_stocks');
+    })->name('vista.stock.bajo');
+    // Route::get('/reportes/stock-bajo', ReporteStock::class)->name('vista.stock.bajo');
+
 });
 
 

@@ -56,6 +56,8 @@ class productoController extends Controller
             'descripcion' => $request->descripcion,
             'imagen' => $nombreImagen,
             'precio' => $request->precio,
+            'stock' => $request->stock,
+            'stock_minimo' => $request->stock_minimo,
             'categoria_id' => $request->categoria_id
         ]);
 

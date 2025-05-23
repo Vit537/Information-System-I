@@ -77,6 +77,36 @@
                 </div>
             </div>
 
+
+              <!-- stock -->
+            <div class="row mb-3 align-items-center">
+                <div class="col-md-3 text-md-end">
+                    <label for="stock" class="form-label">stock </label>
+                </div>
+                <div class="col-md-9">
+                    <input name="stock" type="number" value="{{ $producto->stock }}" class="form-control" id="stock"
+                        placeholder="Ej: 15" step="0.01">
+                    @error('stock')
+                        <div class="text-danger mt-1"><small><strong>{{ $message }}</strong></small></div>
+                    @enderror
+                </div>
+            </div>
+
+
+            <!-- stock minimo -->
+            <div class="row mb-3 align-items-center">
+                <div class="col-md-3 text-md-end">
+                    <label for="stock_minimo" class="form-label">stock_minimo </label>
+                </div>
+                <div class="col-md-9">
+                    <input name="stock_minimo" type="number" value="{{ $producto->stock_minimo }}" class="form-control" id="stock_minimo"stock_minimo
+                        placeholder="Ej: 15" step="0.01">
+                    @error('stock_minimo')
+                        <div class="text-danger mt-1"><small><strong>{{ $message }}</strong></small></div>
+                    @enderror
+                </div>
+            </div>
+
             {{-- <!-- categoria -->
             <div class="row mb-3 align-items-center">
                 <div class="col-md-3 text-md-end">

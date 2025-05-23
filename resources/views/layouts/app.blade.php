@@ -15,8 +15,10 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    {{-- <link href="{{ asset('build/assets/app-Bw8W4AVY.css') }}" rel="stylesheet">
-<script src="{{ asset('build/assets/app-CVME7tB3.js') }}"></script> --}}
+
+    {{-- {{-- script de livewire --}}
+    @livewireStyles
+
 
 
 </head>
@@ -37,7 +39,7 @@
 
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
+                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
@@ -60,16 +62,16 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     {{-- <a class="dropdown-item" href="{{ route('logout') }}" --}}
-                                    <a class="dropdown-item" href="#"
+                                    {{-- <a class="dropdown-item" href="#"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
-                                    </a>
+                                    </a> --}}
 
-                                    {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> --}}
+                                     {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> --
                                     <form id="logout-form" action="#" method="POST" class="d-none">
                                         @csrf
-                                    </form>
+                                    </form> --}}
                                 </div>
                             </li>
                         @endguest
@@ -82,5 +84,9 @@
             @yield('content')
         </main>
     </div>
+     {{-- Scripts --}}
+    @livewireScripts
 </body>
 </html>
+
+

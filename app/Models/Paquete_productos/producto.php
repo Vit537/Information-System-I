@@ -14,11 +14,8 @@ class producto extends Model
         'descripcion',
         'imagen',
         'precio',
-<<<<<<< HEAD
-
-    ];
-
-=======
+        'stock',
+        'stock_minimo',
         'categoria_id'
     ];
 
@@ -26,6 +23,5 @@ class producto extends Model
         return $this->belongsTo(categoria::class, 'categoria_id');
     }
 
->>>>>>> henry
 
 }

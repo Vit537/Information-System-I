@@ -17,6 +17,8 @@ return new class extends Migration
             $table->text('descripcion')->unique();
             $table->string('imagen')->nullable();
             $table->decimal('precio',10,2);
+            $table->unsignedInteger('stock')->nullable();
+            $table->unsignedInteger('stock_minimo')->nullable();
             $table->foreignId('categoria_id')->nullable()->constrained('categoria')->cascadeOnDelete();
             $table->timestamps();
         });

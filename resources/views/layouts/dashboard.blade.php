@@ -295,7 +295,7 @@
                             <i class="fas fa-box mr-3 text-gray-600"></i>
                             <span>Visualizar historial de inventario</span>
                         </a>
-                        <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
+                        <a href="{{route('vista.stock.bajo')}}" class="flex items-center p-2 rounded-lg hover:bg-gray-100">
                             <i class="fas fa-box mr-3 text-gray-600"></i>
                             <span>Visualizar reporte de stock bajo</span>
                         </a>
