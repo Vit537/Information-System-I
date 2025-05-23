@@ -63,6 +63,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('register/usuario', [usuarioController::class, 'register'])->name('register.usuario');
     Route::post('register/usuario', [usuarioController::class, 'registerVerify']);
+    Route::get('listaEmpleados', [PersonasController::class, 'listarEmpleados'])->name('listar.empleados');
 
 
     // crear usuarios

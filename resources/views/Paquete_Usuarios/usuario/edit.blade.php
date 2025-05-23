@@ -5,8 +5,8 @@
 {{-- @section('title', 'Editar') --}}
 
 @section('content')
-<div class="container d-flex min-vh-100 align-items-center">
-    <form action="{{ route('persona.update', [$persona->id]) }}" method="POST" class="m-auto bg-white p-5 rounded shadow-lg" style="max-width: 800px;">
+<div class="container d-flex align-items-center">
+    <form action="{{ route('persona.update', [$persona->id]) }}" method="POST" class="m-center bg-white p-5 rounded shadow-lg" style="max-width: 800px;">
         @method('PUT')
         @csrf
         <h2 class="text-center mb-4">Editar usuario</h2>

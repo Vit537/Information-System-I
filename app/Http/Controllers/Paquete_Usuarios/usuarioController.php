@@ -56,7 +56,7 @@ class usuarioController extends Controller
             'persona_id' => $persona->id,
             'departamento' => $request->departamento,
             'fecha_contrato' => $request->contrato,
-            'fecha_contrato' => $request->despido,
+            'fecha_despido' => $request->despido,
             'sueldo' => $request->sueldo,
         ]);
 

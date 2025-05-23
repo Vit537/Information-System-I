@@ -6,6 +6,11 @@
     <title>Dashboard</title>
     @vite('resources/css/app.css')
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="bg-gradient-to-r from-gray-700 to-black h-screen overflow-hidden flex">
 
@@ -39,6 +44,9 @@
                 <div x-show="open" x-collapse class="ml-4 mt-1 space-y-1">
                     <a href="{{ route('listar.usuarios') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Gestionar Usuarios del Sistema
+                    </a>
+                    <a href="{{ route('listar.empleados') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
+                        Gestionar Empleados
                     </a>
                     <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Visualizar historial de pagos
@@ -186,11 +194,6 @@
             </a>
             
             <!-- Sign Out Button with Icon -->
-            {{--<a href="{{ route('signOut') }}" class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-600 text-white hover:bg-blue-700">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H3"></path>
-                </svg>
-            </a> --}}
             <form action="{{ route('signOut') }}" method="POST">
                 @csrf
                 <button type="submit"
@@ -231,7 +234,7 @@
             <div class="relative">
                 <button @click="profileOpen = !profileOpen" class="flex items-center space-x-2 focus:outline-none">
                     <img src="https://i.pravatar.cc/32" class="w-8 h-8 rounded-full" alt="Profile">
-                    <span class="hidden md:block text-gray-700 font-medium">Juan</span>
+                    <span class="hidden md:block text-gray-700 font-medium">{{ Auth::user()->nombre }}</span>
                 </button>
                 <div
                     x-show="profileOpen"
@@ -243,11 +246,10 @@
                     <form method="POST" action="{{route('signOut')}}">
                         @csrf
                         <button type="submit"
-                            class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
+                            class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200">
                             Cerrar sesión
                         </button>
                     </form>
-                    {{--<a href="{{ route('signOut') }}" class="block px-4 py-2 hover:bg-gray-200" method="POST">Logout</a>--}}
                 </div>
             </div>
         </header>

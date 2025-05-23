@@ -77,25 +77,6 @@ class PersonasController extends Controller
         return view('Paquete_Usuarios.usuario.login');
     }
 
-    // public function loginVerify(Request $request){
-
-    //     $request->validate([
-    //         'correo' => 'required|email',
-    //         'contrasena' => 'required|min:4',
-
-    //     ],[
-    //         'correo.required' => 'El email es requerido',
-    //         'contrasena.required' => 'La contraseña es obligatoria'
-    //     ] );
-
-
-    //      if (Auth::attempt(['correo' => $request->correo, 'contrasena' => $request->contrasena])) {
-    //          return redirect()->route('dashboard');
-    //      }
-
-    //     return back()->withErrors(['invalid_Credentials'=> 'user o password invalid'])->withInput();
-    // }
-
     public function loginVerify(Request $request)
     {
 
@@ -133,10 +114,14 @@ class PersonasController extends Controller
 
     public function listarUsuarios()
     {
-
-        // $usuario = Auth::user(); // o auth()->user();
         $usuarios = Persona::all(); // o auth()->user();
         return view('Paquete_Usuarios.usuario.listar_U', compact('usuarios'));
+    }
+
+    public function listarEmpleados()
+    {
+        $empleados = Persona::all(); // o auth()->user();
+        return view('Paquete_Usuarios.usuario_empleado.listar_E', compact('empleados'));
     }
 
     public function crearUsuarios()
