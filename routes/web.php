@@ -8,14 +8,8 @@ use App\Http\Controllers\Paquete_Usuarios\proveedorController;
 use App\Http\Controllers\Paquete_Usuarios\usuarioController;
 use App\Http\Controllers\Paquete_Productos\productoController;
 use App\Http\Controllers\Paquete_Usuarios\bitacoraController;
-use App\Models\Paquete_Usuarios\Auth\Persona;
-use App\Models\Paquete_Usuarios\cliente;
-use App\Models\Paquete_Usuarios\proveedor;
-use Faker\Provider\ar_EG\Person;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Paquete_Productos\categoriaController;
-use App\Models\AuditLog\bitacora;
-use App\Observers\bitacoraObserver;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('Paquete_Usuarios.usuario.login');
@@ -77,18 +71,8 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// // producto y categorias
-// Route::get('register/proveedor', [proveedorController::class, 'register'])->name('register.proveedor');
-// Route::post('register/proveedor', [proveedorController::class, 'registerVerify']);
-
-// Route::get('register/proveedor', [proveedorController::class, 'register'])->name('register.proveedor');
-// Route::post('register/proveedor', [proveedorController::class, 'registerVerify']);
-
 // bitacora
 Route::middleware('auth')->prefix('bitacora')->group(function () {
-    // Route::get('/', [CuentaController::class, 'index'])->name('cuentas.index');
-    // Route::get('/crear', [CuentaController::class, 'create'])->name('cuentas.create');
-    // otras rutas...
     Route::resource('bitacora', bitacoraController::class);
     Route::get('listarBitacora', [bitacoraController::class, 'listarBitacora'])->name('listar.bitacora');
 });
@@ -110,9 +94,16 @@ Route::middleware('auth')->prefix('producto')->group(function () {
     Route::get('listarProductos', [productoController::class, 'listarProductos'])->name('listar.productos');
 });
 
-
-//     Route::middleware('auth')->prefix('cuentas')->group(function () {
-//     Route::get('/', [CuentaController::class, 'index'])->name('cuentas.index');
-//     Route::get('/crear', [CuentaController::class, 'create'])->name('cuentas.create');
-//     // otras rutas...
-// });
+//cotizacion
+Route::middleware('auth')->prefix('cotizacion')->group(function () {
+    Route::get('listarCotizaciones', function(){
+        return view('livewire.paquete-ventas.listar-cotizaciones');
+    })->name('listar.cotizaciones');
+    Route::get('CrearCotizacion', function(){
+        return view('livewire.paquete-ventas.crear-cotizacion');
+    })->name('crear.cotizacion');
+    Route::get('detalleCotizacion/', function (Illuminate\Http\Request $request) {
+        $cotizacionId = $request->query('cotizacionId');
+        return view('Paquete_Ventas.detallecotizacion', ['cotizacionId' => $cotizacionId]);
+    })->name('detalle.cotizacion');
+});
