@@ -52,7 +52,7 @@ Route::middleware('auth')->group(function () {
 
         //return 'hola mundo '.auth()->user()->nombre;
         // return view('dashboard.index');
-        return view('layouts.dashboard');
+        return view('dashboard');
     })->name('dashboard');
 
     Route::get('perfil', [PersonasController::class, 'mostrarPerfil'])->name('perfil');
@@ -98,6 +98,22 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::post('register/proveedor', [proveedorController::class, 'registerVerify']);
 
 // bitacora
+Route::middleware('auth')->prefix('bitacora')->group(function () {
+    // Route::get('/', [CuentaController::class, 'index'])->name('cuentas.index');
+    // Route::get('/crear', [CuentaController::class, 'create'])->name('cuentas.create');
+    // otras rutas...
+    Route::resource('bitacora', bitacoraController::class);
+    Route::get('listarBitacora', [bitacoraController::class, 'listarBitacora'])->name('listar.bitacora');
+});
+
+//categoria
+
+Route::middleware('auth')->prefix('categoria')->group(function () {
+    Route::resource('categoria', categoriaController::class);
+    Route::get('register/categoria', [categoriaController::class, 'register'])->name('register.categoria');
+    Route::post('register/categoria', [categoriaController::class, 'registerVerify']);
+    Route::get('listarCategorias', [categoriaController::class, 'listarCategorias'])->name('listar.categorias');
+});
 
 Route::middleware('auth')->prefix('bitacora')->group(function () {
     // Route::get('/', [CuentaController::class, 'index'])->name('cuentas.index');

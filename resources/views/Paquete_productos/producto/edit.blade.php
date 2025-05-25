@@ -77,6 +77,7 @@
                 </div>
             </div>
 
+<<<<<<< HEAD
 
               <!-- stock -->
             <div class="row mb-3 align-items-center">
@@ -107,6 +108,8 @@
                 </div>
             </div>
 
+=======
+>>>>>>> 5a265721a20daab403fd0abfebf8148c031925db
             {{-- <!-- categoria -->
             <div class="row mb-3 align-items-center">
                 <div class="col-md-3 text-md-end">

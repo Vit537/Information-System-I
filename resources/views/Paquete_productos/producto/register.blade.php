@@ -4,7 +4,11 @@
 
 @section('content')
     <div class="container d-flex min-vh-100 align-items-center">
+<<<<<<< HEAD
         <form action="{{ route('producto.verify') }}" method="POST" class="m-auto bg-white p-5 rounded shadow-lg"
+=======
+        <form action="{{ route('register.producto') }}" method="POST" class="m-auto bg-white p-5 rounded shadow-lg"
+>>>>>>> 5a265721a20daab403fd0abfebf8148c031925db
             style="max-width: 800px;" enctype="multipart/form-data">
             @csrf
             <h2 class="text-center mb-4">Registro de producto</h2>
@@ -72,6 +76,7 @@
                 </div>
             </div>
 
+<<<<<<< HEAD
             <!-- stock -->
             <div class="row mb-3 align-items-center">
                 <div class="col-md-3 text-md-end">
@@ -101,6 +106,8 @@
                 </div>
             </div>
 
+=======
+>>>>>>> 5a265721a20daab403fd0abfebf8148c031925db
             <!-- categoria -->
             <div class="row mb-3 align-items-center">
                 <div class="col-md-3 text-md-end">

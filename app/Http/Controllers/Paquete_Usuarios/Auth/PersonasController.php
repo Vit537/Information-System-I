@@ -133,8 +133,6 @@ class PersonasController extends Controller
 
     public function listarUsuarios()
     {
-
-        // $usuario = Auth::user(); // o auth()->user();
         $usuarios = Persona::all(); // o auth()->user();
         return view('Paquete_Usuarios.usuario.listar_U', compact('usuarios'));
     }

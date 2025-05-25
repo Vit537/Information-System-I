@@ -15,22 +15,11 @@
         <div class="mt-4 space-y-2" x-show="open" x-transition>
             <x-product-detail label="Nombre" :value="$usuario->nombre" />
             <x-product-detail label="Correo" :value="$usuario->correo" />
-            <x-product-detail label="Contrasena" :value="$usuario->contrasena" />
+            <x-product-detail label="Contrasena" :value="str_repeat('*', strlen($usuario->contrasena))" />
             <x-product-detail label="Direccion" :value="$usuario->direccion" />
             <x-product-detail label="Telefono" :value="$usuario->telefono" />
             <x-product-detail label="Tipo" :value="$usuario->tipo" />
 
         </div>
-        {{-- <div class="mt-4 space-y-2" x-show="open" x-transition>
-            <x-product-detail label="Categoría" value="bebida" />
-            <x-product-detail label="Marca" value="marca" />
-            <x-product-detail label="Sabor" value="sabor" />
-            <x-product-detail label="Contenido neto" value="contenido_neto" />
-            <x-product-detail label="Formato" value="formato" />
-            <x-product-detail label="Empaque" value="empaque" />
-            <x-product-detail label="Retornabilidad" value="retornabilidad" />
-            <x-product-detail label="Azúcar" value="azucar" />
-            <x-product-detail label="SKU" value="sku" />
-        </div> --}}
     </section>
 @endsection

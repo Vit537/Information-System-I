@@ -66,7 +66,7 @@
                 </div>
             </div>
 
-            <!-- fecha registro -->
+            <!-- departamento -->
             <div class="row mb-3 align-items-center">
                 <div class="col-md-3 text-md-end">
                     <label for="departamento" class="form-label">Departamento</label>

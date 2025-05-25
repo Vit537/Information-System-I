@@ -6,7 +6,11 @@
 
 @section('content')
 <div class="container d-flex min-vh-100 align-items-center">
+<<<<<<< HEAD
     <form action="{{ route('categoria.verify') }}" method="POST" class="m-auto bg-white p-5 rounded shadow-lg" style="max-width: 800px;">
+=======
+    <form action="{{ route('register.categoria') }}" method="POST" class="m-auto bg-white p-5 rounded shadow-lg" style="max-width: 800px;">
+>>>>>>> 5a265721a20daab403fd0abfebf8148c031925db
         @csrf
         <h2 class="text-center mb-4">Registro de categoria</h2>
 
