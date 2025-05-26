@@ -28,4 +28,7 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+
+//     Remove-Item -Recurse -Force public/build
+// Remove-Item -Recurse -Force public/hot
 });
