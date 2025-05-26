@@ -74,7 +74,7 @@
     @endsection --}}
 
 
-    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+{{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
@@ -86,12 +86,12 @@
 </html> --}}
 
 
-@extends('layouts.app')
+@extends('layouts.index')
 
 {{-- @section('title', 'Registro') --}}
 
 @section('content')
-<div class="container d-flex min-vh-100 align-items-center">
+    {{-- <div class="container d-flex min-vh-100 align-items-center">
     <form action="{{ route('login.verify') }}" method="POST" class="m-auto bg-white p-5 rounded shadow-lg" style="max-width: 800px;">
         @csrf
         <h2 class="text-center mb-4">Iniciar sesion de Usuario</h2>
@@ -132,5 +132,45 @@
 
 
     </form>
-</div>
+</div> --}}
+    <div
+        class="flex items-center justify-center">
+        {{-- class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-300 via-slate-600 to-slate-900 px-4"> --}}
+        <form action="{{ route('login.verify') }}" method="POST"
+            class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md space-y-6">
+            @csrf
+
+            <h2 class="text-2xl font-bold text-center text-gray-800">Iniciar sesión</h2>
+
+            <!-- Email -->
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                <input type="email" name="correo" id="email" value="{{ old('email') }}"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                    placeholder="ejemplo@mail.com" required>
+                @error('email')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <!-- Contraseña -->
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+                <input type="password" name="contrasena" id="password"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                    placeholder="Mínimo 8 caracteres" required>
+                @error('password')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <!-- Botón de Enviar -->
+            <div>
+                <button type="submit"
+                    class="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition">
+                    Iniciar sesión
+                </button>
+            </div>
+        </form>
+    </div>
 @endsection

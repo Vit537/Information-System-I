@@ -6,14 +6,15 @@
 @section('content')
     <div class="px-10">
         <div class="flex justify-between py-2">
-            <div>
-<<<<<<< HEAD
+            <div class="space-x-5">
                 <a href="{{ route('register.producto') }}"
-=======
-                <a href="{{ route( 'register.producto')}}"
->>>>>>> 5a265721a20daab403fd0abfebf8148c031925db
                     class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                     Crear producto
+                </a>
+
+                <a href="{{ route('prueba.producto') }}"
+                    class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                    lista producto
                 </a>
 
             </div>
@@ -21,14 +22,9 @@
         </div>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-4">
-<<<<<<< HEAD
             <table
                 class="w-full text-sm text-left text-gray-800 dark:text-gray-300 border-collapse bg-white dark:bg-gray-800">
                 <thead class="text-xs text-black uppercase bg-slate-400 dark:bg-slate-600">
-=======
-            <table class="w-full text-sm text-left text-gray-800 dark:text-gray-300 border-collapse bg-white dark:bg-gray-800">
-                <thead class="text-xs text-white uppercase bg-slate-400 dark:bg-slate-600">
->>>>>>> 5a265721a20daab403fd0abfebf8148c031925db
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             Nombre
@@ -43,15 +39,12 @@
                             Precio
                         </th>
                         <th scope="col" class="px-6 py-3">
-<<<<<<< HEAD
                             Stock
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Stock Minimo
                         </th>
                         <th scope="col" class="px-6 py-3">
-=======
->>>>>>> 5a265721a20daab403fd0abfebf8148c031925db
                             Categoria
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -64,15 +57,9 @@
                     @foreach ($productos as $producto)
                         <tr>
 
-<<<<<<< HEAD
                             <td class="border border-gray-300 dark:border-gray-600">{{ $producto->nombre }}</td>
                             <td class="border border-gray-300 dark:border-gray-600">{{ $producto->descripcion }}</td>
                             <td>
-=======
-                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $producto->nombre }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $producto->descripcion }}</td>
-                            <td >
->>>>>>> 5a265721a20daab403fd0abfebf8148c031925db
                                 @if ($producto->imagen)
                                     <img src="{{ asset('storage/productos/' . $producto->imagen) }}" alt="Imagen"
                                         width="80">
@@ -80,27 +67,18 @@
                                     <span>Sin imagen</span>
                                 @endif
                             </td>
-<<<<<<< HEAD
                             <td class="border border-gray-300 dark:border-gray-600">{{ $producto->precio }}</td>
                             <td class="border border-gray-300 dark:border-gray-600">{{ $producto->stock }}</td>
                             <td class="border border-gray-300 dark:border-gray-600">{{ $producto->stock_minimo }}</td>
                             <td class="border border-gray-300 dark:border-gray-600">
                                 {{ $producto->categoria->nombre ?? 'sin categoria' }}</td>
-=======
-                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $producto->precio }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $producto->categoria->nombre ?? 'sin categoria' }}</td>
->>>>>>> 5a265721a20daab403fd0abfebf8148c031925db
 
 
                             <td>
                                 <div class="flex space-x-2">
                                     {{-- <a href="{{ route('articles.edit', [$article->id]) }}" --}}
                                     <a href="{{ route('producto.edit', [$producto->id]) }}"
-<<<<<<< HEAD
                                         class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
-=======
-                                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
->>>>>>> 5a265721a20daab403fd0abfebf8148c031925db
                                         <i class="fa fa-edit"></i>
                                     </a>
 
@@ -117,7 +95,6 @@
                                         @csrf
                                         @method('DELETE')
                                         <button
-<<<<<<< HEAD
                                             class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
                                             <i class="fa fa-trash"></i>
                                         </button>
@@ -143,15 +120,6 @@
                                 {{-- //////////////////// --}}
 
 
-=======
-                                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                                            <i class="fa fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </div>
-
-
->>>>>>> 5a265721a20daab403fd0abfebf8148c031925db
                             </td>
                         </tr>
                     @endforeach
@@ -163,7 +131,6 @@
         </div>
 
     </div>
-<<<<<<< HEAD
     {{-- <script>
         const input = document.getElementById('counterInput');
         const incrementBtn = document.getElementById('increment');
@@ -183,6 +150,4 @@
             }
         });
     </script> --}}
-=======
->>>>>>> 5a265721a20daab403fd0abfebf8148c031925db
 @endsection

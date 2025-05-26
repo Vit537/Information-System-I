@@ -137,6 +137,13 @@ class PersonasController extends Controller
         return view('Paquete_Usuarios.usuario.listar_U', compact('usuarios'));
     }
 
+        public function listarEmpleados()
+    {
+        $empleados = Persona::all(); // o auth()->user();
+        return view('Paquete_Usuarios.usuario_empleado.listar_E', compact('empleados'));
+    }
+
+
     public function crearUsuarios()
     {
 

@@ -45,19 +45,11 @@
                     @foreach ($usuarios as $usuario)
                         <tr>
 
-<<<<<<< HEAD
                             <td class="border border-gray-300 dark:border-gray-600">{{ $usuario->nombre }}</td>
                             <td class="border border-gray-300 dark:border-gray-600">{{ $usuario->correo }}</td>
                             <td class="border border-gray-300 dark:border-gray-600">{{ $usuario->direccion }}</td>
                             <td class="border border-gray-300 dark:border-gray-600">{{ $usuario->telefono }}</td>
                             <td class="border border-gray-300 dark:border-gray-600">{{ $usuario->tipo }}</td>
-=======
-                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $usuario->nombre }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $usuario->correo }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $usuario->direccion }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $usuario->telefono }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $usuario->tipo }}</td>
->>>>>>> 5a265721a20daab403fd0abfebf8148c031925db
                             {{-- <td>{{ $usuario->updated_at->format('y-m-d') }}</td> --}}
                             <td>
                                 <div class="flex space-x-2">
