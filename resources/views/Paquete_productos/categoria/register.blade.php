@@ -1,14 +1,14 @@
 
 
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 {{-- @section('title', 'Registro') --}}
 
 @section('content')
-<div class="container d-flex min-vh-100 align-items-center">
-    <form action="{{ route('categoria.verify') }}" method="POST" class="m-auto bg-white p-5 rounded shadow-lg" style="max-width: 800px;">
+<div class="flex items-center justify-center">
+    <form action="{{ route('register.categoria') }}" method="POST" class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md space-y-6">
         @csrf
-        <h2 class="text-center mb-4">Registro de categoria</h2>
+        <h2 class="text-2xl font-bold text-center text-gray-800">Registro de categoria</h2>
 
         <!-- Nombre Completo -->
         <div class="row mb-3 align-items-center">
@@ -68,12 +68,13 @@
 
 
 
-        <!-- Botón de Submit -->
-        <div class="row">
-            <div class="col-md-9 offset-md-3">
-                <button type="submit" class="btn btn-primary w-100 py-2">Registrar</button>
+        <!-- Botón de Enviar -->
+            <div>
+                <button type="submit"
+                    class="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition">
+                    Registrar
+                </button>
             </div>
-        </div>
 
 
     </form>

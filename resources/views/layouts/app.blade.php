@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,14 +15,15 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
+    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+    @vite('resources/css/app.css')
     {{-- {{-- script de livewire --}}
     @livewireStyles
 
 
 
 </head>
+
 <body class="bg-cover bg-center bg-no-repeat" style="background-image: url('/assets/seguridad-domotica.jpg');">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -29,7 +31,9 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -39,7 +43,7 @@
 
                     </ul>
 
-                     <!-- Right Side Of Navbar -->
+                    <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
@@ -56,7 +60,8 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
@@ -68,7 +73,7 @@
                                         {{ __('Logout') }}
                                     </a> --}}
 
-                                     {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> --
+                                    {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> --
                                     <form id="logout-form" action="#" method="POST" class="d-none">
                                         @csrf
                                     </form> --}}
@@ -84,9 +89,8 @@
             @yield('content')
         </main>
     </div>
-     {{-- Scripts --}}
+    {{-- Scripts --}}
     @livewireScripts
 </body>
+
 </html>
-
-

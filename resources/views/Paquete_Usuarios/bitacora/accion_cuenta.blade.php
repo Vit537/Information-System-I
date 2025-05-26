@@ -1,5 +1,3 @@
-{{-- articles/index.blade.php --}}
-
 @extends('layouts.dashboard')
 
 
@@ -49,7 +47,7 @@
                             <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $login->description }}</td>
                             <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $login->loggable_id }}</td>
                             <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $login->loggable_type }}</td>
-                            
+
                         </tr>
                     @endforeach
 

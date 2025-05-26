@@ -70,6 +70,23 @@ class productoController extends Controller
         return view('Paquete_productos.producto.listar_P', compact('productos'));
     }
 
+// modificar esto para ver solo la vista de los productos
+
+    public function pruebaProducto()
+    {
+
+        $productos = producto::with('categoria')->get();//cargar la relacion
+        return view('Paquete_productos.producto.pruebaProducto', compact('productos'));
+    }
+    public function tarjetaProducto($id)
+    {
+       $producto = producto::with('categoria')->findOrFail($id);
+        // $productos = producto::with('categoria')->get();//cargar la relacion
+        return view('Paquete_productos.producto.tarjeta', compact('producto'));
+    }
+
+
+
 
     public function create()
     {

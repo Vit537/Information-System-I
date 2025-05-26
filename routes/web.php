@@ -52,7 +52,7 @@ Route::middleware('auth')->group(function () {
 
         //return 'hola mundo '.auth()->user()->nombre;
         // return view('dashboard.index');
-        return view('layouts.dashboard');
+        return view('dashboard');
     })->name('dashboard');
 
     Route::get('perfil', [PersonasController::class, 'mostrarPerfil'])->name('perfil');
@@ -78,6 +78,8 @@ Route::middleware('auth')->group(function () {
     Route::get('register/usuario', [usuarioController::class, 'register'])->name('register.usuario');
     Route::post('register/usuario', [usuarioController::class, 'registerVerify'])->name('usuario.verify');
 
+        Route::get('listaEmpleados', [PersonasController::class, 'listarEmpleados'])->name('listar.empleados');
+
 
     // crear usuarios
     Route::get('crear', [PersonasController::class, 'crearUsuarios'])->name('crear.usuarios');
@@ -90,22 +92,16 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// // producto y categorias
-// Route::get('register/proveedor', [proveedorController::class, 'register'])->name('register.proveedor');
-// Route::post('register/proveedor', [proveedorController::class, 'registerVerify']);
-
-// Route::get('register/proveedor', [proveedorController::class, 'register'])->name('register.proveedor');
-// Route::post('register/proveedor', [proveedorController::class, 'registerVerify']);
 
 // bitacora
-
 Route::middleware('auth')->prefix('bitacora')->group(function () {
-    // Route::get('/', [CuentaController::class, 'index'])->name('cuentas.index');
-    // Route::get('/crear', [CuentaController::class, 'create'])->name('cuentas.create');
-    // otras rutas...
-    Route::resource('bitacora', bitacoraController::class);
-    Route::get('listarBitacora', [bitacoraController::class, 'listarBitacora'])->name('listar.bitacora');
+
+    // Route::resource('bitacora', bitacoraController::class);
+    Route::get('ver/bitacora', [bitacoraController::class, 'bitacora'])->name('ver.bitacora');
+    Route::get('bitacora/lista1', [bitacoraController::class, 'listarAccionCuenta'])->name('listar.accion.cuenta');
+    Route::get('bitacora/lista2', [bitacoraController::class, 'listarEventosCuenta'])->name('listar.eventos.cuenta');
 });
+
 
 //categoria
 
@@ -128,9 +124,15 @@ Route::middleware('auth')->prefix('producto')->group(function () {
     })->name('vista.stock.bajo');
     // Route::get('/reportes/stock-bajo', ReporteStock::class)->name('vista.stock.bajo');
 
+    Route::get('lista/imagen/producto', [ productoController::class, 'pruebaProducto'])->name('prueba.producto');
+    Route::get('tarjeta/{id}', [ productoController::class, 'tarjetaProducto'])->name('tarjeta.producto');
+
+
 });
 
-
+Route::get('prueba/', function(){
+    return view('pruebas');
+})->name('prueba');
 
 //     Route::middleware('auth')->prefix('cuentas')->group(function () {
 //     Route::get('/', [CuentaController::class, 'index'])->name('cuentas.index');
