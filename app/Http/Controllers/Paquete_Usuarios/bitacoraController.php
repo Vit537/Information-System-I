@@ -18,7 +18,7 @@ class bitacoraController extends Controller
     public function listarAccionCuenta(){
 
         // se podra ver la accion que hizo esta cuenta CRUD
-        $logins = Bitacora::all();
+        $logins = bitacora::all();
         return view('Paquete_Usuarios.bitacora.accion_cuenta', compact('logins'));
     }
     public function listarEventosCuenta(){
