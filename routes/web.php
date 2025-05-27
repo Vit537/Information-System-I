@@ -98,7 +98,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware('auth')->prefix('bitacora')->group(function () {
 
     // Route::resource('bitacora', bitacoraController::class);
-    Route::get('ver/bitacora', [bitacoraController::class, 'bitacora'])->name('ver.bitacora');
+    Route::get('ver/bitacora', [bitacoraController::class, 'vistaBitacora'])->name('ver.bitacora');
     Route::get('bitacora/lista1', [bitacoraController::class, 'listarAccionCuenta'])->name('listar.accion.cuenta');
     Route::get('bitacora/lista2', [bitacoraController::class, 'listarEventosCuenta'])->name('listar.eventos.cuenta');
 });

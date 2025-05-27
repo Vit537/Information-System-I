@@ -11,9 +11,9 @@ use App\Models\AuditLog\personaActi;
 class bitacoraController extends Controller
 {
 
-    public function bitacora(){
+    public function vistaBitacora(){
 
-        return view('Paquete_Usuarios.bitacora.bitacora');
+        return view('Paquete_Usuarios.bitacora.index_bitacora');
     }
     public function listarAccionCuenta(){
 

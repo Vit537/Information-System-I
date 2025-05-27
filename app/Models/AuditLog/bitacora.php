@@ -32,20 +32,20 @@ class bitacora extends Model
         return $this->belongsTo(persona::class);
     }
 
-    public static function registrarAuthEvent($type, $event, $persona, $description)
-    {
-        $agent = new \Jenssegers\Agent\Agent();
+    // public static function registrarAuthEvent($type, $event, $persona, $description)
+    // {
+    //     $agent = new \Jenssegers\Agent\Agent();
 
-        return self::create([
-            'event_type' => $type,
-            'event' => $event,
-            'ip_address' => request()->ip(),
-            'browser' => $agent->browser(),
-            'event_time' => now(),
-            'description' => $description,
-            'device' => $agent->deviceType(),
-            'persona_id' => $persona?->id
-        ]);
-    }
+    //     return self::create([
+    //         'event_type' => $type,
+    //         'event' => $event,
+    //         'ip_address' => request()->ip(),
+    //         'browser' => $agent->browser(),
+    //         'event_time' => now(),
+    //         'description' => $description,
+    //         'device' => $agent->deviceType(),
+    //         'persona_id' => $persona?->id
+    //     ]);
+    // }
 
 }
