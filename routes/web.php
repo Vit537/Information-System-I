@@ -67,16 +67,17 @@ Route::middleware('auth')->group(function () {
     Route::resource('cliente', clienteController::class);
 
     Route::get('register/cliente', [clienteController::class, 'register'])->name('register.cliente');
-
     Route::get('listaClientes', [clienteController::class, 'listarClientes'])->name('listar.clientes');
-
     Route::post('register/cliente', [clienteController::class, 'registerVerify'])->name('cliente.verify');
+
 
     Route::get('register/proveedor', [proveedorController::class, 'register'])->name('register.proveedor');
     Route::post('register/proveedor', [proveedorController::class, 'registerVerify'])->name('proveedor.verify');
 
+
     Route::get('register/usuario', [usuarioController::class, 'register'])->name('register.usuario');
     Route::post('register/usuario', [usuarioController::class, 'registerVerify'])->name('usuario.verify');
+
 
         Route::get('listaEmpleados', [PersonasController::class, 'listarEmpleados'])->name('listar.empleados');
 

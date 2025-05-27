@@ -17,7 +17,7 @@
                 $bgGradient = $cardColors[array_rand($cardColors)];
             @endphp
 
-            <div class="rounded-xl shadow-lg p-5 text-white bg-black transition transform hover:scale-105 hover:shadow-2xl">
+            <div class="rounded-xl shadow-lg p-5 text-slate-600 bg-slate-50 transition transform hover:scale-105 hover:shadow-2xl hover:bg-slate-300">
                 <a href="{{ route('tarjeta.producto', $producto->id) }}">
                     @if ($producto->imagen)
                         {{-- <img src="{{ asset('storage/imagenes/' . $producto->imagen) }}" alt="{{ $producto->nombre }}" --}}

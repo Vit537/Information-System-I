@@ -116,6 +116,7 @@
     <div class=" flex items-center justify-center">
         <form action="{{ route('persona.update', [$persona->id]) }}" method="POST"
             class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md space-y-6">
+             @method('PUT')
             @csrf
 
             <h2 class="text-2xl font-bold text-center text-gray-800">Actualizar cuenta</h2>

@@ -51,12 +51,16 @@ class clienteController extends Controller
             'tipo' => $request->tipo
         ]);
 
+
+
         cliente::create([
             'persona_id' => $persona->id,
             'razon_social' => $request->razon,
             'fecha_registro' => $request->registro,
             'tipo_cliente' => $request->TCliente
         ]);
+
+
 
         return redirect()->route('listar.clientes')->with('success', 'usuario creado correctamente');
     }
