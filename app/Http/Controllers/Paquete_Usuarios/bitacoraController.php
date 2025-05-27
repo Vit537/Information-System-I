@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Paquete_Usuarios;
 
 use App\Http\Controllers\Controller;
-use App\Models\AuditLog\Bitacora;
+use App\Models\AuditLog\bitacora;
 use Illuminate\Http\Request;
 use App\Models\AuditLog;
 use App\Models\AuditLog\personaActi;
