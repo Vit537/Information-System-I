@@ -131,7 +131,7 @@
                     <a href="{{ route('listar.cotizaciones') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Gestionar Cotizacion
                     </a>
-                    <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
+                    <a href="{{ route('listar.ventas') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Gestionar Ventas
                     </a>
                     <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">

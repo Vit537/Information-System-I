@@ -17,6 +17,6 @@ class DetalleCotizacion extends Component
 
     public function render()
     {
-        return view('livewire.paquete-ventas.detalle-cotizacion');
+        return view('livewire.paquete-ventas.cotizacion.detalle-cotizacion');
     }
 }

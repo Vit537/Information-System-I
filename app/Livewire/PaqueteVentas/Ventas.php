@@ -5,27 +5,31 @@ namespace App\Livewire\PaqueteVentas;
 use Livewire\Component;
 use App\Models\Paquete_productos\producto;
 use App\Models\Paquete_Ventas\cotizacion;
-use App\Models\Paquete_Ventas\cotizacion_detalle;
+use App\Models\Paquete_Ventas\venta;
 
-class CotizacionLW extends Component
+class Ventas extends Component
 {
     public $count = 0;
     
     public function render()
     {
-        return view('livewire.paquete-ventas.cotizacion.cotizacion',[
-            'cotizaciones' => $this->getCotizaciones()
+        return view('livewire.paquete-ventas.venta.listar-ventas',[
+            'ventas' => $this->getVentas()
         ]);
     }
 
-    public function getCotizaciones(){
-        return cotizacion::all();
+    public function getCotizacion($id){
+        return cotizacion::find($id);
     }
 
-    public function deleteCotizacion($id){
-        $cotizacion = cotizacion::find($id);
-        if ($cotizacion) {
-            $cotizacion->delete();
+    public function getVentas(){
+        return venta::all();
+    }
+
+    public function deleteVenta($id){
+        $venta = venta::find($id);
+        if ($venta) {
+            $venta->delete();
         }
     }
 

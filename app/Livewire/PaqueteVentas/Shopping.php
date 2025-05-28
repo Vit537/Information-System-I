@@ -19,7 +19,7 @@ class Shopping extends Component
 
     public function render()
     {
-        return view('livewire.paquete-ventas.shopping');
+        return view('livewire.paquete-ventas.cotizacion.shopping');
     }
 
     public function mount()
