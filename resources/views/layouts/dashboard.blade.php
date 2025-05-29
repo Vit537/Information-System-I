@@ -16,7 +16,8 @@
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
     {{-- {{-- script de livewire --}}
     @livewireStyles
-   @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 
 </head>
 
@@ -98,7 +99,7 @@
                     <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Visualizar historial de inventario
                     </a>
-                    <a href="{{route('vista.stock.bajo')}}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
+                    <a href="{{ route('vista.stock.bajo') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Visualizar reporte de stock bajo
                     </a>
                 </div>
@@ -249,7 +250,7 @@
             @yield('content')
         </main>
     </div>
-  @livewireScripts
+    @livewireScripts
 </body>
 
 </html>

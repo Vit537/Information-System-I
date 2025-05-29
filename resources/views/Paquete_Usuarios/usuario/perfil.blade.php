@@ -19,6 +19,7 @@
 
 
     </div>
+    {{-- <div class="bg-slate-400 flex justify-center">  <livewire:mostrar-pwd :usuario="$usuario" /></div> --}}
 
     <div class="flex justify-center items-center">
         <div class="w-full md:w-1/2  ">

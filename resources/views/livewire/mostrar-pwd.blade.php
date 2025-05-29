@@ -2,9 +2,9 @@
 
 
 <div class="flex items-center space-x-2">
-
-
-
+   <span class="font-mono break-all max-w-xs">
+        {{ $mostrarContrasena ? $usuario->contrasena : '********' }}
+    </span>
 
     <button wire:click.prevent="toggleContrasena" type="button" class="text-gray-600 hover:text-gray-900">
         @if ($mostrarContrasena)
@@ -25,9 +25,7 @@
             <div class="bg-red-600"></div>
         @endif
     </button>
-    <span class="font-mono break-all max-w-xs">
-        {{ $mostrarContrasena ? $usuario->contrasena : '********' }}
-    </span>
+
 
 
 </div>
