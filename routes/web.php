@@ -134,9 +134,30 @@ Route::middleware('auth')->prefix('producto')->group(function () {
 Route::get('prueba/', function(){
     return view('pruebas');
 })->name('prueba');
+//cotizacion
+Route::middleware('auth')->prefix('cotizacion')->group(function () {
+    Route::get('listarCotizaciones', function(){
+        return view('Paquete_Ventas.cotizacion.listar-cotizaciones');
+    })->name('listar.cotizaciones');
+    Route::get('CrearCotizacion', function(){
+        return view('Paquete_Ventas.cotizacion.crear-cotizacion');
+    })->name('crear.cotizacion');
+    Route::get('detalleCotizacion/', function (Illuminate\Http\Request $request) {
+        $cotizacionId = $request->query('cotizacionId');
+        return view('Paquete_Ventas.cotizacion.detallecotizacion', ['cotizacionId' => $cotizacionId]);
+    })->name('detalle.cotizacion');
+});
 
-//     Route::middleware('auth')->prefix('cuentas')->group(function () {
-//     Route::get('/', [CuentaController::class, 'index'])->name('cuentas.index');
-//     Route::get('/crear', [CuentaController::class, 'create'])->name('cuentas.create');
-//     // otras rutas...
-// });
+//venta
+Route::middleware('auth')->prefix('venta')->group(function () {
+    Route::get('listarVentas', function(){
+        return view('Paquete_Ventas.venta.listar-ventas');
+    })->name('listar.ventas');
+    Route::get('crearVenta', function(){
+        return view('Paquete_Ventas.venta.crear-venta');
+    })->name('crear.venta');
+    // Route::get('detalleventa/', function (Illuminate\Http\Request $request) {
+    //     $ventaId = $request->query('ventaId');
+    //     return view('Paquete_Ventas.venta.detalleventa', ['ventaId' => $ventaId]);
+    // })->name('detalle.venta');
+});

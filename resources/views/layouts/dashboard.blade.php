@@ -120,7 +120,10 @@
                     <a href="{{ route('listar.clientes') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Gestionar Clientes
                     </a>
-                    <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
+                    <a href="{{ route('listar.cotizaciones') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
+                        Gestionar Cotizacion
+                    </a>
+                    <a href="{{ route('listar.ventas') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Gestionar Ventas
                     </a>
                     <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
@@ -131,9 +134,6 @@
                     </a>
                     <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Generar reporte de ventas
-                    </a>
-                    <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
-                        Generar cotizacion
                     </a>
                     <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Gestionar Pagos
@@ -248,6 +248,9 @@
         <!-- Page content -->
         <main class="flex-1 overflow-y-auto p-6">
             @yield('content')
+            @if(isset( $slot ))
+                {{ $slot }}
+            @endif
         </main>
     </div>
     @livewireScripts
