@@ -95,14 +95,11 @@
                     <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Gestionar Stock de productos
                     </a>
-                    <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
+                    <a href="{{ route('inventario.historial') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm" >
                         Visualizar historial de inventario
                     </a>
                     <a href="{{route('vista.stock.bajo')}}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Visualizar reporte de stock bajo
-                    </a>
-                    <a href="{{ route('inventario.historial') }}">
-                        📦 Visualizar historial de Inventario
                     </a>
                 </div>
             </div>
