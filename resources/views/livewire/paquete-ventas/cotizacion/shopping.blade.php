@@ -24,7 +24,7 @@
                                 <h3 class="text-lg font-bold text-gray-700">{{ $product['nombre'] }}</h3>
                                 <p class="text-sm text-gray-500">${{ $product['precio'] }}</p>
                             </div>
-                            <button 
+                            <button
                                 wire:click="addToCart({{ $product['id'] }})"
                                 class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-150"
                             >
@@ -58,7 +58,7 @@
                     Total: ${{ $this->total }}
                 </div>
 
-                <button 
+                <button
                     wire:click="confirm"
                     class="w-full py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition duration-150"
                 >
@@ -69,4 +69,10 @@
             @endif
         </div>
     </div>
+
+    {{-- <livewire:counter /> --}}
+
+    {{-- @livewire('counter') --}}
+
+
 </div>

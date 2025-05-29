@@ -18,7 +18,7 @@ class MostrarPwd extends Component
 
     public function toggleContrasena()
     {
-        dd('hola mundo');
+        // dd('hola mundo');
         $this->mostrarContrasena = !$this->mostrarContrasena;
     }
 }

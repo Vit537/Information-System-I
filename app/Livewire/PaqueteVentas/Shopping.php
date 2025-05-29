@@ -24,7 +24,7 @@ class Shopping extends Component
 
     public function mount()
     {
-        $this->clientes = Persona::where('tipo', 'cliente')->get();
+        $this->clientes = persona::where('tipo', 'cliente')->get();
         $this->products = producto::all();
     }
 
