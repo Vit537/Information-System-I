@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 {{-- <html lang="en" x-data="{ sidebarOpen: false, profileOpen: false }" x-cloak> --}}
 
 <head>
@@ -9,11 +9,11 @@
 
     {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-     {{-- <link rel="dns-prefetch" href="//fonts.bunny.net">
+    {{-- <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> --}}
 
@@ -87,7 +87,7 @@
             @yield('content')
         </main>
     </div>
- @livewireScripts
+    @livewireScripts
 </body>
 
 </html>
