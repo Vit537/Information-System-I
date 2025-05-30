@@ -19,6 +19,8 @@ use App\Http\Controllers\Paquete_Productos\categoriaController;
 use App\Livewire\ReporteStock;
 use App\Models\AuditLog\bitacora;
 use App\Observers\bitacoraObserver;
+use App\Livewire\HistorialStock; 
+
 
 Route::get('/', function () {
     return view('Paquete_Usuarios.usuario.login');
@@ -130,6 +132,13 @@ Route::middleware('auth')->prefix('producto')->group(function () {
 
 
 });
+
+// historial de inventario
+Route::get('/inventario/historial', function () {
+    return view('Paquete_productos.producto.inventario_historial'); // o el nombre real del blade que estás usando
+})->middleware('auth')->name('inventario.historial');
+
+
 
 Route::get('prueba/', function(){
     return view('pruebas');
