@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Paquete_productos\MovimientoStock;
-use App\Models\Paquete_productos\Producto;
+use App\Models\Paquete_productos\producto;
 use Illuminate\Support\Facades\Auth;
 
 class HistorialStock extends Component
