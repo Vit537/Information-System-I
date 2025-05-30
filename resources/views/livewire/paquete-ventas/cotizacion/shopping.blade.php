@@ -12,7 +12,7 @@
     </div>
     <p class="mt-2 text-sm text-blue-600">Cliente seleccionado: {{ $cliente_id }}</p>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+    {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
         <!-- Products List -->
         <div>
             <h2 class="text-2xl font-semibold text-gray-800 mb-5">🛍️ Productos</h2>
@@ -68,9 +68,9 @@
                 <p class="text-gray-500">Tu carrito está vacío.</p>
             @endif
         </div>
-    </div>
+    </div> --}}
 
-    {{-- <livewire:counter /> --}}
+    <livewire:counter />
 
     {{-- @livewire('counter') --}}
 
