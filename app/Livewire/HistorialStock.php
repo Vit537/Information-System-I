@@ -15,7 +15,7 @@ class HistorialStock extends Component
 
     public function render()
     {
-        $productos = Producto::all();
+        $productos = producto::all();
 
         $query = MovimientoStock::query();
 

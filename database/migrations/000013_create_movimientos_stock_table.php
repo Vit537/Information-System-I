@@ -9,7 +9,9 @@ return new class extends Migration {
         Schema::create('movimientos_stock', function (Blueprint $table) {
             $table->id();
             $table->foreignId('producto_id')->constrained('producto')->onDelete('cascade');
-            $table->foreignId('usuario_id')->constrained('usuario')->onDelete('cascade');
+            // $table->foreignId('usuario_id')->constrained('usuario')->onDelete('cascade');
+            $table->unsignedBigInteger('usuario_id');
+            $table->foreign('usuario_id')->references('persona_id')->on('usuario')->onDelete('cascade');
             $table->enum('tipo', ['entrada', 'salida']);
             $table->integer('cantidad');
             $table->string('motivo')->nullable();
