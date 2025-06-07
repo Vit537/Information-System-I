@@ -63,7 +63,7 @@ return [
         'users' => [
             'driver' => 'eloquent',
           //  'model' => env('AUTH_MODEL', App\Models\Paquete_Usuarios\Auth\Persona::class),
-            'model' => App\Models\Paquete_Usuarios\Auth\Persona::class,
+            'model' => App\Models\Paquete_Usuarios\Auth\persona::class,
         ],
        // App\Models\Paquete_Usuarios\User
         // 'users' => [
@@ -71,6 +71,18 @@ return [
         //     'table' => 'users',
         // ],
     ],
+    // 'providers' => [
+    //     'users' => [
+    //         'driver' => 'eloquent',
+    //       //  'model' => env('AUTH_MODEL', App\Models\Paquete_Usuarios\Auth\Persona::class),
+    //         'model' => App\Models\Paquete_Usuarios\Auth\Persona::class,
+    //     ],
+    //    // App\Models\Paquete_Usuarios\User
+    //     // 'users' => [
+    //     //     'driver' => 'database',
+    //     //     'table' => 'users',
+    //     // ],
+    // ],
 
     /*
     |--------------------------------------------------------------------------
@@ -94,6 +106,7 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            //'table' => 'password_reset_tokens',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,
             'throttle' => 60,

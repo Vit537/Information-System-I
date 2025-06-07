@@ -43,7 +43,11 @@
                     <div x-show="profileOpen" @click.away="profileOpen = false" x-transition
                         class="absolute right-0 mt-2 w-48 bg-gray-100 rounded-md shadow-lg z-50">
                         <a href="{{ route('perfil') }}" class="block px-4 py-2 hover:bg-gray-200">Perfil </a>
-                        <a href="{{ route('signOut') }}" class="block px-4 py-2 hover:bg-gray-200">Logout</a>
+
+                        <form method="POST" action="{{ route('signOut') }}" class="block px-4 py-2 hover:bg-gray-200">
+                            @csrf
+                            <button type="submit">Cerrar Session</button>
+                        </form>
                         {{-- <form method="POST" action="#">
                         @csrf
                         <button type="submit"

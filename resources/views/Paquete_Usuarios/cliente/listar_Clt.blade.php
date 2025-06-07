@@ -5,6 +5,14 @@
 
 @section('content')
     <div class="px-10">
+
+        @if (session('success'))
+            <x-flash-message :message="session('success')" type="success" />
+        @endif
+
+        @if (session('error'))
+            <x-flash-message :message="session('error')" type="error" />
+        @endif
         <div class="flex justify-between py-2">
             <div>
                 <a href="{{ route('crear.usuarios') }}"
@@ -17,7 +25,8 @@
         </div>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-4">
-            <table class="w-full text-sm text-left text-gray-800 dark:text-gray-300 border-collapse bg-white dark:bg-gray-800">
+            <table
+                class="w-full text-sm text-left text-gray-800 dark:text-gray-300 border-collapse bg-white dark:bg-gray-800">
                 <thead class="text-xs text-black uppercase bg-slate-400 dark:bg-slate-600">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -42,10 +51,14 @@
                     @foreach ($clientes as $cliente)
                         <tr>
 
-                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $cliente->nombre }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $cliente->correo }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $cliente->direccion }}</td>
-                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $cliente->telefono }}</td>
+                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $cliente->nombre }}
+                            </td>
+                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $cliente->correo }}
+                            </td>
+                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $cliente->direccion }}
+                            </td>
+                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $cliente->telefono }}
+                            </td>
                             <td>
                                 <div class="flex space-x-2">
                                     <a href="{{ route('persona.edit', [$cliente->id]) }}"
@@ -53,7 +66,7 @@
                                         <i class="fa fa-edit"></i>
                                     </a>
 
-                                    
+
                                     <form action="{{ route('persona.destroy', $cliente) }}" method="POST">
                                         @csrf
                                         @method('DELETE')

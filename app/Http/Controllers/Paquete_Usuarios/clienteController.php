@@ -62,7 +62,7 @@ class clienteController extends Controller
 
 
 
-        return redirect()->route('listar.clientes')->with('success', 'usuario creado correctamente');
+        return redirect()->route('listar.clientes')->with('success', 'cliente creado correctamente');
     }
 
     // public function login(){

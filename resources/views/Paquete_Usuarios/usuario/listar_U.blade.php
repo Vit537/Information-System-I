@@ -4,6 +4,13 @@
 
 
 @section('content')
+    @if (session('success'))
+        <x-flash-message :message="session('success')" type="success" />
+    @endif
+
+    @if (session('error'))
+        <x-flash-message :message="session('error')" type="error" />
+    @endif
     <div class="px-10">
         <div class="flex justify-between py-2">
             <div>
@@ -17,7 +24,8 @@
         </div>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-4">
-            <table class="w-full text-sm text-left text-gray-800 dark:text-gray-300 border-collapse bg-white dark:bg-gray-800">
+            <table
+                class="w-full text-sm text-left text-gray-800 dark:text-gray-300 border-collapse bg-white dark:bg-gray-800">
                 <thead class="text-xs text-black uppercase bg-slate-400 dark:bg-slate-600">
                     <tr>
                         <th scope="col" class="px-6 py-3">

@@ -11,15 +11,20 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Paquete_Usuarios\cliente;
 use App\Models\Paquete_Usuarios\proveedor;
 use App\Models\Paquete_Usuarios\usuario;
+use App\Notifications\CustomResetPassword;
+use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Auth\Passwords\CanResetPassword as CanResetPasswordTrait;
 
-use App\Models\personaSession;
 
-class Persona extends Authenticatable
+// use App\Models\personaSession;
+
+class Persona extends Authenticatable implements CanResetPassword
 {
     //
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+    use CanResetPasswordTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -27,6 +32,7 @@ class Persona extends Authenticatable
      * @var list<string>
      */
     protected $table = "persona";
+     protected $primaryKey = "id";
 
     protected $fillable = [
         'nombre',
@@ -47,6 +53,22 @@ class Persona extends Authenticatable
         return $this->correo;
     }
 
+    public function routeNotificationForMail($notification)
+     {
+        return $this->correo;
+     }
+
+     public function sendPasswordResetNotification($token)
+     {
+         $this->notify(new CustomResetPassword($token));
+     }
+
+    // public function sendPasswordResetNotification($token)
+    // {
+    //     $this->notify(new \App\Notifications\CustomResetPassword($token));
+    // }
+
+
     public function cliente()
     {
         return $this->hasOne(cliente::class, 'persona_id');
@@ -60,7 +82,8 @@ class Persona extends Authenticatable
     {
         return $this->hasOne(usuario::class, 'persona_id');
     }
-    public function usuarioActi(){
+    public function usuarioActi()
+    {
         return $this->hasMany(personaActi::class, 'persona_id');
     }
 
@@ -93,68 +116,68 @@ class Persona extends Authenticatable
     //     ];
     // }
 
-        /** @use HasFactory<\Database\Factories\UserFactory> */
-        // use HasFactory, Notifiable;
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    // use HasFactory, Notifiable;
 
-        /**
-         * The attributes that are mass assignable.
-         *
-          * @var list<string>
-          */
-        // protected $table="persona";
+    /**
+     * The attributes that are mass assignable.
+     *
+    *@var list<string>
+     */
+    // protected $table="persona";
 
-        // protected $fillable = [
-        //     'nombre',
-        //     'correo',
-        //     'contrasena',
-        //     'direccion',
-        //     'telefono',
-        //     'tipo'
-        // ];
+    // protected $fillable = [
+    //     'nombre',
+    //     'correo',
+    //     'contrasena',
+    //     'direccion',
+    //     'telefono',
+    //     'tipo'
+    // ];
 
-        // public function getAuthPassword()
-        // {
-        //     return $this->contrasena;
-        // }
+    // public function getAuthPassword()
+    // {
+    //     return $this->contrasena;
+    // }
 
-        // public function getEmailForPasswordReset() {
-        //     return $this->correo;
-        // }
+    // public function getEmailForPasswordReset() {
+    //     return $this->correo;
+    // }
 
-        // public function cliente(){
-        //     return $this->hasOne(cliente::class, 'persona_id');
-        // }
+    // public function cliente(){
+    //     return $this->hasOne(cliente::class, 'persona_id');
+    // }
 
-        // public function proveedor(){
-        //     return $this->hasOne(proveedor::class, 'persona_id');
-        // }
-        // public function usuario(){
-        //     return $this->hasOne(usuario::class, 'persona_id');
-        // }
+    // public function proveedor(){
+    //     return $this->hasOne(proveedor::class, 'persona_id');
+    // }
+    // public function usuario(){
+    //     return $this->hasOne(usuario::class, 'persona_id');
+    // }
 
 
-        /**
-         * The attributes that should be hidden for serialization.
-         *
-         * @var list<string>
-         */
-        // protected $hidden = [
-        //     'contrasena',
-        //     'remember_token',
-        // ];
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var list<string>
+     */
+    // protected $hidden = [
+    //     'contrasena',
+    //     'remember_token',
+    // ];
 
-        /**
-         * Get the attributes that should be cast.
-         *
-         * @return array<string, string>
-         */
-        // protected function casts(): array
-        // {
-        //     return [
-        //         // 'confirmacion_contrasena' => 'datetime',
-        //                // 'contrasena' => 'hashed',
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    // protected function casts(): array
+    // {
+    //     return [
+    //         // 'confirmacion_contrasena' => 'datetime',
+    //                // 'contrasena' => 'hashed',
 
-        //     ];
-        // }
+    //     ];
+    // }
 
 }

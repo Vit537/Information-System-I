@@ -56,6 +56,6 @@ class proveedorController extends Controller
             'fecha_registro' => $request->registro,
         ]);
 
-        return redirect()->route('listar.usuarios')->with('success', 'usuario creado correctamente');
+        return redirect()->route('listar.usuarios')->with('success', 'proveedor creado correctamente');
     }
 }

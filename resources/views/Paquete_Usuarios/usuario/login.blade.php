@@ -133,44 +133,73 @@
 
     </form>
 </div> --}}
-    <div
-        class="flex items-center justify-center">
-        {{-- class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-300 via-slate-600 to-slate-900 px-4"> --}}
-        <form action="{{ route('login.verify') }}" method="POST"
-            class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md space-y-6">
-            @csrf
+    <div class="">
+        <div class="flex items-center justify-center">
+            {{-- class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-300 via-slate-600 to-slate-900 px-4"> --}}
+            <form action="{{ route('login.verify') }}" method="POST"
+                class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md space-y-6">
+                @csrf
 
-            <h2 class="text-2xl font-bold text-center text-gray-800">Iniciar sesión</h2>
+                <h2 class="text-2xl font-bold text-center text-gray-800">Iniciar sesión</h2>
 
-            <!-- Email -->
-            <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
-                <input type="email" name="correo" id="email" value="{{ old('email') }}"
-                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                    placeholder="ejemplo@mail.com" required>
-                @error('email')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                @enderror
-            </div>
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                    <input type="email" name="correo" id="email" value="{{ old('email') }}"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="ejemplo@mail.com" required>
+                    @error('email')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
 
-            <!-- Contraseña -->
-            <div>
-                <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
-                <input type="password" name="contrasena" id="password"
-                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                    placeholder="Mínimo 8 caracteres" required>
-                @error('password')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                @enderror
-            </div>
+                <!-- Contraseña -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+                    <input type="password" name="contrasena" id="password"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                        placeholder="Mínimo 8 caracteres" required>
+                    @error('password')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
 
-            <!-- Botón de Enviar -->
-            <div>
-                <button type="submit"
-                    class="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition">
-                    Iniciar sesión
-                </button>
-            </div>
-        </form>
+                <!-- Botón de Enviar -->
+                <div>
+                    <button type="submit"
+                        class="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition">
+                        Iniciar sesión
+                    </button>
+
+                </div>
+                <div class=" flex justify-center">
+                    <a class="hover:bg-slate-400 px-2 py-1 rounded-xl" href="{{ route('password.request') }}">Olvido su
+                        contrasena?</a>
+                </div>
+
+            </form>
+
+
+        </div>
+                {{-- <div class="bg-green-700">
+                <div class="bg-white flex flex-col md:flex-row gap-4">
+                    <h2>Recuperar Contraseña</h2>
+
+                    @if (session('status'))
+                        <div>{{ session('status') }}</div>
+                    @endif
+
+                    <form method="POST" action="{{ route('password.email') }}" class="bg-green-800">
+                        @csrf
+                        <div>
+                            <label for="email">Correo electrónico</label>
+                            <input id="email" type="email" name="correo" required>
+                        </div>
+
+                        <button type="submit">Enviar enlace de recuperación</button>
+                    </form>
+                </div>
+
+            </div> --}}
     </div>
 @endsection

@@ -19,7 +19,14 @@ use App\Http\Controllers\Paquete_Productos\categoriaController;
 use App\Livewire\ReporteStock;
 use App\Models\AuditLog\bitacora;
 use App\Observers\bitacoraObserver;
-use App\Livewire\HistorialStock; 
+use App\Livewire\HistorialStock;
+use App\Http\Controllers\Auth\ResetPasswordController;
+
+
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use Illuminate\Support\Facades\Password;
+
+use App\Http\Controllers\Paquete_Usuarios\Auth\ResetPwdController;
 
 
 Route::get('/', function () {
@@ -44,6 +51,23 @@ Route::prefix('auth')->group(function () {
 });
 
 
+//actualizacion de la contrasena
+
+
+ Route::get('forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+ Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+// //resetear contrasena
+  Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+ Route::post('password/reset', [ResetPwdController::class, 'reset'] )->name('password.update');
+//  Route::put('change/{id}', [PersonasController::class, 'actualizar_credenciales'] )->name('password.change');
+
+
+
+
+
+
+
 // Route::get('register/categoria', [categoriaController::class, 'register1'])->name('register.categoria');
 // Route::post('register/categoria', [categoriaController::class, 'registerVerify1']);
 
@@ -66,6 +90,7 @@ Route::middleware('auth')->group(function () {
     })->name('lista');
 
     Route::resource('persona', PersonasController::class);
+
     Route::resource('cliente', clienteController::class);
 
     Route::get('register/cliente', [clienteController::class, 'register'])->name('register.cliente');
@@ -87,6 +112,8 @@ Route::middleware('auth')->group(function () {
     // crear usuarios
     Route::get('crear', [PersonasController::class, 'crearUsuarios'])->name('crear.usuarios');
 });
+
+Route::put('/password-change/{id}', [PersonasController::class, 'actualizar_credenciales'])->name('actualizar.credencial');
 
 
 

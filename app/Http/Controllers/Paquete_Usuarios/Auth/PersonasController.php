@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Paquete_Usuarios\Auth\Persona;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\ActualizarCredencialesRequest;
 
 class PersonasController extends Controller
 {
@@ -137,7 +138,7 @@ class PersonasController extends Controller
         return view('Paquete_Usuarios.usuario.listar_U', compact('usuarios'));
     }
 
-        public function listarEmpleados()
+    public function listarEmpleados()
     {
         $empleados = Persona::all(); // o auth()->user();
         return view('Paquete_Usuarios.usuario_empleado.listar_E', compact('empleados'));
@@ -215,16 +216,92 @@ class PersonasController extends Controller
 
     public function update(Request $request, Persona $persona)
     {
+
+
         $persona->update($request->all());
+
         return redirect()->route('listar.usuarios');
+        //     $user = \App\Models\User::find(1); // Usa el ID del usuario que quieras
+        //     $user->password = bcrypt('nuevacontraseña');
+        //    // $user->save();
+        // $contrase
+        // $actualizar=requestPassword($request);
     }
+
+    //     protected function actualizar_credenciales(Request $request, $id){
+    //    $request->validate([
+    //      'correo' => ['required', 'email'],
+    //             'password' => ['required', 'confirmed', 'min:8'],
+    //         ]);
+
+    //         $persona = Persona::findOrFail($id);
+    //         $persona->contrasena = bcrypt($request->password); // Usa el campo correcto
+    //         $persona->save();
+
+
+    public function actualizar_credenciales(ActualizarCredencialesRequest  $request, $id)
+    {
+
+        // dd('paso la validadcion');
+        $persona = Persona::findOrFail($id);
+        $cambios = [];
+
+        // Comparar contraseña
+        if (!Hash::check($request->contrasenaNueva, $persona->contrasena)) {
+
+            $persona->contrasena = bcrypt($request->contrasenaNueva);
+            $cambios[] = 'contraseña';
+        }
+
+        // Comparar correo
+        if ($persona->correo !== $request->correo) {
+            $persona->correo = $request->correo;
+            $cambios[] = 'correo';
+        }
+
+        if (empty($cambios)) {
+            return redirect()->back()->with('warning', 'No realizaste ningún cambio.');
+        }
+
+        $persona->save();
+
+        // // Si se cambió la contraseña, enviar correo
+        // if (in_array('contraseña', $cambios)) {
+        //     \Mail::raw("Hola {$persona->nombre}, tu contraseña ha sido actualizada correctamente.", function ($message) use ($persona) {
+        //         $message->to($persona->correo)
+        //             ->subject('Tu contraseña ha sido actualizada');
+        //     });
+
+        //     \Log::info("Contraseña actualizada para persona ID {$persona->id}, correo enviado a {$persona->correo}.");
+        // }
+
+        // if (in_array('correo', $cambios)) {
+        //     \Log::info("Correo actualizado para persona ID {$persona->id}, nuevo correo: {$persona->correo}.");
+        // }
+
+        return redirect()->back()->with('success', 'Datos actualizados correctamente: ' . implode(' y ', $cambios) . '.');
+    }
+
+    //     // Log::info("La persona con ID $id cambió su contraseña.");
+
+    //     return redirect()->back()->with('success', 'Contraseña actualizada correctamente.');
+
+    // }
+
+    // dd('entra la validadcion');
+        // $request->validate([
+        //     'correo' => 'required|unique:persona,correo|email',
+        //     'contrasenaActual' => 'required|min:4',
+        //     'contrasenaNueva' => 'required|min:4',
+        //     'confirmacion_contrasena' => 'required|same:contrasenaNueva',
+        // ]);
 
     public function destroy(Persona $persona)
     {
 
         if (auth()->user()->tipo === 'administrador') {
             $persona->delete();
-            return redirect()->route('listar.usuarios');
+            return redirect()->route('listar.usuarios')->with('success', 'se elimino correctamente');
         }
 
         abort(403, 'No tienes permiso para eliminar usuarios.');
