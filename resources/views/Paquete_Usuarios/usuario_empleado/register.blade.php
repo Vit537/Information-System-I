@@ -115,7 +115,7 @@
                         placeholder="1550.00"> --}}
 
                     <input name="sueldo" type="text" value="{{ old('sueldo') }}" class="form-control"
-                        id="sueldo" placeholder="1,550.00">
+                        id="sueldo" placeholder="1550.00">
                     <script>
                         new Cleave('#sueldo', {
                             numeral: true,

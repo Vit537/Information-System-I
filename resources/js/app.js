@@ -19,5 +19,5 @@
 //   window.Alpine = Alpine
 //   Alpine.start()
 
-  import 'alpinejs';
+// import 'alpinejs';
 
