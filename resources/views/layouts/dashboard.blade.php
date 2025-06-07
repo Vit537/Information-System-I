@@ -148,6 +148,9 @@
                         class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Gestionar Cotizacion
                     </a>
+                    <a href="{{ route('listar.cotizaciones') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
+                        Asignar Servicios
+                    </a>
                     <a href="{{ route('listar.ventas') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Gestionar Ventas
                     </a>
