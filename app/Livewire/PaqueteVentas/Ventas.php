@@ -10,11 +10,18 @@ use App\Models\Paquete_Ventas\venta;
 class Ventas extends Component
 {
     public $count = 0;
+    public $verFactura;
+
+    public function mount($verFactura)
+    {
+        $this->verFactura = $verFactura;
+    }
     
     public function render()
     {
         return view('livewire.paquete-ventas.venta.listar-ventas',[
-            'ventas' => $this->getVentas()
+            'ventas' => $this->getVentas(),
+            'verFactura' => $this->verFactura
         ]);
     }
 

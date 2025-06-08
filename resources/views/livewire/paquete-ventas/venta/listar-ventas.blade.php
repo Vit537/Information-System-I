@@ -32,17 +32,23 @@
                 <button 
                     wire:click="gotoDetalle({{ $cotizacion->id }})"
                     class="flex-1 flex items-center justify-center bg-white text-black px-3 py-2 rounded-md shadow-md hover:bg-gray-100 transition"
-                >
+                    >
                     <i class="fa fa-eye mr-2"></i> Detalle
                 </button>
-
-                <button 
-                    wire:click="deleteVenta({{ $venta->id }})"
-                    onclick="return confirm('¿Estás seguro de que deseas eliminar esta venta?');"
-                    class="flex-1 flex items-center justify-center bg-white text-black px-3 py-2 rounded-md shadow-md hover:bg-red-100 transition"
-                >
-                    <i class="fa fa-trash mr-2"></i> Eliminar
-                </button>
+            
+                @if(!$verFactura)
+                    <button 
+                        wire:click="deleteVenta({{ $venta->id }})"
+                        onclick="return confirm('¿Estás seguro de que deseas eliminar esta venta?');"
+                        class="flex-1 flex items-center justify-center bg-white text-black px-3 py-2 rounded-md shadow-md hover:bg-red-100 transition"
+                    >
+                        <i class="fa fa-trash mr-2"></i> Eliminar
+                    </button>
+                @else
+                    <div class="flex-1 flex items-center justify-center px-3 py-2 rounded-md shadow-md bg-white hover:bg-gray-100 transition">
+                        <livewire:paquete-ventas.factura-printer :billId="$venta->id" />
+                    </div>
+                @endif
             </div>
         </div>
     @endforeach

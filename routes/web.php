@@ -7,6 +7,7 @@ use App\Http\Controllers\Paquete_Usuarios\clienteController;
 use App\Http\Controllers\Paquete_Usuarios\proveedorController;
 use App\Http\Controllers\Paquete_Usuarios\usuarioController;
 use App\Http\Controllers\Paquete_Productos\productoController;
+use App\Http\Controllers\Paquete_Ventas\FacturaController;
 
 use App\Http\Controllers\Paquete_Usuarios\bitacoraController;
 use App\Http\Controllers\Paquete_Compra\imprimirFacturaController;
@@ -189,15 +190,16 @@ Route::middleware('auth')->prefix('cotizacion')->group(function () {
 //venta
 Route::middleware('auth')->prefix('venta')->group(function () {
     Route::get('listarVentas', function(){
-        return view('Paquete_Ventas.venta.listar-ventas');
+        return view('Paquete_Ventas.venta.listar-ventas', ['verFactura' => false]);
     })->name('listar.ventas');
     Route::get('crearVenta', function(){
         return view('Paquete_Ventas.venta.crear-venta');
     })->name('crear.venta');
-    // Route::get('detalleventa/', function (Illuminate\Http\Request $request) {
-    //     $ventaId = $request->query('ventaId');
-    //     return view('Paquete_Ventas.venta.detalleventa', ['ventaId' => $ventaId]);
-    // })->name('detalle.venta');
+    
+    Route::get('/factura/print/{id}', [FacturaController::class, 'print'])->name('factura.print');
+    Route::get('verFacturas', function(){
+        return view('Paquete_Ventas.venta.listar-ventas', ['verFactura' => true]);
+    })->name('ver.facturas');
 });
 
 
