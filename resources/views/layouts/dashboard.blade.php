@@ -128,7 +128,7 @@
                     <a href="{{ route('listar.ventas') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Gestionar Ventas
                     </a>
-                    <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
+                    <a href="{{ route('ver.facturas') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Generar factura de Venta
                     </a>
                     <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">

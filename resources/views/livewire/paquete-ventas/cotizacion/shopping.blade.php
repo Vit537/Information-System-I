@@ -19,7 +19,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
         <!-- Left Column: Products + Services -->
         <div>
-            <!-- 🧾 Services List -->
+            <!-- Services List -->
             <h2 class="text-2xl font-semibold text-gray-800 mb-5">🧾 Servicios</h2>
             <div class="grid gap-5">
                 @foreach ($services as $service)
@@ -39,8 +39,8 @@
                     </div>
                 @endforeach
             </div>
-            
-            <!-- 🛍️ Products List -->
+
+            <!-- Products List -->
             <h2 class="text-2xl font-semibold text-gray-800 mb-5">🛍️ Productos</h2>
             <div class="grid gap-5 mb-10">
                 @foreach ($products as $product)
