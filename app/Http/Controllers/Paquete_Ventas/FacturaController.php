@@ -20,6 +20,6 @@ class FacturaController extends Controller
         $cliente = persona::find($cotizacion->cliente_id);
         $pdf = PDF::loadView('paquete_ventas.pdf.factura', compact('detalle', 'billId', 'cliente'));
 
-        return $pdf->download('bill-'.$billId.'.pdf');
+        return $pdf->download('factura-nro-'.$billId.'.pdf');
     }
 }
