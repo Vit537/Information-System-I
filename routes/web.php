@@ -161,14 +161,22 @@ Route::middleware('auth')->prefix('cotizacion')->group(function () {
 //venta
 Route::middleware('auth')->prefix('venta')->group(function () {
     Route::get('listarVentas', function(){
-        return view('Paquete_Ventas.venta.listar-ventas', ['verFactura' => false]);
+        return view('Paquete_Ventas.venta.listar-ventas', ['evento' => 'venta']);
     })->name('listar.ventas');
     Route::get('crearVenta', function(){
         return view('Paquete_Ventas.venta.crear-venta');
     })->name('crear.venta');
-    
+    //factura
     Route::get('/factura/print/{id}', [FacturaController::class, 'print'])->name('factura.print');
     Route::get('verFacturas', function(){
-        return view('Paquete_Ventas.venta.listar-ventas', ['verFactura' => true]);
+        return view('Paquete_Ventas.venta.listar-ventas', ['evento' => 'factura']);
     })->name('ver.facturas');
+    //devoluciones
+    Route::get('gestionarDevoluciones', function(){
+        return view('Paquete_Ventas.venta.listar-ventas', ['evento' => 'devolucion']);
+    })->name('gestionar.devoluciones');
+    Route::get('editarDevolucion', function (Illuminate\Http\Request $request) {
+        $ventaID = $request->query('ventaID');
+        return view('Paquete_Ventas.venta.devolucion-cancelacion', ['ventaID' => $ventaID]);
+    })->name('editar.devolucion');
 });

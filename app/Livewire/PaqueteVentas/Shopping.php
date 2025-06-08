@@ -29,10 +29,10 @@ class Shopping extends Component
         $this->clientes = persona::where('tipo', 'cliente')->get();
         $this->products = producto::whereHas('categoria', function ($query) {
             $query->where('nombre', '!=', 'servicio');
-        })->get();
+        })->where('stock', '>', 0)->get();
         $this->services = producto::whereHas('categoria', function ($query) {
             $query->where('nombre', 'servicio');
-        })->get();
+        })->where('stock', '>', 0)->get();
     }
 
     public function addToCart($productId)
@@ -42,6 +42,9 @@ class Shopping extends Component
         });
 
         if ($index !== false) {
+            if(producto::find($productId)->stock <= $this->cart[$index][1]){
+                return;
+            }
             $this->cart[$index][1]++;
         } else {
             $this->cart[] = [$productId, 1];
@@ -112,6 +115,8 @@ class Shopping extends Component
                 'cantidad' => $item['quantity'],
                 'precio_total' => $item['subtotal']
             ]);
+            $item['product']->stock -= $item['quantity'];
+            $item['product']->save();
         }
         $this->cart = [];
         $this->total = 0;

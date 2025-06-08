@@ -10,18 +10,18 @@ use App\Models\Paquete_Ventas\venta;
 class Ventas extends Component
 {
     public $count = 0;
-    public $verFactura;
+    public $evento;
 
-    public function mount($verFactura)
+    public function mount($evento)
     {
-        $this->verFactura = $verFactura;
+        $this->evento = $evento;
     }
     
     public function render()
     {
         return view('livewire.paquete-ventas.venta.listar-ventas',[
             'ventas' => $this->getVentas(),
-            'verFactura' => $this->verFactura
+            'evento' => $this->evento
         ]);
     }
 
@@ -42,6 +42,10 @@ class Ventas extends Component
 
     public function gotoDetalle($cotizacionId){
         redirect()->route('detalle.cotizacion', ['cotizacionId' => $cotizacionId]);
+    }
+
+    public function gotoDevolucion($ventaID){
+        redirect()->route('editar.devolucion', ['ventaID' => $ventaID]);
     }
 
     public function getProductInfo($id){
