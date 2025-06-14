@@ -1,31 +1,35 @@
 <?php
 
-namespace App\Livewire\PaqueteVentas;
+namespace App\Livewire\PaqueteCompras;
 
 use Livewire\Component;
+use App\Models\Paquete_Usuarios\Auth\persona;
 use App\Models\Paquete_productos\producto;
-use App\Models\Paquete_Usuarios\Auth\Persona;
-use App\Models\Paquete_Ventas\cotizacion;
-use App\Models\Paquete_Ventas\cotizacion_detalle;
+use  App\Models\Paquete_Usuarios\proveedor;
+use  App\Models\Paquete_compra\ordenCompra;
 use Illuminate\Support\Facades\Auth;
 
-class Shopping extends Component
+class AddNotaCompra extends Component
 {
     public $products = [];
-    public $clientes = [];
-    public $cliente_id = null;
+    public $proveedores = [];
+    public $prov_id = null;
     public $cart = [];
     public $total = 0;
 
+
     public function render()
     {
-
-        return view('livewire.paquete-ventas.cotizacion.shopping');
+        return view('livewire.PaqueteCompras.add-nota-compra');
     }
 
     public function mount()
     {
-        $this->clientes = persona::where('tipo', 'cliente')->get();
+        // $this->proveedores = proveedor::with('persona')->first();
+        $this->proveedores = proveedor::with('persona')->get();
+        // dd($this->proveedores);
+
+
         $this->products = producto::all();
     }
 
@@ -78,25 +82,28 @@ class Shopping extends Component
         });
     }
 
+
+
     public function confirm()
     {
-        cotizacion::create([
-            'monto_total' => $this->total,
-            'cliente_id' => $this->cliente_id,
-            'empleado_id' => Auth::user()->id
+        $orden = ordenCompra::create([
+            'fecha' => now(),
+            'administrador_id' => Auth::user()->id,
+            'proveedor_id' => $this->prov_id,
+            //  'empleado_id' => Auth::user()->id
         ]);
-        $shopping = $this->getCartWithDetails();
-        $cotizacion = cotizacion::max('id');
-        foreach($shopping as $item){
-            cotizacion_detalle::create([
-                'cotizacion_id' => $cotizacion,
-                'producto_id' => $item['product']->id,
-                'cantidad' => $item['quantity'],
-                'precio_total' => $item['subtotal']
-            ]);
-        }
+        $lista = $this->getCartWithDetails();
+        foreach ($lista as $item) {
+            //  dd($item);
+
+             $orden->productos()->attach($item['product']->id, [
+                 'cantidad' => $item['quantity'],
+                 'precio_unitario' => $item['product']->precio,
+                 'precio_total' => $item['subtotal']
+             ]);
+         }
         $this->cart = [];
         $this->total = 0;
-        redirect('cotizacion/listarCotizaciones');
+        redirect('nota-compra');
     }
 }

@@ -133,6 +133,7 @@
 
     </form>
 </div> --}}
+{{-- <livewire:DarkModeToggle/> --}}
     <div class="">
         <div class="flex items-center justify-center">
             {{-- class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-300 via-slate-600 to-slate-900 px-4"> --}}
@@ -172,6 +173,8 @@
                     </button>
 
                 </div>
+
+
                 <div class=" flex justify-center">
                     <a class="hover:bg-slate-400 px-2 py-1 rounded-xl" href="{{ route('password.request') }}">Olvido su
                         contrasena?</a>

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('direccion');
             $table->string('telefono')->nullable();
             $table->string('tipo')->default('usuario');
+            $table->string('theme')->default('light'); //dark
             $table->rememberToken();
             $table->timestamps();
         });

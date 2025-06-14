@@ -14,6 +14,7 @@ use App\Models\Paquete_Usuarios\usuario;
 use App\Notifications\CustomResetPassword;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Auth\Passwords\CanResetPassword as CanResetPasswordTrait;
+use App\Models\Paquete_compra\ordenCompra;
 
 
 // use App\Models\personaSession;
@@ -40,7 +41,8 @@ class Persona extends Authenticatable implements CanResetPassword
         'contrasena',
         'direccion',
         'telefono',
-        'tipo'
+        'tipo',
+        'modo_oscuro'
     ];
 
     public function getAuthPassword()
@@ -85,6 +87,10 @@ class Persona extends Authenticatable implements CanResetPassword
     public function usuarioActi()
     {
         return $this->hasMany(personaActi::class, 'persona_id');
+    }
+
+    public function ordenCompra(){
+        return $this->hasMany(ordenCompra::class, 'id');
     }
 
     // public function sessions()

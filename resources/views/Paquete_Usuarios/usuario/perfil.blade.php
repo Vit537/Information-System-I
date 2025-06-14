@@ -1,10 +1,10 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <h1 class="flex text-2xl justify-center font-bold mb-4 text-slate-50">Perfil del Usuario</h1>
+    <h1 class="flex text-2xl justify-center font-bold mb-4 text-slate-50 dark:text-slate-600">Perfil del Usuario</h1>
     {{-- <div class="bg-slate-100 flex justify-center"><livewire:mostrar-pwd :usuario="$usuario" /></div> --}}
 
-    <div class="rounded-xl shadow-md p-5 text-slate-600 flex justify-center items-center">
+    <div class="rounded-xl  p-5 text-slate-600 flex justify-center items-center">
         {{-- @if ($producto->imagen)
                         {{-- <img src="{{ asset('storage/imagenes/' . $producto->imagen) }}" alt="{{ $producto->nombre }}" --}}
         {{-- <img src="{{ asset('storage/productos/' . $producto->imagen) }}" alt="Imagen"
@@ -20,6 +20,12 @@
 
     </div>
     {{-- <div class="bg-slate-400 flex justify-center">  <livewire:mostrar-pwd :usuario="$usuario" /></div> --}}
+        <svg style="display: none;">
+        <symbol id="icon_sprite_icon-chevron_down" viewBox="0 0 20 20">
+            <path d="M5 8l5 5 5-5H5z"></path>
+        </symbol>
+    </svg>
+
 
     <div class="flex justify-center items-center">
         <div class="w-full md:w-1/2  ">

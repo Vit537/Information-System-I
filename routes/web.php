@@ -9,6 +9,7 @@ use App\Http\Controllers\Paquete_Usuarios\usuarioController;
 use App\Http\Controllers\Paquete_Productos\productoController;
 
 use App\Http\Controllers\Paquete_Usuarios\bitacoraController;
+use App\Http\Controllers\Paquete_Compra\imprimirFacturaController;
 
 use App\Models\Paquete_Usuarios\Auth\Persona;
 use App\Models\Paquete_Usuarios\cliente;
@@ -27,7 +28,8 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use Illuminate\Support\Facades\Password;
 
 use App\Http\Controllers\Paquete_Usuarios\Auth\ResetPwdController;
-
+use App\Livewire\PaqueteCompras\NotaCompra;
+use App\Http\Controllers\ConfiguracionController;
 
 Route::get('/', function () {
     return view('Paquete_Usuarios.usuario.login');
@@ -197,3 +199,46 @@ Route::middleware('auth')->prefix('venta')->group(function () {
     //     return view('Paquete_Ventas.venta.detalleventa', ['ventaId' => $ventaId]);
     // })->name('detalle.venta');
 });
+
+
+//Nota compra
+
+Route::get('nota-compra', function(){
+    return view('Paquete_compra.listar-compras');
+})->name('nota.compra');
+Route::get('add-compra', function(){
+    return view('Paquete_compra.add-compras');
+})->name('add.compra');
+Route::get('edit-compra/{id}', function($id){
+    return view('Paquete_compra.edit-compras' , ['compra_id' => $id]);
+})->name('edit.compra');
+
+Route::get('print-compras/{id}', function($id){
+    return view('Paquete_compra.imprimir', ['compra_id' => $id]);
+})->name('print.compras');
+
+ Route::get('/orden-compra/pdf/{id}', [imprimirFacturaController::class, 'descargarPDF'])->name('orden.pdf');
+// Route::get('/orden-compra/pdf/{id}', [OrdenCompraController::class, 'descargarPDF'])->name('orden.pdf');
+
+
+// gestionar pagos
+
+ Route::get('Pago-stripe', function(){
+     return view('Paquete_Ventas.PagoStripe.crearPago');
+ })->name('pago.stripe');
+
+Route::get('Pago-qr', function(){
+    return view('Paquete_Ventas.PagoStripe.pagoQR');
+})->name('pago.qr');
+
+Route::get('Pago-tarjeta', function(){
+    return view('Paquete_Ventas.PagoStripe.pagoTarjeta');
+})->name('pago.tarjeta');
+
+
+
+
+
+
+Route::post('/cambiar-tema', [ConfiguracionController::class, 'cambiarTema'])->name('cambiar.tema');
+

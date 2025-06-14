@@ -15,9 +15,12 @@
             margin-top: 20px;
             font-size: 2em;
         }
+
+
     </style>
 
-    <div class="logo-container">
-        <h1 class="text-white">¡Bienvenido!</h1>
+    <div class="logo-container  ">
+        <h1 class="text-white dark:text-gray-900">¡Bienvenido!</h1>
     </div>
 @endsection
+{{-- text-white dark:text-yellow-300 --}}
