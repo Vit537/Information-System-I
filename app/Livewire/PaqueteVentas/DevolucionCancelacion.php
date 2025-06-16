@@ -80,5 +80,6 @@ class DevolucionCancelacion extends Component
         }
         $venta = venta::find($this->ventaID);
         $venta->delete();
+        redirect()->route('gestionar.devoluciones', ['evento' => 'devolucion']);
     }
 }
