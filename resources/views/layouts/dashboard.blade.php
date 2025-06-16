@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     {{-- nuevo meta --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -199,8 +199,8 @@
         </nav>
 
         <!-- Profile and Signout Buttons -->
-        <div class="absolute bottom-4 left-1/3 transform -translate-x-1/2 flex space-x-4">
-            {{-- left-1/4       --}}
+        {{-- <div class="absolute bottom-4 left-1/3 transform -translate-x-1/2 flex space-x-4">
+            {{-- left-1/4
             <div x-data="themeSwitcher()" x-init="init()">
                 <button @click="toggleTheme()"
                     class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-600 text-white hover:bg-blue-700">
@@ -223,8 +223,8 @@
 
 
 
-            <!-- Profile Button with Icon -->
-            <a href="{{ route('perfil') }}"
+        {{-- <!-- Profile Button with Icon --}}
+        {{-- <a href="{{ route('perfil') }}"
                 class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-600 text-white hover:bg-blue-700">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
@@ -232,9 +232,9 @@
                         d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM12 14c-4.41 0-8 2.69-8 6v2h16v-2c0-3.31-3.59-6-8-6z">
                     </path>
                 </svg>
-            </a>
+            </a> --}}
 
-            <!-- Sign Out Button with Icon -->
+        {{-- <!-- Sign Out Button with Icon
             <form action="{{ route('signOut') }}" method="POST">
                 @csrf
                 <button type="submit"
@@ -246,6 +246,56 @@
                     </svg>
                 </button>
             </form>
+        </div> --}}
+        <!-- Profile and Signout Buttons -->
+        <div class="fixed bottom-4 left-0 right-0 flex justify-center px-4">
+            <div class="flex space-x-4 bg-white dark:bg-gray-800 p-1 rounded-full shadow-lg">
+
+                <!-- Theme Switcher -->
+                <div x-data="themeSwitcher()" x-init="init()">
+                    <button @click="toggleTheme()"
+                        class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-600 text-white hover:bg-blue-700 focus:outline-none">
+
+                        <!-- SVG modo oscuro -->
+                        <svg x-show="theme === 'dark'" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+
+                        <!-- SVG modo claro -->
+                        <svg x-show="theme !== 'dark'" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Profile Button -->
+                <a href="{{ route('perfil') }}"
+                    class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-600 text-white hover:bg-blue-700 transition duration-200">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM12 14c-4.41 0-8 2.69-8 6v2h16v-2c0-3.31-3.59-6-8-6z">
+                        </path>
+                    </svg>
+                </a>
+
+                <!-- Logout Button -->
+                <form action="{{ route('signOut') }}" method="POST" class="flex items-center">
+                    @csrf
+                    <button type="submit"
+                        class="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center hover:bg-blue-700 transition duration-200">
+                        <svg class="w-6 h-6" fill="none" stroke="white" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 16l4-4m0 0l-4-4m4 4H3"></path>
+                        </svg>
+                    </button>
+                </form>
+            </div>
         </div>
 
     </div>
@@ -303,6 +353,7 @@
         <!-- Page content -->
         <main class="flex-1 overflow-y-auto p-6">
             @yield('content')
+            @yield('print')
             @if (isset($slot))
                 {{ $slot }}
             @endif

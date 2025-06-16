@@ -21,7 +21,7 @@ class ordenCompra extends Model
 
     public function persona()
     {
-        return $this->belongsTo(persona::class, 'id');
+        return $this->belongsTo(persona::class, 'administrador_id');
     }
 
     public function proveedor()

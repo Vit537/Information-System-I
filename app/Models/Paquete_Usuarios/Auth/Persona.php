@@ -93,6 +93,8 @@ class Persona extends Authenticatable implements CanResetPassword
         return $this->hasMany(ordenCompra::class, 'id');
     }
 
+    // public function
+
     // public function sessions()
     // {
     //     return $this->hasMany(personaSession::class);

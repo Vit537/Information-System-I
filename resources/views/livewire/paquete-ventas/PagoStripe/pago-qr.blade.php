@@ -40,7 +40,7 @@
 
 
 
-    {{-- <!-- QR
+{{-- <!-- QR
                      <div class="relative group">
                          <a href="https://wa.me/71607173?text=Hola%20te%20saludo%20desde%20mi%20web">
                              <div
@@ -55,15 +55,23 @@
                          </a>
                      </div> --}}
 
-    {{-- <a href="https://web.whatsapp.com/send?text=Te%20comparto%20esta%20imagen%20https://tudominio.com/assets/imagen.jpg" target="_blank">
+{{-- <a href="https://web.whatsapp.com/send?text=Te%20comparto%20esta%20imagen%20https://tudominio.com/assets/imagen.jpg" target="_blank">
   <img src="assets/imagen.jpg" alt="Compartir en WhatsApp" width="100">
 </a> --}}
+
+
+
+
+
 <div class="p-4  " x-data>
+
+
+
     <div class=" flex justify-center items-center ">
 
         <img id="mi-imagen" src="assets/QR.jpg" alt="Imagen compartible"
             class="w-full/2 md:w-96 h-auto rounded shadow-md">
-            {{-- class="mx-auto max-w-full h-auto rounded shadow-md"> --}}
+        {{-- class="mx-auto max-w-full h-auto rounded shadow-md"> --}}
 
 
 
@@ -72,18 +80,18 @@
 
     </div>
     <div class="mt-4 flex justify-center gap-4">
-            <!-- Botón para guardar -->
-            <button onclick="descargarImagen()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                Guardar Imagen
-            </button>
+        <!-- Botón para guardar -->
+        <button onclick="descargarImagen()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Guardar Imagen
+        </button>
 
-            <!-- Botón para compartir en WhatsApp -->
+        <!-- Botón para compartir en WhatsApp -->
 
-            <a href="https://api.whatsapp.com/send?text=¡Mira%20esta%20imagen!%20https://tudominio.com/assets/imagen.jpg"
-                target="_blank" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-                Compartir en WhatsApp
-            </a>
-        </div>
+        <a href="https://api.whatsapp.com/send?text=¡Mira%20esta%20imagen!%20https://tudominio.com/assets/imagen.jpg"
+            target="_blank" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+            Compartir en WhatsApp
+        </a>
+    </div>
 
     <script>
         function descargarImagen() {
@@ -108,4 +116,3 @@
         <div class="mt-4 text-red-600">{{ session('error') }}</div>
     @endif
 </div>
-

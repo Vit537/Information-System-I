@@ -11,7 +11,7 @@ class ImprimirFactura extends Component
     public $nombresFactura;
     public $datosFactura;
     public $total = 0;
- public $compra_id;
+    public $compra_id;
 
 
     public function render()
@@ -23,7 +23,7 @@ class ImprimirFactura extends Component
 
     public function mount($compra_id)
     {
-         $this->compra_id = $compra_id;
+        $this->compra_id = $compra_id;
         $this->nombresFactura = ordenCompra::with('proveedor.persona')->get();
         //  dd($this->nombresFactura);
         $this->datosFactura = ordenCompra::with('productos')->get();
@@ -53,17 +53,12 @@ class ImprimirFactura extends Component
     }
 
 
-    public function descargarPDF()
-    // public function descargarPDF($orden_id)
-    {
-        // $orden = ordenCompra::with('productos')->findOrFail($orden_id);
-        // $orden = ordenCompra::with('productos')->findOrFail($orden_id);
 
-        $pdf = Pdf::loadView('resources\views\Paquete_compra\imprimir.blade.php');
-        // $pdf = Pdf::loadView('pdf.orden-compra', compact('orden'));
-        // return $pdf->download('orden-compra-' . $orden->id . '.pdf');
-        return $pdf->download('orden-compra.pdf');
+    public function imprimirFactura()
+    {
+        $this->dispatchBrowserEvent('imprimir');
     }
+
 
 
     // <a href="{{ route('orden.pdf', ['id' => $compra_id]) }}" target="_blank" class="btn btn-primary">

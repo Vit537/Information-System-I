@@ -217,13 +217,21 @@ Route::get('print-compras/{id}', function($id){
     return view('Paquete_compra.imprimir', ['compra_id' => $id]);
 })->name('print.compras');
 
- Route::get('/orden-compra/pdf/{id}', [imprimirFacturaController::class, 'descargarPDF'])->name('orden.pdf');
+// Route::get('pdf-compras/{id}', function($id){
+//      return view('Paquete_compra.pdf-compras', ['compra_id' => $id]);
+//  })->name('pdf.compras');
+// web.php
+ Route::get('pdf-compras/{id}', [imprimirFacturaController::class, 'descargarPDF'])->name('pdf.compras');
+
+
+//  Route::get('/orden-compra/pdf/{id}', [imprimirFacturaController::class, 'descargarPDF'])->name('orden.pdf');
 // Route::get('/orden-compra/pdf/{id}', [OrdenCompraController::class, 'descargarPDF'])->name('orden.pdf');
 
 
 // gestionar pagos
 
  Route::get('Pago-stripe', function(){
+
      return view('Paquete_Ventas.PagoStripe.crearPago');
  })->name('pago.stripe');
 

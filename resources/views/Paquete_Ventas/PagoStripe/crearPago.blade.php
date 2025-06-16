@@ -78,6 +78,7 @@
                                  Código QR</p>
                          </a>
                      </div>
+                     {{-- <div>{{$coti_id}}</div> --}}
                  </div>
 
                  {{-- <livewire:PaqueteVentas.PagosStripe.PagoStripe/> --}}

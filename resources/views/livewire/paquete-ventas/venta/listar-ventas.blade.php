@@ -1,5 +1,5 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-6 bg-gray-50">
-    
+
     <!-- Create New Card -->
     <div class="flex flex-col justify-center items-center bg-white shadow-xl rounded-2xl p-6 border-2 border-dashed border-blue-300 hover:scale-105 transition">
         <div class="text-blue-500 text-4xl mb-2">
@@ -29,14 +29,14 @@
             </div>
 
             <div class="flex justify-between mt-4 space-x-2">
-                <button 
+                <button
                     wire:click="gotoDetalle({{ $cotizacion->id }})"
                     class="flex-1 flex items-center justify-center bg-white text-black px-3 py-2 rounded-md shadow-md hover:bg-gray-100 transition"
                 >
                     <i class="fa fa-eye mr-2"></i> Detalle
                 </button>
 
-                <button 
+                <button
                     wire:click="deleteVenta({{ $venta->id }})"
                     onclick="return confirm('¿Estás seguro de que deseas eliminar esta venta?');"
                     class="flex-1 flex items-center justify-center bg-white text-black px-3 py-2 rounded-md shadow-md hover:bg-red-100 transition"
