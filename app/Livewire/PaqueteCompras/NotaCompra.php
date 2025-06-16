@@ -20,7 +20,6 @@ class NotaCompra extends Component
     public function render()
     {
 
-
         return view('livewire.PaqueteCompras.nota-compra', [
             'proveedores' => $this->getProveedor()
         ]);
@@ -30,22 +29,16 @@ class NotaCompra extends Component
     {
         return ordenCompra::with('proveedor.persona')->get();
 
-        //   dd($datos);
-        // // return proveedor::with('persona')->get();
-        // return null;
-        // return proveedor::all();
-
-        // $proveedor = proveedor::where('persona_id','datos->proveedor_id')->get();
     }
 
     public function deleteCompra($id)
     {
         $compra = ordenCompra::find($id);
         if ($compra) {
-            // $this->mensaje=null;
+
             //  $this->mensaje = 'Elemento eliminado correctamente.' ;
             $compra->delete();
-            // $this->mensaje = null;
+
             $this->dispatch('mensaje', 'Compra eliminada correctamente.');
         }
     }
@@ -54,3 +47,8 @@ class NotaCompra extends Component
 
 
 }
+
+
+
+
+

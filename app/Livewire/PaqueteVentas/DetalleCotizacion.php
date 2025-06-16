@@ -14,7 +14,6 @@ class DetalleCotizacion extends Component
     public function mount($cotizacionId)
     {
         $this->coti_id=$cotizacionId;
-        // dd($this->coti_id);
         $this->detalle = cotizacion_detalle::where('cotizacion_id', $this->cotizacionId)->get();
     }
 

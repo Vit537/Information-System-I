@@ -25,10 +25,8 @@ class AddNotaCompra extends Component
 
     public function mount()
     {
-        // $this->proveedores = proveedor::with('persona')->first();
-        $this->proveedores = proveedor::with('persona')->get();
-        // dd($this->proveedores);
 
+        $this->proveedores = proveedor::with('persona')->get();
 
         $this->products = producto::all();
     }
@@ -107,3 +105,6 @@ class AddNotaCompra extends Component
         redirect('nota-compra');
     }
 }
+
+
+ // $this->proveedores = proveedor::with('persona')->first();

@@ -16,8 +16,6 @@ class ImprimirFactura extends Component
 
     public function render()
     {
-
-
         return view('livewire.PaqueteCompras.imprimir-factura');
     }
 
@@ -25,19 +23,10 @@ class ImprimirFactura extends Component
     {
         $this->compra_id = $compra_id;
         $this->nombresFactura = ordenCompra::with('proveedor.persona')->get();
-        //  dd($this->nombresFactura);
+
         $this->datosFactura = ordenCompra::with('productos')->get();
         $this->calculateTotal();
-        // dd($this->datosFactura);
 
-
-
-        //   dd($datos);
-        // // return proveedor::with('persona')->get();
-        // return null;
-        // return proveedor::all();
-
-        // $proveedor = proveedor::where('persona_id','datos->proveedor_id')->get();
     }
 
     public function calculateTotal()
@@ -61,8 +50,9 @@ class ImprimirFactura extends Component
 
 
 
-    // <a href="{{ route('orden.pdf', ['id' => $compra_id]) }}" target="_blank" class="btn btn-primary">
-    //     Descargar PDF
-    // </a>
 
 }
+
+// <a href="{{ route('orden.pdf', ['id' => $compra_id]) }}" target="_blank" class="btn btn-primary">
+//     Descargar PDF
+// </a>

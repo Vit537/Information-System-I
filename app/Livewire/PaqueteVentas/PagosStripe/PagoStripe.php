@@ -13,7 +13,7 @@ class PagoStripe extends Component
 
     public function procesarPago($token)
     {
-        // dd($token);
+
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
         try {

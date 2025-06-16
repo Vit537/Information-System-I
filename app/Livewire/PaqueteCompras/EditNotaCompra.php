@@ -36,35 +36,6 @@ class EditNotaCompra extends Component
     }
 
 
-    //     public function actualizar()
-    // {
-    //     $this->validate([
-    //         'nombre' => 'required|string|max:255',
-    //         'correo' => 'required|email',
-    //     ]);
-
-    //     $item = Persona::find($this->item_id);
-
-    //     if ($item) {
-    //         $item->update([
-    //             'nombre' => $this->nombre,
-    //             'correo' => $this->correo,
-    //         ]);
-
-    //         $this->reset(['nombre', 'correo', 'item_id', 'modoEdicion']);
-    //         $this->dispatch('mensaje', '¡Actualizado correctamente!');
-    //     }
-    // }
-
-
-
-
-
-    // public function render()
-    // {
-    //     return view('livewire.PaqueteCompras.add-nota-compra');
-    // }
-
 
     public function mount($compra_id)
     {
@@ -153,9 +124,7 @@ class EditNotaCompra extends Component
 
 
         }
-        // $lista = $this->getCartWithDetails();
-        // dd($lista);
-        // $this->total += $producto->precio * $producto->pivot->cantidad;
+
 
     }
 
@@ -184,8 +153,40 @@ class EditNotaCompra extends Component
 
 
         // Redirigir o mostrar mensaje
-        //$this->dispatch('mensaje', 'Orden actualizada correctamente.');
+
          session()->flash('mensaje', 'Orden actualizada correctamente.');
         return redirect()->route('nota.compra');
     }
 }
+
+
+//     public function actualizar()
+    // {
+    //     $this->validate([
+    //         'nombre' => 'required|string|max:255',
+    //         'correo' => 'required|email',
+    //     ]);
+
+    //     $item = Persona::find($this->item_id);
+
+    //     if ($item) {
+    //         $item->update([
+    //             'nombre' => $this->nombre,
+    //             'correo' => $this->correo,
+    //         ]);
+
+    //         $this->reset(['nombre', 'correo', 'item_id', 'modoEdicion']);
+    //         $this->dispatch('mensaje', '¡Actualizado correctamente!');
+    //     }
+    // }
+
+
+
+
+
+    // public function render()
+    // {
+    //     return view('livewire.PaqueteCompras.add-nota-compra');
+    // }
+
+

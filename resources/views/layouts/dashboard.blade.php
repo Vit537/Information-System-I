@@ -362,11 +362,6 @@
     @livewireScripts
 
 
-    {{-- <div x-data="themeSwitcher()" x-init="init()">
-        <button @click="toggleTheme()" class="px-4 py-2 bg-gray-300 dark:bg-gray-700 rounded">
-            <span x-text="theme === 'dark' ? 'Modo claro' : 'Modo oscuro'"></span>
-        </button>
-    </div> --}}
 
 
     <script>
@@ -408,7 +403,20 @@
     </script>
 
 
-    {{-- <script>
+
+</body>
+
+</html>
+
+
+
+    {{-- <div x-data="themeSwitcher()" x-init="init()">
+        <button @click="toggleTheme()" class="px-4 py-2 bg-gray-300 dark:bg-gray-700 rounded">
+            <span x-text="theme === 'dark' ? 'Modo claro' : 'Modo oscuro'"></span>
+        </button>
+    </div> --}}
+
+ {{-- <script>
     function themeSwitcher() {
         return {
             theme: 'light',
@@ -444,6 +452,3 @@
 </script> --}}
 
 
-</body>
-
-</html>
