@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Paquete_Compra;
+namespace App\Http\Controllers\Paquete_compra;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Paquete_compra\ordenCompra;
 
-class imprimirFacturaController extends Controller
+class ImprimirFacturaController extends Controller
 {
     public function descargarPDF($orden_id){
 
