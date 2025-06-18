@@ -207,9 +207,11 @@ Route::middleware('auth')->prefix('venta')->group(function () {
 Route::get('nota-compra', function(){
     return view('Paquete_compra.listar-compras');
 })->name('nota.compra');
+
 Route::get('add-compra', function(){
     return view('Paquete_compra.add-compras');
 })->name('add.compra');
+
 Route::get('edit-compra/{id}', function($id){
     return view('Paquete_compra.edit-compras' , ['compra_id' => $id]);
 })->name('edit.compra');
@@ -218,11 +220,12 @@ Route::get('print-compras/{id}', function($id){
     return view('Paquete_compra.imprimir', ['compra_id' => $id]);
 })->name('print.compras');
 
+Route::get('pdf-compras/{id}', [printFacturaController::class, 'descargarPDF'])->name('pdf.compras');
+
 // Route::get('pdf-compras/{id}', function($id){
 //      return view('Paquete_compra.pdf-compras', ['compra_id' => $id]);
 //  })->name('pdf.compras');
 // web.php
- Route::get('pdf-compras/{id}', [printFacturaController::class, 'descargarPDF'])->name('pdf.compras');
 
 
 //  Route::get('/orden-compra/pdf/{id}', [imprimirFacturaController::class, 'descargarPDF'])->name('orden.pdf');
@@ -232,12 +235,11 @@ Route::get('print-compras/{id}', function($id){
 // gestionar pagos
 
  Route::get('Pago-stripe', function(){
-
      return view('Paquete_Ventas.PagoStripe.crearPago');
  })->name('pago.stripe');
 
 Route::get('Pago-qr', function(){
-    return view('Paquete_Ventas.PagoStripe.pagoQR');
+    return view('Paquete_Ventas.PagoStripe.pagoQr');
 })->name('pago.qr');
 
 Route::get('Pago-tarjeta', function(){

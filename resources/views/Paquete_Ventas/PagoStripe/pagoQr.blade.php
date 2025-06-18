@@ -23,39 +23,24 @@
                      {{-- <livewire:PaqueteVentas.PagosStripe.pagoQr />
                      <livewire:PaqueteVentas.PagosStripe.MostrarProductos  />
 
-
-
-
-
-
-
-
-
                  </section>
              </div>
          </div> --}}
-         <div class="flex justify-center items-center">
-             <div class="w-full md:w-1/2">
-                 <section class="border rounded-md  shadow-md p-4 bg-white">
-                     <div class="w-full flex justify-center items-center py-2 border-b-4 border-slate-400">
-                         {{-- <span class="font-semibold text-lg text-gray-800 ">Seleccionar metodo de pago</span> --}}
-                         <h2 class="text-xl font-bold mb-4">Pago con QR</h2>
+     <div class="flex justify-center items-center">
+         <div class="w-full md:w-1/2">
+             <section class="border rounded-md  shadow-md p-4 bg-white">
+                 <div class="w-full flex justify-center items-center py-2 border-b-4 border-slate-400">
+                     {{-- <span class="font-semibold text-lg text-gray-800 ">Seleccionar metodo de pago</span> --}}
+                     <h2 class="text-xl font-bold mb-4">Pago con QR</h2>
 
-                     </div>
-
-
-                     <livewire:PaqueteVentas.PagosStripe.pagoQr />
+                 </div>
 
 
+                 <livewire:PaqueteVentas.PagosStripe.PagoQr />
 
 
-
-
-
-
-
-                 </section>
-             </div>
+             </section>
          </div>
+     </div>
      </div>
  @endsection
