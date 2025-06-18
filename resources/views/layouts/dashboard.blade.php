@@ -18,7 +18,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     {{-- modo claro , modo oscuro --}}
-    {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
+
 
 
 
@@ -37,6 +37,11 @@
     class="h-screen overflow-hidden flex
     bg-gradient-to-r from-gray-700 to-black
     dark:bg-gradient-to-r dark:from-slate-100 dark:to-slate-300">
+
+     {{-- Forzar a Tailwind a incluir clases dark --}}
+        <div class="hidden">
+            dark:bg-gray-900 dark:bg-slate-800 dark:text-white dark:border-gray-700
+        </div>
 
     {{-- <body class="h-screen overflow-hidden flex bg-gradient-to-r
     from-gray-700 to-black
@@ -247,7 +252,8 @@
                 </button>
             </form>
         </div> --}}
-        <!-- Profile and Signout Buttons -->
+
+        <!-- Profile and Signout Buttons of right nav bar-->
         <div class="fixed bottom-4 left-0 right-0 flex justify-center px-4">
             <div class="flex space-x-4 bg-white dark:bg-gray-800 p-1 rounded-full shadow-lg">
 
@@ -358,6 +364,8 @@
                 {{ $slot }}
             @endif
         </main>
+
+
     </div>
     @livewireScripts
 
@@ -410,13 +418,13 @@
 
 
 
-    {{-- <div x-data="themeSwitcher()" x-init="init()">
+{{-- <div x-data="themeSwitcher()" x-init="init()">
         <button @click="toggleTheme()" class="px-4 py-2 bg-gray-300 dark:bg-gray-700 rounded">
             <span x-text="theme === 'dark' ? 'Modo claro' : 'Modo oscuro'"></span>
         </button>
     </div> --}}
 
- {{-- <script>
+{{-- <script>
     function themeSwitcher() {
         return {
             theme: 'light',
@@ -450,5 +458,3 @@
         }
     }
 </script> --}}
-
-
