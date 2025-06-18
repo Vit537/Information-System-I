@@ -9,7 +9,8 @@ use App\Http\Controllers\Paquete_Usuarios\usuarioController;
 use App\Http\Controllers\Paquete_Productos\productoController;
 
 use App\Http\Controllers\Paquete_Usuarios\bitacoraController;
-use App\Http\Controllers\Paquete_compra\ImprimirFacturaController;
+
+use App\Http\Controllers\Paquete_compra\printFacturaController;
 
 use App\Models\Paquete_Usuarios\Auth\Persona;
 use App\Models\Paquete_Usuarios\cliente;
@@ -221,7 +222,7 @@ Route::get('print-compras/{id}', function($id){
 //      return view('Paquete_compra.pdf-compras', ['compra_id' => $id]);
 //  })->name('pdf.compras');
 // web.php
- Route::get('pdf-compras/{id}', [ImprimirFacturaController::class, 'descargarPDF'])->name('pdf.compras');
+ Route::get('pdf-compras/{id}', [printFacturaController::class, 'descargarPDF'])->name('pdf.compras');
 
 
 //  Route::get('/orden-compra/pdf/{id}', [imprimirFacturaController::class, 'descargarPDF'])->name('orden.pdf');
