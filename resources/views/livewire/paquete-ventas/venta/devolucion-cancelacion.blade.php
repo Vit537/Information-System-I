@@ -35,14 +35,14 @@
             <button
                 wire:click="deleteVenta"
                 onclick="return confirm('¿Estás seguro de que deseas eliminar esta venta?');"
-                class="px-6 py-3 bg-gray-500 text-white font-semibold text-sm rounded-md shadow hover:bg-red-700 transition-all"
+                class="px-6 py-3 bg-gray-800 text-white font-semibold text-sm rounded-md shadow-lg hover:bg-red-600 transition-all"
             >
                 Eliminar Venta
             </button>
 
             <button
                 wire:click="confirmDevolution"
-                class="px-6 py-3 bg-gray-500 text-white font-semibold text-sm rounded-md shadow-lg hover:bg-green-700 transition-all"
+                class="px-6 py-3 bg-gray-800 text-white font-semibold text-sm rounded-md shadow-lg hover:bg-green-700 transition-all"
             >
                 Confirmar Devolución
             </button>
