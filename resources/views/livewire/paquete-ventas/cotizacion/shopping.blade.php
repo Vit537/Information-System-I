@@ -1,6 +1,10 @@
 <div class="p-6 bg-gray-50 overflow-y-auto">
     <h1 class="text-3xl font-bold mb-6">Shopping</h1>
-
+    @if ($errorMessage)
+        <div class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded mb-4">
+            {{ $errorMessage }}
+        </div>
+    @endif
     <div class="mb-6">
         <label for="cliente_id" class="block text-lg font-medium text-gray-700 mb-2">Selecciona un cliente</label>
         <select id="cliente_id" wire:model.live="cliente_id" name="cliente_id" class="w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
@@ -13,19 +17,41 @@
     <p class="mt-2 text-sm text-blue-600">Cliente seleccionado: {{ $cliente_id }}</p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <!-- Products List -->
+        <!-- Left Column: Products + Services -->
         <div>
-            <h2 class="text-2xl font-semibold text-gray-800 mb-5">🛍️ Productos</h2>
+            <!-- Services List -->
+            <h2 class="text-2xl font-semibold text-gray-800 mb-5">🧾 Servicios</h2>
             <div class="grid gap-5">
+                @foreach ($services as $service)
+                    <div class="p-5 bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition duration-200">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-700">{{ $service->nombre }}</h3>
+                                <p class="text-sm text-gray-500">${{ $service->precio }}</p>
+                            </div>
+                            <button
+                                wire:click="addToCart({{ $service->id }})"
+                                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-150"
+                            >
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            <!-- Products List -->
+            <h2 class="text-2xl font-semibold text-gray-800 mb-5">🛍️ Productos</h2>
+            <div class="grid gap-5 mb-10">
                 @foreach ($products as $product)
                     <div class="p-5 bg-white border border-gray-200 rounded-lg shadow hover:shadow-md transition duration-200">
                         <div class="flex justify-between items-center">
                             <div>
-                                <h3 class="text-lg font-bold text-gray-700">{{ $product['nombre'] }}</h3>
-                                <p class="text-sm text-gray-500">${{ $product['precio'] }}</p>
+                                <h3 class="text-lg font-bold text-gray-700">{{ $product->nombre }}</h3>
+                                <p class="text-sm text-gray-500">${{ $product->precio }}</p>
                             </div>
                             <button
-                                wire:click="addToCart({{ $product['id'] }})"
+                                wire:click="addToCart({{ $product->id }})"
                                 class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-150"
                             >
                                 Agregar
@@ -36,7 +62,7 @@
             </div>
         </div>
 
-        <!-- Cart -->
+        <!-- Right Column: Cart -->
         <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-md">
             <h2 class="text-2xl font-semibold text-gray-800 mb-5">🛒 Carrito</h2>
             @if (count($cart) > 0)
@@ -69,10 +95,4 @@
             @endif
         </div>
     </div>
-
-    {{-- <livewire:counter /> --}}
-
-    {{-- @livewire('counter') --}}
-
-
 </div>

@@ -12,10 +12,12 @@ use Illuminate\Support\Facades\Auth;
 class Shopping extends Component
 {
     public $products = [];
+    public $services = [];
     public $clientes = [];
     public $cliente_id = null;
     public $cart = [];
     public $total = 0;
+    public $errorMessage;
 
     public function render()
     {
@@ -26,7 +28,12 @@ class Shopping extends Component
     public function mount()
     {
         $this->clientes = persona::where('tipo', 'cliente')->get();
-        $this->products = producto::all();
+        $this->products = producto::whereHas('categoria', function ($query) {
+            $query->where('nombre', '!=', 'servicio');
+        })->where('stock', '>', 0)->get();
+        $this->services = producto::whereHas('categoria', function ($query) {
+            $query->where('nombre', 'servicio');
+        })->where('stock', '>', 0)->get();
     }
 
     public function addToCart($productId)
@@ -36,6 +43,9 @@ class Shopping extends Component
         });
 
         if ($index !== false) {
+            if(producto::find($productId)->stock <= $this->cart[$index][1]){
+                return;
+            }
             $this->cart[$index][1]++;
         } else {
             $this->cart[] = [$productId, 1];
@@ -61,6 +71,11 @@ class Shopping extends Component
             $product = collect($this->products)->firstWhere('id', $productId);
             if ($product) {
                 $this->total += $product->precio * $quantity;
+            }else{
+                $product = collect($this->services)->firstWhere('id', $productId);
+                if ($product) {
+                    $this->total += $product->precio * $quantity;
+                }
             }
         }
     }
@@ -70,6 +85,9 @@ class Shopping extends Component
         return collect($this->cart)->map(function ($item) {
             [$productId, $quantity] = $item;
             $product = collect($this->products)->firstWhere('id', $productId);
+            if(is_null($product)){
+                $product = collect($this->services)->firstWhere('id', $productId);
+            }
             return [
                 'product' => $product,
                 'quantity' => $quantity,
@@ -80,6 +98,10 @@ class Shopping extends Component
 
     public function confirm()
     {
+        if (is_null($this->cliente_id)) {
+            $this->errorMessage = 'Debe seleccionar un cliente';
+            return;
+        }
         cotizacion::create([
             'monto_total' => $this->total,
             'cliente_id' => $this->cliente_id,
@@ -94,6 +116,8 @@ class Shopping extends Component
                 'cantidad' => $item['quantity'],
                 'precio_total' => $item['subtotal']
             ]);
+            $item['product']->stock -= $item['quantity'];
+            $item['product']->save();
         }
         $this->cart = [];
         $this->total = 0;
