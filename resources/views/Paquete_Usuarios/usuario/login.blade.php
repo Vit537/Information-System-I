@@ -133,14 +133,20 @@
 
     </form>
 </div> --}}
-{{-- <livewire:DarkModeToggle/> --}}
+    {{-- <livewire:DarkModeToggle/> --}}
     <div class="">
         <div class="flex items-center justify-center">
             {{-- class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-300 via-slate-600 to-slate-900 px-4"> --}}
+
             <form action="{{ route('login.verify') }}" method="POST"
                 class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md space-y-6">
                 @csrf
-
+                @if (session('success'))
+                    <x-flash-message :message="session('success')" type="success" />
+                @endif
+                 @if (session('status'))
+                    <x-flash-message :message="session('status')" type="status" />
+                @endif
                 <h2 class="text-2xl font-bold text-center text-gray-800">Iniciar sesión</h2>
 
                 <!-- Email -->
@@ -184,7 +190,7 @@
 
 
         </div>
-                {{-- <div class="bg-green-700">
+        {{-- <div class="bg-green-700">
                 <div class="bg-white flex flex-col md:flex-row gap-4">
                     <h2>Recuperar Contraseña</h2>
 

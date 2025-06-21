@@ -22,15 +22,20 @@ use App\Livewire\ReporteStock;
 use App\Models\AuditLog\bitacora;
 use App\Observers\bitacoraObserver;
 use App\Livewire\HistorialStock;
-use App\Http\Controllers\Auth\ResetPasswordController;
+// use App\Http\Controllers\Auth\ResetPasswordController;
 
 
-use App\Http\Controllers\Auth\ForgotPasswordController;
+// use App\Http\Controllers\Auth\ForgotPasswordController;
+// use App\Http\Controllers\Paquete_Usuarios\Auth\ResetPwdController;
+
+use App\Http\Controllers\Paquete_Usuarios\get_password\ForgotPwdController;
+use App\Http\Controllers\Paquete_Usuarios\get_password\ResetPwdController;
+
 use Illuminate\Support\Facades\Password;
 
-use App\Http\Controllers\Paquete_Usuarios\Auth\ResetPwdController;
 use App\Livewire\PaqueteCompras\NotaCompra;
 use App\Http\Controllers\ConfiguracionController;
+use Illuminate\Auth\Notifications\ResetPassword;
 
 Route::get('/', function () {
     return view('Paquete_Usuarios.usuario.login');
@@ -57,13 +62,23 @@ Route::prefix('auth')->group(function () {
 //actualizacion de la contrasena
 
 
- Route::get('forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
- Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+
+Route::get('forgot-password', [ForgotPwdController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('forgot-password', [ForgotPwdController::class, 'sendResetLinkEmail'])->name('password.email');
+
 
 // //resetear contrasena
-  Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::get('reset-password/{token}', [ResetPwdController::class, 'showResetForm'])->name('password.reset');
  Route::post('password/reset', [ResetPwdController::class, 'reset'] )->name('password.update');
+//  Route::get('forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+//  Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+// // //resetear contrasena
+// Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+//  Route::post('password/reset', [ResetPwdController::class, 'reset'] )->name('password.update');
 //  Route::put('change/{id}', [PersonasController::class, 'actualizar_credenciales'] )->name('password.change');
+
 
 
 
