@@ -184,6 +184,13 @@ Route::get('/inventario/historial', function () {
     return view('Paquete_productos.producto.inventario_historial'); // o el nombre real del blade que estás usando
 })->middleware('auth')->name('inventario.historial');
 
+// Gestionar Usuario
+Route::middleware('auth')->prefix('usuario')->group(function () {
+    Route::get('visualizarIndicadores', function(){
+        return view('Paquete_Usuarios.dashboard.indicadores');
+    })->name('visualizar.indicadores');
+    
+});
 
 
 Route::get('prueba/', function(){

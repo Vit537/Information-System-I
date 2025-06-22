@@ -18,6 +18,6 @@
 
 //    window.Alpine = Alpine
 //    Alpine.start()
-
+import ApexCharts from 'apexcharts'
    // import 'alpinejs';
 

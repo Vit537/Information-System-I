@@ -87,7 +87,7 @@
                     <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Generar parametros del sistemas
                     </a>
-                    <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
+                    <a href="{{ route('visualizar.indicadores') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Visualizar dashboard de indicadores
                     </a>
                     <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
@@ -371,9 +371,7 @@
 
     </div>
     @livewireScripts
-
-
-
+    @livewireChartsScripts
 
     <script>
         function themeSwitcher() {
