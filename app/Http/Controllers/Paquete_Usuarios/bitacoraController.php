@@ -18,7 +18,7 @@ class bitacoraController extends Controller
     public function listarAccionCuenta(){
 
         // se podra ver la accion que hizo esta cuenta CRUD
-        $logins = bitacora::all();
+        $logins = bitacora::where('loggable_type', 'App\Models\Paquete_Usuarios\Auth\Persona')->get();
         return view('Paquete_Usuarios.bitacora.accion_cuenta', compact('logins'));
     }
     public function listarEventosCuenta(){
@@ -34,7 +34,12 @@ class bitacoraController extends Controller
         return view('Paquete_Usuarios.bitacora.eventos_cuenta', compact('actividades'));
     }
 
-       // Acceder a 'metadata' de cada actividad (como array)
+    public function auditarAcciones(){
+        $actions = bitacora::where('loggable_type', '!=', 'App\Models\Paquete_Usuarios\Auth\Persona')->get();
+        return view('Paquete_Usuarios.bitacora.auditoria_acciones', compact('actions'));
+    }
+
+    // Acceder a 'metadata' de cada actividad (como array)
     // foreach ($actividades as $actividad) {
     //     $datos = $actividad->metadata; // Aquí ya es un array
     //     // Puedes acceder así: $datos['clave']

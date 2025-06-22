@@ -90,8 +90,8 @@
                     <a href="{{ route('visualizar.indicadores') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Visualizar dashboard de indicadores
                     </a>
-                    <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
-                        Gestionar auditoria de acciones
+                    <a href="{{ route('auditar.acciones') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
+                        Auditar Acciones
                     </a>
                     <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Configurar alertas del sistema

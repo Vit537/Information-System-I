@@ -189,7 +189,7 @@ Route::middleware('auth')->prefix('usuario')->group(function () {
     Route::get('visualizarIndicadores', function(){
         return view('Paquete_Usuarios.dashboard.indicadores');
     })->name('visualizar.indicadores');
-    
+    Route::get('auditarAcciones', [bitacoraController::class, 'auditarAcciones'])->name('auditar.acciones');
 });
 
 
