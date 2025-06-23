@@ -62,33 +62,15 @@ Route::prefix('auth')->group(function () {
 
 //actualizacion de la contrasena
 
-
-
-
 Route::get('forgot-password', [ForgotPwdController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('forgot-password', [ForgotPwdController::class, 'sendResetLinkEmail'])->name('password.email');
 
-
 // //resetear contrasena
 Route::get('reset-password/{token}', [ResetPwdController::class, 'showResetForm'])->name('password.reset');
- Route::post('password/reset', [ResetPwdController::class, 'reset'] )->name('password.update');
-//  Route::get('forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-//  Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-
-// // //resetear contrasena
-// Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-//  Route::post('password/reset', [ResetPwdController::class, 'reset'] )->name('password.update');
-//  Route::put('change/{id}', [PersonasController::class, 'actualizar_credenciales'] )->name('password.change');
+Route::post('password/reset', [ResetPwdController::class, 'reset'])->name('password.update');
 
 
 
-
-
-
-
-
-// Route::get('register/categoria', [categoriaController::class, 'register1'])->name('register.categoria');
-// Route::post('register/categoria', [categoriaController::class, 'registerVerify1']);
 
 
 //protegidas
@@ -119,13 +101,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('register/proveedor', [proveedorController::class, 'register'])->name('register.proveedor');
     Route::post('register/proveedor', [proveedorController::class, 'registerVerify'])->name('proveedor.verify');
-
+    Route::get('listaProveedores', [proveedorController::class, 'listarProveedor'])->name('listar.proveedores');
 
     Route::get('register/usuario', [usuarioController::class, 'register'])->name('register.usuario');
     Route::post('register/usuario', [usuarioController::class, 'registerVerify'])->name('usuario.verify');
 
 
-        Route::get('listaEmpleados', [PersonasController::class, 'listarEmpleados'])->name('listar.empleados');
+    Route::get('listaEmpleados', [PersonasController::class, 'listarEmpleados'])->name('listar.empleados');
 
 
     // crear usuarios
@@ -168,15 +150,13 @@ Route::middleware('auth')->prefix('producto')->group(function () {
     Route::post('register/producto', [productoController::class, 'registerVerify'])->name('producto.verify');
     Route::get('listarProductos', [productoController::class, 'listarProductos'])->name('listar.productos');
 
-    Route::get('/reportes/stock-bajo', function(){
+    Route::get('/reportes/stock-bajo', function () {
         return view('Paquete_productos.producto.listar_stocks');
     })->name('vista.stock.bajo');
     // Route::get('/reportes/stock-bajo', ReporteStock::class)->name('vista.stock.bajo');
 
-    Route::get('lista/imagen/producto', [ productoController::class, 'pruebaProducto'])->name('prueba.producto');
-    Route::get('tarjeta/{id}', [ productoController::class, 'tarjetaProducto'])->name('tarjeta.producto');
-
-
+    Route::get('lista/imagen/producto', [productoController::class, 'pruebaProducto'])->name('prueba.producto');
+    Route::get('tarjeta/{id}', [productoController::class, 'tarjetaProducto'])->name('tarjeta.producto');
 });
 
 // historial de inventario
@@ -186,15 +166,15 @@ Route::get('/inventario/historial', function () {
 
 
 
-Route::get('prueba/', function(){
+Route::get('prueba/', function () {
     return view('pruebas');
 })->name('prueba');
 //cotizacion
 Route::middleware('auth')->prefix('cotizacion')->group(function () {
-    Route::get('listarCotizaciones', function(){
+    Route::get('listarCotizaciones', function () {
         return view('Paquete_Ventas.cotizacion.listar-cotizaciones');
     })->name('listar.cotizaciones');
-    Route::get('CrearCotizacion', function(){
+    Route::get('CrearCotizacion', function () {
         return view('Paquete_Ventas.cotizacion.crear-cotizacion');
     })->name('crear.cotizacion');
     Route::get('detalleCotizacion/', function (Illuminate\Http\Request $request) {
@@ -205,47 +185,61 @@ Route::middleware('auth')->prefix('cotizacion')->group(function () {
 
 //venta
 Route::middleware('auth')->prefix('venta')->group(function () {
-    Route::get('listarVentas', function(){
+    Route::get('listarVentas', function () {
         return view('Paquete_Ventas.venta.listar-ventas', ['evento' => 'venta']);
     })->name('listar.ventas');
-    Route::get('crearVenta', function(){
+
+    Route::get('reporte-ventas', function () {
+        return view('Paquete_Ventas.listar-reporte-venta');
+    })->name('reporte.venta');
+
+    Route::get('crearVenta', function () {
         return view('Paquete_Ventas.venta.crear-venta');
     })->name('crear.venta');
     //factura
     Route::get('/factura/print/{id}', [FacturaController::class, 'print'])->name('factura.print');
-    Route::get('verFacturas', function(){
+    Route::get('verFacturas', function () {
         return view('Paquete_Ventas.venta.listar-ventas', ['evento' => 'factura']);
     })->name('ver.facturas');
     //devoluciones
-    Route::get('gestionarDevoluciones', function(){
+    Route::get('gestionarDevoluciones', function () {
         return view('Paquete_Ventas.venta.listar-ventas', ['evento' => 'devolucion']);
     })->name('gestionar.devoluciones');
     Route::get('editarDevolucion', function (Illuminate\Http\Request $request) {
         $ventaID = $request->query('ventaID');
         return view('Paquete_Ventas.venta.devolucion-cancelacion', ['ventaID' => $ventaID]);
     })->name('editar.devolucion');
+
+    Route::get('pdf-reporte-venta/', [printFacturaController::class, 'reportePDFVenta'])->name('pdf.reporte-venta');
+Route::get('imprimir-venta/', [printFacturaController::class, 'imprimirVenta'])->name('imprimir-venta');
 });
 
 
 //Nota compra
 
-Route::get('nota-compra', function(){
+Route::get('nota-compra', function () {
     return view('Paquete_compra.listar-compras');
 })->name('nota.compra');
 
-Route::get('add-compra', function(){
+Route::get('reporte-compra', function () {
+    return view('Paquete_compra.listar-reporte-compras');
+})->name('reporte.compra');
+
+Route::get('add-compra', function () {
     return view('Paquete_compra.add-compras');
 })->name('add.compra');
 
-Route::get('edit-compra/{id}', function($id){
-    return view('Paquete_compra.edit-compras' , ['compra_id' => $id]);
+Route::get('edit-compra/{id}', function ($id) {
+    return view('Paquete_compra.edit-compras', ['compra_id' => $id]);
 })->name('edit.compra');
 
-Route::get('print-compras/{id}', function($id){
+Route::get('print-compras/{id}', function ($id) {
     return view('Paquete_compra.imprimir', ['compra_id' => $id]);
 })->name('print.compras');
 
 Route::get('pdf-compras/{id}', [printFacturaController::class, 'descargarPDF'])->name('pdf.compras');
+Route::get('pdf-reporte-compra/', [printFacturaController::class, 'reportePDF'])->name('pdf.reporte-compra');
+Route::get('imprimir-compra/', [printFacturaController::class, 'imprimir'])->name('imprimir-compra');
 
 // Route::get('pdf-compras/{id}', function($id){
 //      return view('Paquete_compra.pdf-compras', ['compra_id' => $id]);
@@ -259,15 +253,15 @@ Route::get('pdf-compras/{id}', [printFacturaController::class, 'descargarPDF'])-
 
 // gestionar pagos
 
- Route::get('Pago-stripe', function(){
-     return view('Paquete_Ventas.PagoStripe.crearPago');
- })->name('pago.stripe');
+Route::get('Pago-stripe', function () {
+    return view('Paquete_Ventas.PagoStripe.crearPago');
+})->name('pago.stripe');
 
-Route::get('Pago-qr', function(){
+Route::get('Pago-qr', function () {
     return view('Paquete_Ventas.PagoStripe.pagoQr');
 })->name('pago.qr');
 
-Route::get('Pago-tarjeta', function(){
+Route::get('Pago-tarjeta', function () {
     return view('Paquete_Ventas.PagoStripe.pagoTarjeta');
 })->name('pago.tarjeta');
 
@@ -278,3 +272,4 @@ Route::get('Pago-tarjeta', function(){
 
 Route::post('/cambiar-tema', [ConfiguracionController::class, 'cambiarTema'])->name('cambiar.tema');
 
+// Route::get('/print-tema', [ConfiguracionController::class, 'exportarTareas'])->name('print.tema');

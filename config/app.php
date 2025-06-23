@@ -124,5 +124,31 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    // 'providers' => [
+
+    //     /*
+    //  * Laravel Framework Service Providers...
+    //  */
+    //     Illuminate\Auth\AuthServiceProvider::class,
+    //     Illuminate\Broadcasting\BroadcastServiceProvider::class,
+    //     // ...otros...
+
+    //     /*
+    //  * Package Service Providers...
+    //  */
+    //     // <- Aquí puedes colocar el nuevo provider
+    //     Maatwebsite\Excel\ExcelServiceProvider::class,
+
+
+    //     /*
+    //  * Application Service Providers...
+    //  */
+    //     App\Providers\AppServiceProvider::class,
+    //     // ...
+    // ],
+
+
+
+
 
 ];

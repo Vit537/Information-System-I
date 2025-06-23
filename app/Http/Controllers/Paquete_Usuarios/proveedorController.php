@@ -58,4 +58,10 @@ class proveedorController extends Controller
 
         return redirect()->route('listar.usuarios')->with('success', 'proveedor creado correctamente');
     }
+
+       public function listarProveedor()
+    {
+        $usuarios = Persona::where('tipo','proveedor')->get(); // o auth()->user();
+        return view('Paquete_Usuarios.proveedor.listar_P', compact('usuarios'));
+    }
 }

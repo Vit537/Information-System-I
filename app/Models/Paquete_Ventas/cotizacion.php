@@ -16,10 +16,10 @@ class cotizacion extends Model
         'monto_total'
     ];
 
-    public function cliente(){
+     public function cliente(){
         return $this->belongsTo(cliente::class, 'cliente_id', 'persona_id');
     }
-    
+
     public function empleado(){
         return $this->belongsTo(usuario::class, 'empleado_id', 'persona_id');
     }

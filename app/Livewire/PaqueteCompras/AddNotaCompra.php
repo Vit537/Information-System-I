@@ -102,7 +102,10 @@ class AddNotaCompra extends Component
          }
         $this->cart = [];
         $this->total = 0;
-        redirect('nota-compra');
+        // redirect('nota-compra');
+        // return redirect()->route('nota.compra')->with('status', '¡Compra realizada correctamente!');
+        session()->flash('mensaje', 'Se creo una nueva orden.');
+        return redirect()->route('nota.compra');
     }
 }
 

@@ -1,7 +1,9 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    {{-- <livewire:PaqueteCompras.NotaCompra > --}}
+    {{-- <livewire:Counter > --}}
+
+
     <livewire:PaqueteCompras.NotaCompra/>
 {{-- </livewire:PaqueteCompras.NotaCompra> --}}
     {{-- mostrar la tabla --}}

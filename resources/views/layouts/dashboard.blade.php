@@ -165,7 +165,7 @@
                     <a href="{{ route('gestionar.devoluciones') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Gestionar devoluciones y cancelaciones
                     </a>
-                    <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
+                    <a href="{{route('reporte.venta')}}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Generar reporte de ventas
                     </a>
                     <a href="{{ route('pago.stripe') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
@@ -193,13 +193,13 @@
                 </button>
 
                 <div x-show="open" x-collapse class="ml-4 mt-1 space-y-1">
-                    <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
+                    <a href="{{route('listar.proveedores')}}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Gestionar proveedores
                     </a>
                     <a href="{{ route('nota.compra') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Gestionar compras
                     </a>
-                    <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
+                    <a href="{{route('reporte.compra')}}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Generar reporte de compras
                     </a>
                 </div>
