@@ -93,7 +93,7 @@
                     <a href="{{ route('auditar.acciones') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Auditar Acciones
                     </a>
-                    <a href="#" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
+                    <a href="{{ route('config.notifications') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">
                         Configurar alertas del sistema
                     </a>
                     <a href="{{ route('ver.bitacora') }}" class="block py-1 px-2 rounded hover:bg-blue-100 text-sm">

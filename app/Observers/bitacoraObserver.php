@@ -4,6 +4,8 @@ namespace App\Observers;
 
 use App\Models\AuditLog\bitacora;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\AlertasMail;
+use Illuminate\Support\Facades\Mail;
 use Jenssegers\Agent\Agent;
 
 class bitacoraObserver
@@ -12,26 +14,36 @@ class bitacoraObserver
     public function created($model)
     {
         $this->registerActivity($model, 'created');
+        $body = $this->generateDescription($model, 'created');
+        Mail::to(Auth::user()->correo)->send(new AlertasMail('Nuevo Evento', $body));
     }
 
     public function updated($model)
     {
         $this->registerActivity($model, 'updated');
+        $body = $this->generateDescription($model, 'updated');
+        Mail::to(Auth::user()->correo)->send(new AlertasMail('Nuevo Evento', $body));
     }
 
     public function deleted($model)
     {
         $this->registerActivity($model, 'deleted');
+        $body = $this->generateDescription($model, 'deleted');
+        Mail::to(Auth::user()->correo)->send(new AlertasMail('Nuevo Evento', $body));
     }
 
     public function restored($model)
     {
         $this->registerActivity($model, 'restored');
+        $body = $this->generateDescription($model, 'restored');
+        Mail::to(Auth::user()->correo)->send(new AlertasMail('Nuevo Evento', $body));
     }
 
     public function forceDeleted($model)
     {
         $this->registerActivity($model, 'force_deleted');
+        $body = $this->generateDescription($model, 'force_deleted');
+        Mail::to(Auth::user()->correo)->send(new AlertasMail('Nuevo Evento', $body));
     }
 
     protected function registerActivity($model, $event)

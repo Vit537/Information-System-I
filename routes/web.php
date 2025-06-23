@@ -10,7 +10,7 @@ use App\Http\Controllers\Paquete_Productos\productoController;
 use App\Http\Controllers\Paquete_Ventas\FacturaController;
 
 use App\Http\Controllers\Paquete_Usuarios\bitacoraController;
-
+use App\Http\Controllers\Paquete_Usuarios\AlertasMailController;
 use App\Http\Controllers\Paquete_compra\printFacturaController;
 
 use App\Models\Paquete_Usuarios\Auth\Persona;
@@ -190,6 +190,9 @@ Route::middleware('auth')->prefix('usuario')->group(function () {
         return view('Paquete_Usuarios.dashboard.indicadores');
     })->name('visualizar.indicadores');
     Route::get('auditarAcciones', [bitacoraController::class, 'auditarAcciones'])->name('auditar.acciones');
+    Route::get('config-notifications', function(){
+        return view('Paquete_Usuarios.email.settings');
+    })->name('config.notifications');
 });
 
 
