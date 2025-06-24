@@ -4,6 +4,10 @@
     {{-- <livewire:Counter > --}}
 
 
-    <livewire:PaqueteCompras.reporteCompra/>
+   {{-- <livewire:PaqueteCompras.NotaCompra/> --}}
+
+   {{-- <livewire:PaqueteCompras.reporteCompra/> --}}
+   <livewire:PaqueteCompras.reporteCompra/>
+    {{-- <livewire:PaqueteCompras.reporteCompra/> --}}
 
 @endsection
