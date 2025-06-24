@@ -13,6 +13,7 @@ class printFacturaController extends Controller
 {
     public function descargarPDF($orden_id){
 
+
         $datosFactura = OrdenCompra::with('productos')->where('id', $orden_id)->get();
         $datosProveedor = OrdenCompra::with('proveedor.persona')->where('id', $orden_id)->get();
         $datosAdministrador = OrdenCompra::with('persona')->where('id', $orden_id)->get();
