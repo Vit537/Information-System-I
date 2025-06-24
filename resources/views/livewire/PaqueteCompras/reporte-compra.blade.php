@@ -11,18 +11,14 @@
 
      <div class="flex justify-between py-2">
 
-
          <div class="gap-4 flex w-full flex-col md:flex-row  justify-center items-center py-2">
              <a href="{{ route('add.compra') }}"
                  class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                  Crear orden compra
              </a>
-
-
-
          </div>
-
      </div>
+
      <div class="flex gap-3 mb-4">
          <button wire:click="imprimir" class="bg-slate-300 hover:bg-slate-200 text-white px-2  py-1 rounded-lg"><img
                  class="w-8" src="{{ asset('assets/printer.png') }}" alt="logo"></button>
@@ -34,11 +30,6 @@
              class="bg-slate-300 hover:bg-slate-200 text-white px-2 py-0 rounded-lg "><x-svg.excel /></button>
      </div>
 
-
-
-
-
-
      <div class="  mb-4">
 
          <label for="search" class="block text-base font-medium text-slate-100 dark:text-slate-600 ">Buscador</label>
@@ -48,7 +39,7 @@
 
          <div x-data="{ abierto: false }" class="w-full mb-4">
              {{-- md:hidden --}}
-             {{-- <!-- Botón para mostrar/ocultar --}}
+             {{--  Botón para mostrar/ocultar --}}
              <div class="flex justify-start items-start md:w-1/4">
                  <button @click="abierto = !abierto"
                      class=" w-full hover:bg-slate-900 dark:hover:bg-slate-300 text-white py-2 px-4 rounded mb-2 border-b-2 border-slate-500">
@@ -59,7 +50,7 @@
                  </button>
              </div>
 
-             {{-- <!-- Contenedor de filtros  --}}
+             {{--  Contenedor de filtros  --}}
              {{-- <div x-show="abierto || window.innerWidth >= 768" x-transition class="space-y-4"> --}}
              <div x-show="abierto " x-transition class="space-y-4">
 
@@ -92,12 +83,7 @@
      </div>
 
 
-
-
-
      <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-2 bg-white">
-         {{-- @if (strlen($busqueda) > 0) --}}
-         {{-- <p>no entra a ningun lado</p> --}}
 
          @if (count($proveedores) > 0)
              <table
@@ -126,12 +112,6 @@
                          <th scope="col" class="px-6 py-3 text-center">
                              <h4>Precio Total</h4>
                          </th>
-                         {{-- <th scope="col" class="px-6 py-3">
-                            <h4>Ver detalle/factura</h4>
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            <h4>Acciones</h4>
-                        </th> --}}
 
                      </tr>
                  </thead>
@@ -169,7 +149,7 @@
                                      @php
                                          $total += $prod->pivot->cantidad * $prod->pivot->precio_unitario;
                                          $contador += 1;
-                                         // $total += $producto['cantidad'] * $producto['precio'];
+                                         //   $total += $producto['cantidad'] * $producto['precio'];
                                      @endphp
                                  @endforeach
 
@@ -177,17 +157,8 @@
 
                              </td>
 
-
-
-
-
-
-
-
                          </tr>
                      @endforeach
-
-
 
                  </tbody>
              </table>

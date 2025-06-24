@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Livewire\PaqueteCompras;
 
 use Livewire\Component;
@@ -10,7 +9,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Illuminate\Support\Facades\Auth;
 use PhpOffice\PhpSpreadsheet\RichText\RichText;
 
-class ReporteCompra extends Component
+class ReporteCo extends Component
 {
      public $datos = [];
     public $mensaje = null;
