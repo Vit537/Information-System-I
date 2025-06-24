@@ -95,6 +95,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('cliente', clienteController::class);
 
     Route::get('register/cliente', [clienteController::class, 'register'])->name('register.cliente');
+    Route::get('reporte/cliente', function(){
+        return view('Paquete_Usuarios.cliente.reporteCliente');
+    })->name('reporte.cliente');
     Route::get('listaClientes', [clienteController::class, 'listarClientes'])->name('listar.clientes');
     Route::post('register/cliente', [clienteController::class, 'registerVerify'])->name('cliente.verify');
 
