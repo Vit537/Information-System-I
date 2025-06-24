@@ -12,9 +12,7 @@
 
     <div class="flex justify-between py-2">
 
-        <!-- Ejemplo de uso en una vista -->
 
-        <!-- O con tamaños personalizados -->
         {{-- <x-svg-icon :width="100" :height="100" /> --}}
 
 

@@ -9,7 +9,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Illuminate\Support\Facades\Auth;
 use PhpOffice\PhpSpreadsheet\RichText\RichText;
 
-class ReporteCo extends Component
+class ReporteCompra extends Component
 {
      public $datos = [];
     public $mensaje = null;
