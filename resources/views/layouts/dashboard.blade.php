@@ -371,8 +371,7 @@
 
 
     </div>
-    @livewireScripts
-    @livewireChartsScripts
+
 
     <script>
         function themeSwitcher() {
@@ -411,6 +410,9 @@
             }
         }
     </script>
+    @livewireScripts
+
+    @livewireChartsScripts
 
 
 

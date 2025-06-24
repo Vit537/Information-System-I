@@ -87,58 +87,61 @@ class bitacoraObserver
         }
     }
 
-    protected function sendMail($model, $body){
+    protected function sendMail($model, $body)
+    {
         $modelName = class_basename($model);
-        $config = configuracionAlertas::find(Auth::user()->id);
-        if(!$config){
-            configuracionAlertas::create([
-                'persona_id' => Auth::user()->id
-            ]);
-            if(in_array($modelName, ['producto','categoria','venta'])){
-                Mail::to(Auth::user()->correo)->send(new AlertasMail('Nuevo Evento', $body));
-            }
-        }else{
-            switch($modelName){
-                case 'venta':
-                    if($config->notificar_venta){
-                        Mail::to(Auth::user()->correo)->send(new AlertasMail('Nuevo Evento', $body));
-                    }
-                    return;
-                case 'producto':
-                    if($config->notificar_producto){
-                        Mail::to(Auth::user()->correo)->send(new AlertasMail('Nuevo Evento', $body));
-                    }
-                    return;
-                case 'categoria':
-                    if($config->notificar_categoria){
-                        Mail::to(Auth::user()->correo)->send(new AlertasMail('Nuevo Evento', $body));
-                    }
-                    return;
-                default:
-                    return;
+        if (Auth::user()) {
+            $config = configuracionAlertas::find(Auth::user()->id);
+            if (!$config) {
+                configuracionAlertas::create([
+                    'persona_id' => Auth::user()->id
+                ]);
+                if (in_array($modelName, ['producto', 'categoria', 'venta'])) {
+                    Mail::to(Auth::user()->correo)->send(new AlertasMail('Nuevo Evento', $body));
+                }
+            } else {
+                switch ($modelName) {
+                    case 'venta':
+                        if ($config->notificar_venta) {
+                            Mail::to(Auth::user()->correo)->send(new AlertasMail('Nuevo Evento', $body));
+                        }
+                        return;
+                    case 'producto':
+                        if ($config->notificar_producto) {
+                            Mail::to(Auth::user()->correo)->send(new AlertasMail('Nuevo Evento', $body));
+                        }
+                        return;
+                    case 'categoria':
+                        if ($config->notificar_categoria) {
+                            Mail::to(Auth::user()->correo)->send(new AlertasMail('Nuevo Evento', $body));
+                        }
+                        return;
+                    default:
+                        return;
+                }
             }
         }
     }
 
-// // Obtener todos los inicios de sesión de un usuario
-// $logins = Bitacora::where('event_type', 'auth')
-//             ->where('event', 'login')
-//             ->where('user_id', $userId)
-//             ->get();
+    // // Obtener todos los inicios de sesión de un usuario
+    // $logins = Bitacora::where('event_type', 'auth')
+    //             ->where('event', 'login')
+    //             ->where('user_id', $userId)
+    //             ->get();
 
-// // Obtener actividad completa (modelos + auth)
-// $activity = Bitacora::with(['user', 'loggable'])
-//               ->orderBy('event_time', 'desc')
-//               ->paginate(20);
+    // // Obtener actividad completa (modelos + auth)
+    // $activity = Bitacora::with(['user', 'loggable'])
+    //               ->orderBy('event_time', 'desc')
+    //               ->paginate(20);
 
-// // Tiempos de sesión (ejemplo avanzado)
-// $sessions = Bitacora::selectRaw('
-//         user_id,
-//         MAX(CASE WHEN event = "login" THEN event_time END) as login_time,
-//         MAX(CASE WHEN event = "logout" THEN event_time END) as logout_time
-//     ')
-//     ->where('event_type', 'auth')
-//     ->groupBy('user_id')
-//     ->get();
+    // // Tiempos de sesión (ejemplo avanzado)
+    // $sessions = Bitacora::selectRaw('
+    //         user_id,
+    //         MAX(CASE WHEN event = "login" THEN event_time END) as login_time,
+    //         MAX(CASE WHEN event = "logout" THEN event_time END) as logout_time
+    //     ')
+    //     ->where('event_type', 'auth')
+    //     ->groupBy('user_id')
+    //     ->get();
 
 }
