@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\PaqueteCompras;
+namespace App\Livewire;
 
 use Livewire\Component;
 
@@ -13,9 +13,9 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Illuminate\Support\Facades\Auth;
 use PhpOffice\PhpSpreadsheet\RichText\RichText;
 
-class ReporteCompra extends Component
+class ReporteCliente extends Component
 {
-     public $datos = [];
+        public $datos = [];
     public $mensaje = null;
 
     public $modoEdicion = false;
@@ -32,16 +32,17 @@ class ReporteCompra extends Component
     public $fecha_fin;
     public $orden = 'asc'; // asc o desc
     public $ordenP = 'asc'; // asc o desc
-
     public function render()
     {
-        return view('livewire.PaqueteCompras.reporte-compra', [
+        return view('livewire.reporte-cliente', [
             'proveedores' =>  $this->getProveedor()
         ]);
     }
 
       public function getProveedor()
     {
+
+
         // $ordenes = ordenCompra::with('proveedor.persona');
         $ordenes = OrdenCompra::with([
             'proveedor.persona',
@@ -219,6 +220,3 @@ class ReporteCompra extends Component
         $this->js("window.dispatchEvent(new CustomEvent('imprimir'))");
     }
 }
-
-
-

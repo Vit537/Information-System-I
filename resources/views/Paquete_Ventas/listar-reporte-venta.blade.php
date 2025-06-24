@@ -4,6 +4,6 @@
     {{-- <livewire:Counter > --}}
 
 
-    <livewire:PaqueteVentas.reporteVenta/>
+    <livewire:PaqueteVentas.ReporteVenta/>
 
 @endsection

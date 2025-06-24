@@ -3,6 +3,6 @@
 @section('content')
     {{-- <livewire:Counter > --}}
 
-    <livewire:ReporteCompra/>
+    <livewire:PaqueteCompras.ReporteCompra/>
 
 @endsection

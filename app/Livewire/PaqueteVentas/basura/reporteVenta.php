@@ -15,9 +15,10 @@ use PhpOffice\PhpSpreadsheet\RichText\RichText;
 use App\Models\Paquete_Ventas\venta;
 
 
-class ReporteVenta extends Component
+
+class reporteVenta extends Component
 {
-        public $datos = [];
+    public $datos = [];
     public $mensaje = null;
 
     public $modoEdicion = false;
@@ -34,15 +35,18 @@ class ReporteVenta extends Component
     public $fecha_fin;
     public $orden = 'asc'; // asc o desc
     public $ordenP = 'asc'; // asc o desc
+
     public function render()
     {
+
+
         return view('livewire.paquete-ventas.reporte-venta', [
             'productos' =>  $this->getProductos(),
             'cotizaciones' => $this->getCotizacion()
         ]);
     }
 
-     public function getCliente($id)
+    public function getCliente($id)
     {
         $clienteId = cotizacion::with('cliente.persona')->where('id', $id)->get();
         // dd($clienteId[0]->cliente->persona->nombre);
@@ -339,5 +343,4 @@ class ReporteVenta extends Component
 
         $this->js("window.dispatchEvent(new CustomEvent('imprimir'))");
     }
-
 }
