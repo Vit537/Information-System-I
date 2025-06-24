@@ -13,7 +13,7 @@ use PhpOffice\PhpSpreadsheet\RichText\RichText;
 
 
 
-class reporteCompra extends Component
+class ReporteCompra extends Component
 {
     public $datos = [];
     public $mensaje = null;
