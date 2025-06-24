@@ -17,7 +17,7 @@ class FacturaController extends Controller
     {
         $venta = venta::find($billId);
         $detalle = cotizacion_detalle::where('cotizacion_id', $venta->cotizacion_id)->get();
-        $cotizacion = cotizacion::find($billId);
+        $cotizacion = cotizacion::find($venta->cotizacion_id);
         // dd($cotizacion);
         $cliente = persona::find($cotizacion->cliente_id);
         $pdf = PDF::loadView('paquete_ventas.pdf.factura', compact('detalle', 'billId', 'cliente'));

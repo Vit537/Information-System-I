@@ -4,7 +4,10 @@ namespace App\Observers;
 
 use App\Models\AuditLog\bitacora;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\AlertasMail;
+use Illuminate\Support\Facades\Mail;
 use Jenssegers\Agent\Agent;
+use App\Models\Paquete_Usuarios\configuracionAlertas;
 
 class bitacoraObserver
 {
@@ -12,26 +15,36 @@ class bitacoraObserver
     public function created($model)
     {
         $this->registerActivity($model, 'created');
+        $body = $this->generateDescription($model, 'created');
+        $this->sendMail($model, $body);
     }
 
     public function updated($model)
     {
         $this->registerActivity($model, 'updated');
+        $body = $this->generateDescription($model, 'updated');
+        $this->sendMail($model, $body);
     }
 
     public function deleted($model)
     {
         $this->registerActivity($model, 'deleted');
+        $body = $this->generateDescription($model, 'deleted');
+        $this->sendMail($model, $body);
     }
 
     public function restored($model)
     {
         $this->registerActivity($model, 'restored');
+        $body = $this->generateDescription($model, 'restored');
+        $this->sendMail($model, $body);
     }
 
     public function forceDeleted($model)
     {
         $this->registerActivity($model, 'force_deleted');
+        $body = $this->generateDescription($model, 'force_deleted');
+        $this->sendMail($model, $body);
     }
 
     protected function registerActivity($model, $event)
@@ -74,6 +87,38 @@ class bitacoraObserver
         }
     }
 
+    protected function sendMail($model, $body){
+        $modelName = class_basename($model);
+        $config = configuracionAlertas::find(Auth::user()->id);
+        if(!$config){
+            configuracionAlertas::create([
+                'persona_id' => Auth::user()->id
+            ]);
+            if(in_array($modelName, ['producto','categoria','venta'])){
+                Mail::to(Auth::user()->correo)->send(new AlertasMail('Nuevo Evento', $body));
+            }
+        }else{
+            switch($modelName){
+                case 'venta':
+                    if($config->notificar_venta){
+                        Mail::to(Auth::user()->correo)->send(new AlertasMail('Nuevo Evento', $body));
+                    }
+                    return;
+                case 'producto':
+                    if($config->notificar_producto){
+                        Mail::to(Auth::user()->correo)->send(new AlertasMail('Nuevo Evento', $body));
+                    }
+                    return;
+                case 'categoria':
+                    if($config->notificar_categoria){
+                        Mail::to(Auth::user()->correo)->send(new AlertasMail('Nuevo Evento', $body));
+                    }
+                    return;
+                default:
+                    return;
+            }
+        }
+    }
 
 // // Obtener todos los inicios de sesión de un usuario
 // $logins = Bitacora::where('event_type', 'auth')

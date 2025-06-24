@@ -28,9 +28,14 @@ class Shopping extends Component
     public function mount()
     {
         $this->clientes = persona::where('tipo', 'cliente')->get();
-        $this->products = producto::whereHas('categoria', function ($query) {
-            $query->where('nombre', '!=', 'servicio');
+
+        $this->products = producto::where(function ($query) {
+            $query->whereHas('categoria', function ($q) {
+                $q->where('nombre', '!=', 'servicio');
+            })
+            ->orWhereDoesntHave('categoria');
         })->where('stock', '>', 0)->get();
+        
         $this->services = producto::whereHas('categoria', function ($query) {
             $query->where('nombre', 'servicio');
         })->where('stock', '>', 0)->get();
