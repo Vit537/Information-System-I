@@ -3,9 +3,6 @@
 namespace App\Livewire\PaqueteCompras;
 
 use Livewire\Component;
-
-
-
 use App\Models\Paquete_compra\ordenCompra;
 use Livewire\Attributes\On;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -42,6 +39,7 @@ class ReporteCompra extends Component
 
       public function getProveedor()
     {
+
         // $ordenes = ordenCompra::with('proveedor.persona');
         $ordenes = OrdenCompra::with([
             'proveedor.persona',
