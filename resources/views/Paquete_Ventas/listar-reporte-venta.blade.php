@@ -2,6 +2,6 @@
 
 @section('content')
 
-    <livewire:PaqueteVentas.ReporteVenta/>
+    <livewire:PaqueteVentas.ReporteVe/>
 
 @endsection

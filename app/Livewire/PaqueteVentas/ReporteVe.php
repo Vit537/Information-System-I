@@ -15,7 +15,7 @@ use PhpOffice\PhpSpreadsheet\RichText\RichText;
 use App\Models\Paquete_Ventas\venta;
 
 
-class ReporteVenta extends Component
+class ReporteVe extends Component
 {
         public $datos = [];
     public $mensaje = null;
