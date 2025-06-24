@@ -49,7 +49,6 @@ class ReporteCompra extends Component
         ]);
 
 
-
         if ($this->fecha_inicio) {
             $ordenes->whereDate('created_at', '>=', $this->fecha_inicio);
         }
