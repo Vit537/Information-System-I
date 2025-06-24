@@ -34,6 +34,7 @@ class ReporteVenta extends Component
     public $fecha_fin;
     public $orden = 'asc'; // asc o desc
     public $ordenP = 'asc'; // asc o desc
+
     public function render()
     {
         return view('livewire.paquete-ventas.reporte-venta', [

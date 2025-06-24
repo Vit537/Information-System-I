@@ -7,17 +7,7 @@
         </div>
     @endif
 
-
-
-
     <div class="flex justify-between py-2">
-
-
-        {{-- <x-svg-icon :width="100" :height="100" /> --}}
-
-
-
-
 
         <div class="gap-4 flex w-full flex-col md:flex-row  justify-center items-center py-2">
             <a href="{{ route('crear.venta') }}"
@@ -41,9 +31,7 @@
 
         <button wire:click="exportarPDF" class="bg-slate-300 hover:bg-slate-200 text-white px-2 py-1  rounded-lg"><img
                 class="w-8" src="{{ asset('assets/image.png') }}" alt="logo"></button>
-        {{-- <a href="{{ route('pdf.reporte.compra', ) }}"
-            class="bg-slate-300 hover:bg-slate-200 text-white px-2 py-1  rounded-lg"><img class="w-8"
-                src="{{ asset('assets/image.png') }}" alt="logo"></a> --}}
+
         <button wire:click="exportarTareas"
             class="bg-slate-300 hover:bg-slate-200 text-white px-2 py-0 rounded-lg "><x-svg.excel /></button>
     </div>
@@ -59,8 +47,6 @@
         <label for="search" class="block text-base font-medium text-slate-100 dark:text-slate-600 ">Buscador</label>
         <input id="search" type="text" wire:model.live="busqueda" placeholder="Buscar personas por nombre..."
             class="mt-1 border p-2 rounded w-full md:w-1/2  mb-4">
-
-
 
         <div x-data="{ abierto: false }" class="w-full mb-4">
             {{-- md:hidden --}}
@@ -104,11 +90,7 @@
             </div>
         </div>
 
-
-
     </div>
-
-
 
     {{-- DESGLOSE DE PRODUCTO --}}
     <div class="flex justify-center py-5 text-white dark:text-black w-full">
@@ -123,8 +105,7 @@
         {{-- @if (strlen($busqueda) > 0) --}}
         {{-- <p>no entra a ningun lado</p> --}}
 
-
-        @if (count($cotizaciones) > 0 )
+        @if (count($cotizaciones) > 0)
             <table
                 class="w-full text-sm text-left text-gray-800 dark:text-black border-collapse bg-zinc-100 dark:bg-zinc-300 dark:border-s-gray-400
                 ">
@@ -145,8 +126,6 @@
                         <th scope="col" class="px-6 py-3 text-center">
                             <h4>Total vendido</h4>
                         </th>
-
-
                     </tr>
                 </thead>
                 <tbody>
@@ -204,17 +183,38 @@
 
     </div>
 
-    {{-- DETALLE POR TRANSACCION
+
+
+
+
+
+    {{-- scripts --}}
+    <script>
+        window.addEventListener('descargar-pdf', function() {
+            window.open("{{ route('pdf.reporte-venta') }}", '_blank');
+        });
+
+        window.addEventListener('imprimir', function() {
+            window.open("{{ route('imprimir-venta') }}", '_blank');
+        });
+    </script>
+
+</div>
+
+
+
+
+{{-- DETALLE POR TRANSACCION
     <div class="flex justify-center py-5 text-white dark:text-black">
         <h1><strong>DETALLE POR TRANSACCION</strong></h1>
     </div>
 
     {{-- <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-2 bg-white">
         {{-- @if (strlen($busqueda) > 0) --}}
-        {{-- <p>no entra a ningun lado</p> --}}
+{{-- <p>no entra a ningun lado</p> --}}
 
 
-      {{--  @if (count($productos) > 0)
+{{--  @if (count($productos) > 0)
             <table
                 class="w-full text-sm text-left text-gray-800 dark:text-black border-collapse bg-zinc-100 dark:bg-zinc-300 dark:border-s-gray-400
                 ">
@@ -267,7 +267,7 @@
                             <td class="border-b-2 border-gray-300 dark:border-gray-400 text-center">
                                 {{ $cotizacion->precio_total }}
                             </td>
-                          {{--  <td-- class="border-b-2 border-gray-300 dark:border-gray-400 text-center">
+                          {{--  <td class="border-b-2 border-gray-300 dark:border-gray-400 text-center">
                                 @php
                                     $total = 0;
                                     $contador = 1;
@@ -316,20 +316,3 @@
         @endif
 
     </div> --}}
-
-
-
-
-
-    {{-- scripts --}}
-    <script>
-        window.addEventListener('descargar-pdf', function() {
-            window.open("{{ route('pdf.reporte-venta') }}", '_blank');
-        });
-
-        window.addEventListener('imprimir', function() {
-            window.open("{{ route('imprimir-venta') }}", '_blank');
-        });
-    </script>
-
-</div>
