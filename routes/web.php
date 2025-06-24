@@ -272,4 +272,8 @@ Route::get('Pago-tarjeta', function () {
 
 Route::post('/cambiar-tema', [ConfiguracionController::class, 'cambiarTema'])->name('cambiar.tema');
 
+Route::get('/prueba' , function(){
+    return view('Paquete_venta.prueba');
+})->name('pruebas');
+
 // Route::get('/print-tema', [ConfiguracionController::class, 'exportarTareas'])->name('print.tema');
