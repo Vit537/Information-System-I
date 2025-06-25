@@ -66,6 +66,7 @@ class categoriaController extends Controller
         categoria::create([
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
+            'detalle' => $request->detalle,
             'categoria_padre_id' => $request->categoria_id
         ]);
 

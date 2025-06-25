@@ -40,6 +40,19 @@
                 </div>
             </div>
 
+              <div class="row mb-3 align-items-center">
+            <div class="col-md-3 text-md-end">
+                <label for="detalle" class="form-label">detalle</label>
+            </div>
+            <div class="col-md-9">
+
+                <textarea name="detalle" value="{{ old('detalle') }}" id="" cols="50" rows="10" class="form-control" id="detalle" placeholder="Ej: detallar el producto"></textarea>
+                @error('detalle')
+                    <div class="text-danger mt-1"><small><strong>{{ $message }}</strong></small></div>
+                @enderror
+            </div>
+        </div>
+
 
             {{-- <!-- categoria -->
             <div class="row mb-3 align-items-center">

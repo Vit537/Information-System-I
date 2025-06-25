@@ -27,7 +27,11 @@
                             Descripcion
                         </th>
 
+
                         <th scope="col" class="px-6 py-3">
+                            detalle
+                        </th>
+                         <th scope="col" class="px-6 py-3">
                             Categoria
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -42,6 +46,7 @@
 
                             <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $categoria->nombre }}</td>
                             <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $categoria->descripcion }}</td>
+                            <td class="border border-gray-300 dark:border-gray-600 text-gray-800">{{ $categoria->detalle }}</td>
 
 
                             <td class="border border-gray-300 dark:border-gray-600">{{ $categoria->categoriaPadre->nombre ?? 'sin categoria' }}</td>
